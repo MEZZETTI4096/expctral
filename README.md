@@ -12,7 +12,16 @@ Landing page da **Expctral**, ecossistema open-core de criação 3D no navegador
 - Design System Obsidian: Thermal Radiance (esmeralda, cobre, violeta, ciano), squircles de 28px, vidro tático, retículas `+` a 40% e brand patterns (raio, vórtice, ejeção).
 - Schema.org (AIO/GEO): Organization, Person e SoftwareApplication.
 
+## V3 (prompts de implementação executados)
+- **Prism Studio**: Quick-Add em anel radial com busca fuzzy (`Tab`/`Espaço` sob o cursor), nós modificadores (Turbulence, Twist, Pulse, Scale) que entram na TSL real, Node Wrangler (`Alt`+clique isola a prévia do nó), bypass com `M`, pulso luminoso nos fios ao mexer nos sliders, Path Editor ("Trajeto") da câmera em Catmull-Rom e sourcemap bidirecional nó ↔ linhas de TSL.
+- **Multiplayer**: CRDT Yjs (Y.Map / Y.Array) sincronizando abas do mesmo navegador via BroadcastChannel, com presença e cursores. A sincronização na borda (y-websocket em Cloudflare Workers) fica para a Fase 2.
+- **Spectral Registry**: catálogo de pacotes `.exp` com busca e filtros, Refract com árvore de linhagem imutável, simulação do split 85/15, importar (arrastar e soltar) e exportar `.exp`.
+- **Eject** no formato de editor (abas, numeração de linhas, cabeçalho SPDX Apache-2.0).
+- **Dra. Ada**: dock com diagnóstico e auto-fix por regras, lendo o estado real do grafo. O modelo local (ONNX Runtime Web + Transformers.js) é Fase 2 — a página não finge que ele está rodando.
+- **Apoio**: botões abrem o enquadramento OSC / GitHub Sponsors; barras de meta ficam "pendentes" até `FUNDING.raisedBRL` ser preenchido.
+- Runtime WebGPU carregado de forma lazy (após o load, em tempo ocioso, quando o canvas fica visível).
+
 ## Configuração
 Arquivo único (`index.html`), sem build. No início do script, o objeto `LINKS` guarda os links que ainda não existem
 (apoio/checkout, B2B, WhatsApp, Discord, X). Enquanto estiverem vazios, os botões de apoio mostram "Abertura em breve"
-e o WhatsApp não aparece. Preencha e publique para ativar.
+e o WhatsApp não aparece. Preencha e publique para ativar. `FUNDING.raisedBRL` (logo abaixo) liga as barras de progresso das metas.

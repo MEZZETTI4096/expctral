@@ -35,7 +35,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@200;300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@200;300;400;500;600&family=DM+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600&display=swap">
 
@@ -72,8 +72,8 @@
       "url": "https://mezzetti4096.github.io/"
     },
     {
-      "@type": "SoftwareApplication",
-      "name": "Expctral",
+      "@type": ["SoftwareApplication", "CreativeWork"],
+      "name": "Expctral Station",
       "alternateName": ["Expctral Prism Studio", "Sinapse Engine", "Spectral Registry"],
       "applicationCategory": "DesignApplication",
       "applicationSubCategory": "3D graphics, shader authoring, node-based editor",
@@ -83,7 +83,7 @@
       "publisher": { "@id": "https://mezzetti4096.github.io/expctral/#org" },
       "codeRepository": "https://github.com/MEZZETTI4096/expctral",
       "programmingLanguage": ["TypeScript", "TSL (Three.js Shading Language)", "WGSL"],
-      "keywords": "WebGPU, TSL, Three.js Shading Language, node editor, shaders, TypeScript, open-core, Apache 2.0",
+      "keywords": "WebGPU, TSL, Three.js Shading Language, Three.js, React Flow, node editor, shaders, TypeScript, open-core, Apache 2.0",
       "inLanguage": ["en", "pt-BR", "zh-Hans"]
     }
   ]
@@ -100,10 +100,10 @@
   --cyan:#06B6D4;     /* vetores, matrizes, telemetria */
   --text:#E9ECF2; --muted:#A3ABBA; --faint:#7E879A;
   --line:rgba(255,255,255,.08); --line-strong:rgba(255,255,255,.14);
-  --glass:rgba(10,12,16,.75);
+  --glass:rgba(255,255,255,.04);
   --radius:28px; --pill:999px;
   --f-display:"Exo 2",system-ui,sans-serif; --f-ui:"Satoshi",system-ui,sans-serif; --f-text:"Switzer",system-ui,sans-serif;
-  --mono:ui-monospace,"Cascadia Code","SF Mono",Menlo,Consolas,monospace;
+  --mono:"DM Mono",ui-monospace,"Cascadia Code","SF Mono",Menlo,Consolas,monospace;
   --step--1:clamp(.82rem,.79rem + .15vw,.9rem); --step-0:clamp(1rem,.96rem + .2vw,1.08rem);
   --step-1:clamp(1.15rem,1.06rem + .45vw,1.4rem); --step-2:clamp(1.4rem,1.22rem + .9vw,1.95rem);
   --step-3:clamp(1.8rem,1.38rem + 2.1vw,2.9rem); --step-4:clamp(2.4rem,1.5rem + 4.4vw,5rem);
@@ -317,9 +317,11 @@ button,input,select{font:inherit;color:inherit}
 .menu button{display:flex;align-items:center;gap:.6rem;width:100%;min-height:44px;padding:0 .8rem;border:0;border-radius:14px;background:transparent;cursor:pointer;font-family:var(--f-display);font-size:.78rem;letter-spacing:.08em;text-align:left}
 .menu button:hover,.menu button:focus-visible{background:rgba(168,85,247,.14)}
 .menu i{width:22px;height:10px;border-radius:6px;background:linear-gradient(90deg,var(--a),var(--b))}
-.studio-main{display:grid}
+.studio-main{display:grid;grid-template-columns:minmax(0,1fr)}
 .studio-left{min-width:0}
-.studio-right{padding:16px;display:flex;flex-direction:column;gap:12px;order:-1;border-bottom:1px solid var(--line)}
+.studio-right{min-width:0;padding:16px;display:flex;flex-direction:column;gap:12px;order:-1;border-bottom:1px solid var(--line)}
+.peek{min-width:0}
+@media (max-width:699px){.tools{flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:4px;scrollbar-width:none}.tools::-webkit-scrollbar{display:none}.tool{flex:0 0 auto}.menu{position:fixed;left:16px;right:16px;top:auto;bottom:90px}}
 .tabs{display:flex;gap:4px;overflow-x:auto;padding:10px 12px;border-bottom:1px solid var(--line);scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:1px;min-height:44px;padding:.35rem .85rem;border-radius:16px;border:1px solid transparent;background:transparent;cursor:pointer;text-align:left}
@@ -507,6 +509,150 @@ dialog .code{max-height:min(60dvh,560px)}
 .final .h2{font-size:var(--step-4);font-weight:200;max-width:16ch;margin:0 auto var(--s-m)}
 .final .lead{margin:0 auto var(--s-l)}
 
+/* ================= V3 · EDITOR AVANÇADO ================= */
+.node.is-selected{border-color:rgba(168,85,247,.75);box-shadow:0 0 0 3px rgba(168,85,247,.18),0 16px 40px -24px #000}
+.node.is-muted{opacity:.5;filter:grayscale(.85)}
+.node.is-muted .node-head::after{content:"MUTED";font-family:var(--f-display);font-size:.58rem;letter-spacing:.14em;color:var(--copper);margin-left:auto}
+.node.is-isolated{border-color:rgba(6,182,212,.85);box-shadow:0 0 0 3px rgba(6,182,212,.22),0 16px 40px -24px #000}
+.node .rm{margin-left:auto;border:0;background:transparent;color:var(--faint);cursor:pointer;font-size:1.05rem;line-height:1;padding:.15rem .4rem;border-radius:8px}
+.node .rm:hover{color:var(--text);background:rgba(255,255,255,.06)}
+.node.is-muted .rm{margin-left:.4rem}
+.node--mod{border-color:rgba(255,159,28,.35)}
+.wire.is-muted{stroke:var(--faint)!important;opacity:.45}
+.wire-glow.is-muted{opacity:0}
+.wire.is-pulse{animation:wirePulse .75s var(--ease-out),flow 1.2s linear infinite}
+.wire-glow.is-pulse{animation:glowPulse .75s var(--ease-out)}
+@keyframes wirePulse{30%{stroke-width:4.5}}
+@keyframes glowPulse{30%{opacity:.65;stroke-width:14}}
+.palette{position:absolute;z-index:30;width:270px;height:270px;transform:translate(-50%,-50%);pointer-events:none}
+.palette[hidden]{display:none}
+.palette-ring{position:absolute;inset:0;border-radius:50%;border:1px dashed rgba(168,85,247,.45);background:radial-gradient(closest-side,rgba(10,12,16,.98) 70%,rgba(10,12,16,.9) 88%,rgba(10,12,16,.6));box-shadow:0 30px 80px -30px #000;animation:pop .25s var(--ease-out)}
+.palette input{pointer-events:auto;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:150px;min-height:42px;border-radius:14px;border:1px solid var(--line-strong);background:#0b0d12;padding:0 .7rem;font-family:var(--f-ui);font-size:16px;color:var(--text)}
+.palette .opt{pointer-events:auto;position:absolute;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:.35rem;min-height:38px;padding:0 .75rem;border-radius:14px;border:1px solid var(--line-strong);background:#0d1016;font-family:var(--f-display);font-size:.66rem;letter-spacing:.1em;color:var(--muted);cursor:pointer;white-space:nowrap;transition:opacity .15s,border-color .15s}
+.palette .opt i{width:7px;height:7px;border-radius:50%;background:var(--copper)}
+.palette .opt.is-dim{opacity:.22}
+.palette .opt.is-active{color:var(--text);border-color:rgba(168,85,247,.85);background:#171222}
+.palette .opt em{font-style:normal;color:var(--emerald)}
+.iso{position:absolute;right:12px;top:10px;z-index:2;font-family:var(--f-display);font-size:.62rem;letter-spacing:.12em;color:var(--obsidian-deep);background:var(--cyan);border-radius:10px;padding:.25rem .55rem}
+.iso[hidden]{display:none}
+.shortcuts{display:flex;flex-wrap:wrap;gap:.4rem 1rem;font-family:var(--f-ui);font-size:.8rem;color:var(--faint);margin:0}
+.shortcuts > span{white-space:nowrap}
+kbd{font-family:var(--mono);font-size:.72rem;color:var(--text);border:1px solid var(--line-strong);border-bottom-width:2px;border-radius:6px;padding:0 .35rem;background:#0b0d12}
+/* Editor no formato Monaco (somente leitura) */
+.editor-tabs{display:flex;align-items:center;gap:.5rem;height:38px;padding:0 12px 0 0;background:#08090c;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+.editor-tabs .tabf{display:flex;align-items:center;gap:.45rem;height:100%;padding:0 .9rem;border-right:1px solid var(--line);color:var(--text);background:#0b0d12;box-shadow:inset 0 2px 0 var(--violet)}
+.editor-tabs .ts{color:#3b82f6;font-weight:500}
+.editor-tabs .meta{margin-left:auto;color:var(--faint);white-space:nowrap}
+.code.lines{padding:14px 20px 14px 0;counter-reset:ln}
+.code.lines .l{display:block;position:relative;padding-left:3.8rem;min-height:1.65em}
+.code.lines .l::before{content:attr(data-ln);position:absolute;left:0;width:2.7rem;text-align:right;color:#4b5263}
+
+.code.lines .l.is-hl{background:rgba(168,85,247,.14);box-shadow:inset 2px 0 0 var(--violet)}
+.code.lines .l[data-n]{cursor:pointer}
+.smap{position:sticky;top:0;z-index:1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem;padding:.55rem 20px;background:#0b0d12;border-bottom:1px solid var(--line);font-family:var(--f-ui);font-size:.8rem;color:var(--faint)}
+.smap b{font-family:var(--f-display);font-size:.68rem;letter-spacing:.12em;color:var(--violet);font-weight:500}
+.peek{padding:12px 0 8px;border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.peek .eyebrow{padding:0 16px;margin-bottom:.4rem}
+.peek .eyebrow b{color:var(--violet)}
+.peek .code{max-height:200px;padding:0 12px 4px 0;font-size:.72rem}
+.node.is-flash{animation:flash 1s var(--ease-out)}
+@keyframes flash{30%{box-shadow:0 0 0 7px rgba(168,85,247,.35)}}
+/* Path Editor ("Trajeto") */
+.pathmap{position:absolute;left:12px;bottom:12px;z-index:2;width:min(44%,176px);aspect-ratio:1;border-radius:18px;background:rgba(6,7,9,.85);border:1px solid var(--line-strong);touch-action:none}
+.pathmap[hidden]{display:none}
+.pathmap svg{width:100%;height:100%;overflow:visible;display:block}
+.pathmap .ph{fill:var(--copper);stroke:#060709;stroke-width:1.5;cursor:grab}
+.pathmap .ph:focus{outline:none;stroke:var(--text);stroke-width:2.2}
+.pathmap .lbl{position:absolute;left:12px;top:8px;font-family:var(--f-display);font-size:.54rem;letter-spacing:.12em;color:var(--faint);pointer-events:none}
+.tool[aria-pressed="true"]{border-color:rgba(255,159,28,.75);color:#ffc069}
+/* Presença multiplayer */
+.presence{display:flex;align-items:center;gap:.35rem;font-family:var(--f-display);font-size:.64rem;letter-spacing:.12em;color:var(--faint)}
+.presence[hidden]{display:none}
+.presence .av{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.58rem;color:#060709;background:var(--c);box-shadow:0 0 12px var(--c);font-weight:600}
+.peer{position:absolute;z-index:25;pointer-events:none;display:flex;align-items:flex-start;gap:3px;color:var(--c);transition:left .1s linear,top .1s linear}
+.peer[hidden]{display:none}
+.peer svg{width:16px;height:16px;filter:drop-shadow(0 0 6px var(--c))}
+.peer span{margin-top:12px;font-family:var(--f-display);font-size:.58rem;letter-spacing:.1em;padding:.15rem .4rem;border-radius:8px;background:var(--c);color:#060709}
+/* Progresso das metas */
+.bar{height:8px;border-radius:6px;background:rgba(255,255,255,.06);overflow:hidden;margin:.7rem 0 .3rem}
+.bar b{display:block;height:100%;width:var(--p,0%);background:linear-gradient(90deg,var(--emerald),var(--cyan))}
+.bar.is-pending b{width:100%;background:repeating-linear-gradient(45deg,rgba(255,255,255,.09) 0 8px,transparent 8px 16px)}
+.bar-note{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin:0}
+
+/* ================= V3 · SPECTRAL REGISTRY ================= */
+.registry{display:grid;gap:var(--s-m)}
+.reg-tools{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:var(--s-m)}
+.reg-tools input{flex:1 1 220px;min-height:44px;border-radius:16px;border:1px solid var(--line-strong);background:var(--glass);padding:0 1rem;font-family:var(--f-ui);font-size:16px;color:var(--text)}
+.fchip{min-height:38px;padding:0 .85rem;border-radius:14px;border:1px solid var(--line-strong);background:transparent;cursor:pointer;font-family:var(--f-display);font-size:.68rem;letter-spacing:.1em;color:var(--muted)}
+.fchip[aria-pressed="true"]{color:var(--text);border-color:rgba(168,85,247,.7);background:rgba(168,85,247,.12)}
+.pkgs{display:grid;gap:var(--s-s)}
+@media (min-width:700px){.pkgs{grid-template-columns:1fr 1fr}}
+.pkg{padding:var(--s-m);display:flex;flex-direction:column;gap:.7rem}
+.pkg[hidden]{display:none}
+.pkg-swatch{height:64px;border-radius:18px;border:1px solid var(--line);background:radial-gradient(circle at 32% 50%,var(--a),transparent 58%),radial-gradient(circle at 68% 50%,var(--b),transparent 58%),#07080b}
+.pkg h3{font-size:1.05rem;display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
+.pkg h3 small{font-family:var(--mono);font-size:.72rem;color:var(--faint);font-weight:400}
+.pkg p{margin:0;color:var(--muted);font-size:.92rem}
+.pkg .meta{font-family:var(--mono);font-size:.72rem;color:var(--faint)}
+.pkg .btns{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:auto}
+.reg-empty{color:var(--muted);margin:0}
+.reg-empty[hidden]{display:none}
+.reg-side{display:grid;gap:var(--s-s);align-content:start}
+.reg-panel{padding:var(--s-m)}
+.reg-panel h3{font-size:1.05rem;margin-bottom:.4rem}
+.reg-panel > p{color:var(--muted);font-size:.88rem;margin:0 0 .8rem}
+.tree{list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:.78rem}
+.tree li{position:relative;padding:.4rem 0 .4rem 1.5rem;color:var(--muted)}
+.tree li::before{content:"";position:absolute;left:.4rem;top:0;bottom:0;border-left:1px solid var(--line-strong)}
+.tree li::after{content:"";position:absolute;left:.4rem;top:1.15em;width:.75rem;border-top:1px solid var(--line-strong)}
+.tree li:first-child::before{top:1.15em}
+.tree li:last-child::before{bottom:auto;height:1.15em}
+.tree li:only-child::before{display:none}
+.tree b{color:var(--text);font-weight:500}
+.tree .root b{color:var(--violet)}
+.tree .you b{color:var(--emerald)}
+.seal{display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem}
+.seal-ring{width:64px;height:64px;border-radius:50%;background:conic-gradient(var(--emerald) 0 85%,var(--copper) 85% 100%);display:grid;place-items:center;flex:0 0 auto}
+.seal-ring span{width:48px;height:48px;border-radius:50%;background:#0b0d12;display:grid;place-items:center;font-family:var(--f-display);font-size:.72rem;letter-spacing:.06em}
+.splitcalc label{display:grid;gap:.3rem;font-family:var(--f-ui);font-size:.85rem;color:var(--muted)}
+.splitcalc .vals{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.6rem}
+.splitcalc .vals div{border:1px solid var(--line);border-radius:14px;padding:.55rem .7rem}
+.splitcalc .vals b{display:block;font-family:var(--mono);font-weight:500;font-size:.95rem;color:var(--text)}
+.splitcalc .vals small{font-size:.74rem;color:var(--faint)}
+.drop{border:1px dashed rgba(168,85,247,.5);border-radius:20px;padding:var(--s-m);text-align:center;color:var(--muted);font-size:.9rem;transition:background-color .2s,border-color .2s}
+.drop.is-over{background:rgba(168,85,247,.1);border-color:var(--violet)}
+.drop label{color:var(--emerald);text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
+.drop .btn{margin-top:.8rem}
+@media (min-width:1000px){.registry{grid-template-columns:minmax(0,1.55fr) minmax(0,1fr)}}
+
+/* ================= V3 · DIÁLOGOS INFORMATIVOS ================= */
+.info{padding:var(--s-l) var(--s-m)}
+.info h2{font-size:var(--step-2);margin:0 0 .6rem}
+.info p{color:var(--muted)}
+.info ul{margin:0 0 var(--s-m);padding-left:1.1rem;color:var(--muted)}
+.info li{margin-bottom:.4rem}
+.info .ctas{justify-content:flex-start}
+
+/* ================= V3 · DRA. ADA ================= */
+.ada{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:65;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.ada-toggle{display:inline-flex;align-items:center;gap:.55rem;min-height:48px;padding:0 1rem;border-radius:var(--radius);border:1px solid rgba(6,182,212,.55);background:rgba(10,12,16,.9);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);color:var(--text);cursor:pointer;font-family:var(--f-display);font-size:.74rem;letter-spacing:.12em;box-shadow:0 10px 40px -14px rgba(6,182,212,.6)}
+.ada-toggle .pulse{--c:var(--cyan)}
+.ada-panel{width:min(390px,calc(100vw - 32px));max-height:min(72dvh,580px);display:flex;flex-direction:column;background:rgba(10,12,16,.95);overflow:hidden}
+.ada-panel[hidden]{display:none}
+.ada-head{padding:16px 18px 12px;border-bottom:1px solid var(--line)}
+.ada-head h2{display:flex;align-items:center;gap:.5rem;margin:0}
+.ada-head .pulse{--c:var(--cyan)}
+.ada-status{font-family:var(--mono);font-size:.7rem;color:var(--faint);margin:.4rem 0 0;line-height:1.45}
+.ada-log{flex:1;overflow:auto;padding:14px 18px;display:grid;gap:.7rem;align-content:start;font-size:.9rem}
+.ada-msg{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px;padding:.7rem .85rem;color:var(--muted)}
+.ada-msg p{margin:0 0 .4rem}
+.ada-msg p:last-child{margin:0}
+.ada-msg b{color:var(--text);font-weight:500}
+.ada-msg ul{margin:.4rem 0 0;padding-left:1.1rem}
+.ada-msg .warn{color:var(--copper)}
+.ada-msg--you{background:rgba(168,85,247,.1);border-color:rgba(168,85,247,.3);justify-self:end;color:var(--text);font-family:var(--f-ui);font-size:.85rem}
+.ada-actions{display:flex;flex-wrap:wrap;gap:.5rem;padding:12px 18px;border-top:1px solid var(--line)}
+
 /* ================= RODAPÉ ================= */
 .foot{border-top:1px solid var(--line);padding-block:var(--s-xl);background:var(--obsidian-deep)}
 .foot-grid{display:grid;gap:var(--s-l)}
@@ -521,7 +667,7 @@ dialog .code{max-height:min(60dvh,560px)}
 .wa{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:60;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--emerald);color:var(--obsidian-deep);box-shadow:0 0 0 6px rgba(16,185,129,.14),0 14px 40px -10px rgba(16,185,129,.7)}
 .wa[hidden]{display:none}
 .wa svg{width:28px;height:28px}
-.toast{position:fixed;left:50%;bottom:calc(max(16px,env(safe-area-inset-bottom)) + 20px);z-index:70;transform:translate(-50%,10px);opacity:0;pointer-events:none;max-width:calc(100% - 32px);padding:.75rem 1.1rem;border-radius:var(--pill);background:#11141b;border:1px solid var(--line-strong);font-family:var(--f-ui);font-size:.92rem;transition:opacity .2s var(--ease-out),transform .25s var(--ease-out)}
+.toast{position:fixed;left:50%;bottom:calc(max(16px,env(safe-area-inset-bottom)) + 76px);z-index:70;transform:translate(-50%,10px);opacity:0;pointer-events:none;max-width:calc(100% - 32px);padding:.75rem 1.1rem;border-radius:var(--pill);background:#11141b;border:1px solid var(--line-strong);font-family:var(--f-ui);font-size:.92rem;transition:opacity .2s var(--ease-out),transform .25s var(--ease-out)}
 .toast.is-on{opacity:1;transform:translate(-50%,0)}
 
 @media (prefers-reduced-motion:reduce){
@@ -721,10 +867,14 @@ dialog .code{max-height:min(60dvh,560px)}
           <span class="tac">ORBIT WORKSPACE // <span id="wsName">#4096-VORTEX</span></span>
           <span class="refract-tag" id="refractTag" hidden></span>
         </div>
+        <div class="presence" id="presence" hidden aria-live="polite"></div>
         <div class="tools">
+          <button type="button" class="tool" id="addNodeBtn" aria-haspopup="true" aria-controls="palette">[ + ADD NODE ]</button>
           <button type="button" class="tool" id="presetBtn" aria-haspopup="true" aria-expanded="false" aria-controls="presetMenu">[ ✦ PRIMORDIAL SPECTRA ]</button>
           <div class="menu" id="presetMenu" role="menu" hidden></div>
           <button type="button" class="tool" id="refractBtn">[ ⑂ REFRACT PROJECT ]</button>
+          <button type="button" class="tool" id="pathBtn" aria-pressed="false">[ ⌁ PATH ]</button>
+          <button type="button" class="tool" id="coBtn">[ ◎ CO-CREATE ]</button>
           <button type="button" class="tool tool--eject" data-eject>[ ⚡&#xFE0E; EJECT TYPESCRIPT ]</button>
           <button type="button" class="tool" id="soundBtn" aria-pressed="true">[ ♪ SOUND ]</button>
         </div>
@@ -742,6 +892,10 @@ dialog .code{max-height:min(60dvh,560px)}
           <div class="panel" id="wave-visual" role="tabpanel" aria-labelledby="tab-visual">
             <div class="graph" id="graph">
               <svg class="wires" id="wires" aria-hidden="true"></svg>
+              <div class="palette" id="palette" hidden>
+                <div class="palette-ring"></div>
+                <input type="text" id="paletteInput" autocomplete="off" spellcheck="false" aria-label="Search nodes" data-i18n-ph="pal.ph" placeholder="Search node…">
+              </div>
               <div class="node" data-node="time">
                 <div class="node-head" tabindex="0"><span class="eyebrow">INPUT</span>Time</div>
                 <div class="node-body">
@@ -781,6 +935,7 @@ dialog .code{max-height:min(60dvh,560px)}
                   <div class="port in"><i class="sock val" data-sock="field.speed"></i><span>uPhase</span></div>
                   <div class="port in"><i class="sock val" data-sock="field.count"></i><span>count</span></div>
                   <div class="port in"><i class="sock vec" data-sock="field.color"></i><span>color</span></div>
+                  <div class="port in"><i class="sock val" data-sock="field.mods"></i><span>modifiers</span></div>
                   <div class="readout">instanceIndex · hash()</div>
                   <div class="port out"><span>colorNode</span><i class="sock tsl" data-sock="field.out"></i></div>
                 </div>
@@ -799,7 +954,7 @@ dialog .code{max-height:min(60dvh,560px)}
             <pre class="code" id="mathCode"></pre>
             <p class="panel-note" data-i18n="prism.mathNote">Reactive state read by the Math Wave on every change.</p>
           </div>
-          <div class="panel" id="wave-tsl" role="tabpanel" aria-labelledby="tab-tsl" hidden><pre class="code" id="tslCode"></pre></div>
+          <div class="panel" id="wave-tsl" role="tabpanel" aria-labelledby="tab-tsl" hidden><div class="smap"><span data-i18n="smap.hint">Hover a line to find its node. Click to jump to it.</span><b id="smapNode"></b></div><pre class="code lines" id="tslCode"></pre></div>
           <div class="panel" id="wave-gpu" role="tabpanel" aria-labelledby="tab-gpu" hidden>
             <dl class="gpu-list" id="gpuList"></dl>
             <p class="panel-note" data-i18n="prism.gpuNote">Sinapse Engine rules: storage buffers aligned to 16 bytes and workgroups in multiples of 64.</p>
@@ -810,6 +965,8 @@ dialog .code{max-height:min(60dvh,560px)}
           <div class="preview">
             <canvas id="previewCanvas" role="img" aria-label="Live preview: particle vortex driven by the node graph"></canvas>
             <span class="eyebrow">LIVE PREVIEW // RENDER PASS</span>
+            <span class="iso" id="isoBadge" hidden></span>
+            <div class="pathmap" id="pathmap" hidden><span class="lbl">PATH // CAMERA</span><svg viewBox="0 0 100 100" id="pathSvg" role="group" aria-label="Camera path editor: drag the four points"></svg></div>
           </div>
           <p class="status" id="gpuStatus" data-state="pending" role="status"><i class="pulse"></i><span></span></p>
           <ul class="legend" aria-label="Socket colors">
@@ -818,12 +975,13 @@ dialog .code{max-height:min(60dvh,560px)}
             <li style="--c:var(--violet)"><i></i><span data-i18n="prism.leg3">TSL shaders</span></li>
             <li style="--c:var(--cyan)"><i></i><span data-i18n="prism.leg4">Vectors</span></li>
           </ul>
+          <div class="peek"><p class="eyebrow">TSL // SOURCEMAP · <b id="peekName">PARTICLE FIELD</b></p><pre class="code lines" id="peek"></pre></div>
         </div>
       </div>
 
       <div class="studio-foot">
         <p data-i18n="prism.note">The preview runs on three/webgpu in your browser, using exactly the TSL you eject. The node editor itself is a prototype of Prism Studio.</p>
-        <p data-i18n="prism.hint">Drag nodes by their header. Arrow keys move a focused node.</p>
+        <p class="shortcuts"><span><kbd>Tab</kbd> / <kbd>Space</kbd> <span data-i18n="sc.add">quick-add node</span></span><span><kbd>Alt</kbd> + click <span data-i18n="sc.iso">isolate preview</span></span><span><kbd>M</kbd> <span data-i18n="sc.mute">mute / bypass</span></span><span><kbd>Del</kbd> <span data-i18n="sc.del">remove modifier</span></span><span><kbd>Esc</kbd> <span data-i18n="sc.esc">exit isolation</span></span></p>
       </div>
     </div>
   </div>
@@ -841,8 +999,51 @@ dialog .code{max-height:min(60dvh,560px)}
       <button type="button" class="btn btn--glass btn--sm" id="closeDlg" data-i18n="eject.close">Close</button>
     </div>
   </div>
-  <pre class="code" id="ejectCode"></pre>
+  <div class="editor-tabs" aria-hidden="true"><span class="tabf"><span class="ts">TS</span><span id="ejectTab">expctral-4096-vortex.ts</span></span><span class="meta">TypeScript · UTF-8 · Apache-2.0</span></div>
+  <pre class="code lines" id="ejectCode"></pre>
 </dialog>
+
+<!-- ================= SPECTRAL REGISTRY ================= -->
+<section class="section surface-0 lab-grid" id="registry" aria-labelledby="reg-title">
+  <div class="glow glow--c" style="width:640px;height:640px;right:-220px;top:12%"></div>
+  <div class="wrap">
+    <div class="head head--split reveal">
+      <div><p class="eyebrow">REGISTRY // <b>ORBIT CLUSTER</b></p><h2 class="h h2" id="reg-title" data-i18n="reg.title">Spectral Registry: publish, refract, earn.</h2></div>
+      <p class="muted" data-i18n="reg.sub">Monolithic .exp packages carry the node graph and its parameters. Every refraction keeps an immutable lineage back to the primordial author. This catalog is a working simulation with the four Primordial Spectra.</p>
+    </div>
+    <div class="registry">
+      <div>
+        <div class="reg-tools">
+          <input type="search" id="regSearch" data-i18n-ph="reg.ph" placeholder="Search packages…" aria-label="Search packages">
+          <button type="button" class="fchip" data-filter="all" aria-pressed="true" data-i18n="reg.all">All</button>
+          <button type="button" class="fchip" data-filter="emerald" aria-pressed="false">EMERALD</button>
+          <button type="button" class="fchip" data-filter="copper" aria-pressed="false">COPPER</button>
+          <button type="button" class="fchip" data-filter="violet" aria-pressed="false">VIOLET</button>
+          <button type="button" class="fchip" data-filter="cyan" aria-pressed="false">CYAN</button>
+        </div>
+        <div class="pkgs" id="pkgs"></div>
+        <p class="reg-empty" id="regEmpty" hidden data-i18n="reg.empty">No package matches this search.</p>
+      </div>
+      <div class="reg-side">
+        <div class="reg-panel glass reticle">
+          <h3 class="h" data-i18n="reg.lineage">Refraction lineage</h3>
+          <p data-i18n="reg.lineageNote">Immutable history: every copy keeps credit to the primordial author.</p>
+          <ul class="tree" id="lineage"></ul>
+        </div>
+        <div class="reg-panel glass reticle splitcalc">
+          <div class="seal"><div class="seal-ring" aria-hidden="true"><span>85/15</span></div><div><h3 class="h" data-i18n="reg.split">Revenue split</h3><p class="muted" style="margin:0;font-size:.85rem" data-i18n="reg.splitNote">Checkout simulation. Real sales open in Phase 3.</p></div></div>
+          <label><span data-i18n="reg.price">Example package price</span><input type="range" id="price" min="10" max="500" step="5" value="100"></label>
+          <div class="vals"><div><b id="vCreator">—</b><small data-i18n="reg.creator">creator · 85%</small></div><div><b id="vPlatform">—</b><small data-i18n="reg.platform">platform · 15%</small></div></div>
+        </div>
+        <div class="drop" id="drop">
+          <p style="margin:0"><span data-i18n="reg.drop">Drop a .exp file here or</span> <label for="expFile" data-i18n="reg.choose">choose a file</label></p>
+          <input type="file" id="expFile" accept=".exp,application/json" class="sr">
+          <button type="button" class="btn btn--glass btn--sm" id="expExport" data-i18n="reg.export">Export current graph (.exp)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ================= ARQUITETURA (chess) ================= -->
 <section class="section surface-0 patterned" id="arquitetura" aria-labelledby="arch-title">
@@ -1009,8 +1210,8 @@ material.colorNode = <span class="k">mix</span>(
       <p class="muted" data-i18n="sup.p">Monthly support pays for servers, international domains, certificates and the Sinapse Compiler infrastructure. In return you get access and recognition, and the code stays open for everyone under Apache 2.0.</p>
     </div>
     <div class="goals">
-      <div class="goal glass reticle"><p class="eyebrow" data-i18n="sup.g1">V1.0 MVP goal</p><p class="amt" data-i18n="sup.g1a">R$ 15,000 · US$ 3,000</p><p data-i18n="sup.g1d">Servers, domains, certificates and the first Sinapse Compiler infrastructure.</p></div>
-      <div class="goal glass reticle"><p class="eyebrow" data-i18n="sup.g2">V1.5 consolidation goal</p><p class="amt" data-i18n="sup.g2a">R$ 50,000 · US$ 10,000</p><p data-i18n="sup.g2d">Consolidating Prism Studio, senior engineering support and preparing the angel round.</p></div>
+      <div class="goal glass reticle"><p class="eyebrow" data-i18n="sup.g1">V1.0 MVP goal</p><p class="amt" data-i18n="sup.g1a">R$ 15,000 · US$ 3,000</p><p data-i18n="sup.g1d">Servers, domains, certificates and the first Sinapse Compiler infrastructure.</p><div class="bar" data-goal="15000"><b></b></div><p class="bar-note" data-goal-note></p></div>
+      <div class="goal glass reticle"><p class="eyebrow" data-i18n="sup.g2">V1.5 consolidation goal</p><p class="amt" data-i18n="sup.g2a">R$ 50,000 · US$ 10,000</p><p data-i18n="sup.g2d">Consolidating Prism Studio, senior engineering support and preparing the angel round.</p><div class="bar" data-goal="50000"><b></b></div><p class="bar-note" data-goal-note></p></div>
     </div>
     <div class="tiers">
       <article class="tier glass reticle hoverable" style="--c:var(--emerald)">
@@ -1138,6 +1339,48 @@ material.colorNode = <span class="k">mix</span>(
 <a class="wa" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Talk on WhatsApp" data-i18n-aria="wa" hidden>
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>
 </a>
+<dialog id="supportDlg" aria-labelledby="supTitle">
+  <div class="info">
+    <p class="eyebrow" id="supTier">SUPPORT TIERS</p>
+    <h2 class="h" id="supTitle" data-i18n="dlg.supTitle">Support opens with the Open Source Collective</h2>
+    <p data-i18n="dlg.supP1">Expctral is enrolling in fiscal hosting through the Open Source Collective (501(c)(6)) and GitHub Sponsors. As soon as enrollment is complete, this button takes you straight to the checkout of the tier you chose.</p>
+    <p data-i18n="dlg.supP2">Your support will fund servers, domains, certificates and the Sinapse Compiler (V1.0 goal: R$ 15,000), then Prism Studio and senior engineering (V1.5 goal: R$ 50,000). The code stays open under Apache 2.0.</p>
+    <div class="ctas">
+      <a class="btn btn--primary btn--sm" href="https://github.com/MEZZETTI4096/expctral" target="_blank" rel="noopener" data-i18n="dlg.repo">Follow the repository on GitHub</a>
+      <button type="button" class="btn btn--glass btn--sm" data-close data-i18n="eject.close">Close</button>
+    </div>
+  </div>
+</dialog>
+<dialog id="b2bDlg" aria-labelledby="b2bTitle">
+  <div class="info">
+    <p class="eyebrow">B2B // <b>SPONSORSHIP &amp; INVESTMENT</b></p>
+    <h2 class="h" id="b2bTitle" data-i18n="dlg.b2bTitle">Corporate support for open infrastructure</h2>
+    <ul>
+      <li data-i18n="dlg.b2b1">B2B sponsorship through the Open Source Collective (planned), with your brand in the Hub footer and a direct engineering channel.</li>
+      <li data-i18n="dlg.b2b2">Angel investment formalized through a Convertible Loan (Mútuo Conversível, Brazil) or a SAFE (United States), converting into equity at the international restructuring.</li>
+    </ul>
+    <p data-i18n="dlg.b2b3">The official contact channel for companies and investors will be published here.</p>
+    <div class="ctas">
+      <a class="btn btn--primary btn--sm" href="https://github.com/MEZZETTI4096/expctral" target="_blank" rel="noopener" data-i18n="dlg.repo">Follow the repository on GitHub</a>
+      <button type="button" class="btn btn--glass btn--sm" data-close data-i18n="eject.close">Close</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="ada" id="ada">
+  <section class="ada-panel glass reticle" id="adaPanel" aria-labelledby="adaTitle" hidden>
+    <div class="ada-head">
+      <h2 class="tac" id="adaTitle"><i class="pulse"></i>DRA. ADA // LOCAL ASSISTANT</h2>
+      <p class="ada-status" data-i18n="ada.status">Preview · rule-based diagnostics running in your browser. The local model (ONNX Runtime Web on WebGPU + Transformers.js) arrives in Phase 2.</p>
+    </div>
+    <div class="ada-log" id="adaLog" aria-live="polite"></div>
+    <div class="ada-actions">
+      <button type="button" class="btn btn--primary btn--sm" id="adaDiag" data-i18n="ada.diag">Diagnose graph</button>
+      <button type="button" class="btn btn--glass btn--sm" id="adaFix" data-i18n="ada.fix">Auto-fix</button>
+    </div>
+  </section>
+  <button type="button" class="ada-toggle" id="adaToggle" aria-expanded="false" aria-controls="adaPanel"><i class="pulse"></i>DRA. ADA</button>
+</div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -1155,6 +1398,8 @@ const LINKS = {
   discord: '',
   x: ''
 };
+// Valor arrecadado (R$). null = arrecadação ainda não aberta (adesão ao OSC em andamento).
+const FUNDING = { raisedBRL: null };
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const store = {
@@ -1349,12 +1594,132 @@ const UI = {
   zh:{ refracted:'折射副本已创建，原作者署名已保留。', copied:'代码已复制', copyFail:'复制失败：请手动选择代码', preset:'已应用光谱', downloaded:'文件已下载', soon:'即将开放', previewOn:{webgpu:'正在此浏览器中使用 WebGPU 渲染', webgl2:'此处不支持 WebGPU：使用 WebGL2 回退渲染', canvas2d:'没有可用的 GPU 渲染器：使用 Canvas 2D 回退', pending:'正在启动 Sinapse Engine…'} }
 };
 
+/* ---------- V3: novos textos ---------- */
+Object.assign(I18N.pt, {
+  'sc.add':`adição rápida de nó`,'sc.iso':`isolar prévia`,'sc.mute':`silenciar / bypass`,'sc.del':`remover modificador`,'sc.esc':`sair do isolamento`,
+  'pal.ph':`Buscar nó…`,
+  'reg.title':`Spectral Registry: publique, refrate, receba.`,
+  'reg.sub':`Pacotes monolíticos .exp levam o grafo de nós e seus parâmetros. Toda refração mantém uma linhagem imutável até o autor primordial. Este catálogo é uma simulação funcional com os quatro Espectros Primordiais.`,
+  'reg.ph':`Buscar pacotes…`,'reg.all':`Todos`,'reg.empty':`Nenhum pacote corresponde a esta busca.`,
+  'reg.lineage':`Linhagem de refração`,'reg.lineageNote':`Histórico imutável: toda cópia mantém o crédito ao autor primordial.`,
+  'reg.split':`Divisão de receita`,'reg.splitNote':`Simulação de checkout. As vendas reais abrem na Fase 3.`,
+  'reg.price':`Preço de exemplo do pacote`,'reg.creator':`criador · 85%`,'reg.platform':`plataforma · 15%`,
+  'reg.drop':`Solte um arquivo .exp aqui ou`,'reg.choose':`escolha um arquivo`,'reg.export':`Exportar grafo atual (.exp)`,'reg.dl':`Baixar .exp`,
+  'pkg.1':`Um florescer esmeralda lento que deriva para o violeta. Um ponto de partida calmo.`,
+  'pkg.2':`Um vórtice cobre rápido que se dissolve em esmeralda. Muita energia, menos densidade.`,
+  'pkg.3':`Uma nebulosa violeta densa com brilhos cobre e deriva lenta.`,
+  'pkg.4':`Um anel de telemetria ciano com profundidade violeta, pensado para painéis.`,
+  'dlg.supTitle':`O apoio abre com o Open Source Collective`,
+  'dlg.supP1':`A Expctral está em processo de adesão à hospedagem fiscal do Open Source Collective (501(c)(6)) e ao GitHub Sponsors. Assim que a adesão for concluída, este botão leva direto ao checkout do plano escolhido.`,
+  'dlg.supP2':`Seu apoio vai custear servidores, domínios, certificados e o Sinapse Compiler (meta V1.0: R$ 15.000) e, depois, o Prism Studio e a engenharia sênior (meta V1.5: R$ 50.000). O código continua aberto sob Apache 2.0.`,
+  'dlg.repo':`Acompanhar o repositório no GitHub`,
+  'dlg.b2bTitle':`Apoio corporativo à infraestrutura aberta`,
+  'dlg.b2b1':`Patrocínio B2B via Open Source Collective (planejado), com sua marca no rodapé do Hub e canal direto com a engenharia.`,
+  'dlg.b2b2':`Investimento anjo formalizado por Mútuo Conversível (Brasil) ou SAFE (Estados Unidos), convertido em participação na reorganização internacional.`,
+  'dlg.b2b3':`O canal oficial de contato para empresas e investidores será publicado aqui.`,
+  'ada.status':`Prévia · diagnóstico por regras rodando no seu navegador. O modelo local (ONNX Runtime Web com WebGPU + Transformers.js) chega na Fase 2.`,
+  'ada.diag':`Diagnosticar grafo`,'ada.fix':`Corrigir automaticamente`
+});
+Object.assign(I18N.zh, {
+  'sc.add':`快速添加节点`,'sc.iso':`隔离预览`,'sc.mute':`静音 / 旁路`,'sc.del':`删除修饰节点`,'sc.esc':`退出隔离`,
+  'pal.ph':`搜索节点…`,
+  'reg.title':`Spectral Registry：发布、折射、获益。`,
+  'reg.sub':`单体 .exp 包承载节点图及其参数。每一次折射都保留一条不可篡改、可追溯到原始作者的谱系。此目录是基于四个原初光谱的可运行模拟。`,
+  'reg.ph':`搜索资源包…`,'reg.all':`全部`,'reg.empty':`没有符合搜索条件的资源包。`,
+  'reg.lineage':`折射谱系`,'reg.lineageNote':`不可篡改的历史：每个副本都保留对原始作者的署名。`,
+  'reg.split':`收益分成`,'reg.splitNote':`结账模拟。真实销售将在第 3 阶段开放。`,
+  'reg.price':`示例资源包价格`,'reg.creator':`创作者 · 85%`,'reg.platform':`平台 · 15%`,
+  'reg.drop':`将 .exp 文件拖放到此处，或`,'reg.choose':`选择文件`,'reg.export':`导出当前节点图（.exp）`,'reg.dl':`下载 .exp`,
+  'pkg.1':`缓慢的翡翠绽放，渐渐漂向紫罗兰。一个平静的起点。`,
+  'pkg.2':`快速的铜色漩涡，逐渐融入翡翠色。高能量，低密度。`,
+  'pkg.3':`浓密的紫罗兰星云，点缀铜色高光，缓慢漂移。`,
+  'pkg.4':`带有紫罗兰纵深的青色遥测光环，适合仪表盘。`,
+  'dlg.supTitle':`支持将通过 Open Source Collective 开放`,
+  'dlg.supP1':`Expctral 正在申请加入 Open Source Collective（501(c)(6)）的财务托管和 GitHub Sponsors。入驻完成后，此按钮将直接带你进入所选方案的结账页面。`,
+  'dlg.supP2':`你的支持将用于服务器、域名、证书和 Sinapse 编译器（V1.0 目标：R$ 15,000），随后用于 Prism Studio 和资深工程（V1.5 目标：R$ 50,000）。代码依旧以 Apache 2.0 开放。`,
+  'dlg.repo':`在 GitHub 上关注仓库`,
+  'dlg.b2bTitle':`企业对开放基础设施的支持`,
+  'dlg.b2b1':`通过 Open Source Collective 进行 B2B 赞助（计划中），品牌展示于 Hub 页脚，并享有直通工程团队的渠道。`,
+  'dlg.b2b2':`天使投资通过可转换借款（巴西 Mútuo Conversível）或 SAFE（美国）进行，并在国际架构重组时转换为股权。`,
+  'dlg.b2b3':`面向企业和投资人的官方联系渠道将在此公布。`,
+  'ada.status':`预览 · 基于规则的诊断在你的浏览器中运行。本地模型（基于 WebGPU 的 ONNX Runtime Web + Transformers.js）将在第 2 阶段上线。`,
+  'ada.diag':`诊断节点图`,'ada.fix':`自动修复`
+});
+Object.assign(I18N.pt, { 'smap.hint':`Passe o mouse numa linha para achar o nó. Clique para ir até ele.` });
+Object.assign(I18N.zh, { 'smap.hint':`将鼠标移到某一行即可找到对应节点，点击可跳转。` });
+Object.assign(UI.en, {
+  orbitLive:n => `ORBIT LIVE · ${n}`, coHint:'Second tab opened: edits sync live between tabs through a Yjs CRDT. Edge sync on Cloudflare Workers arrives in Phase 2.',
+  coAlone:'Open this page in another tab to co-create in the same Orbit.', pathOn:'Path Editor on: drag the points to shape the camera trajectory', pathOff:'Camera back to orbit view',
+  fundPending:'Fundraising opens with the OSC enrollment', fundRaised:(v, p) => `${v} raised · ${p}%`,
+
+  core:'Particle Field and Render Pass are core nodes and cannot be bypassed.', isoCore:'This node already shows the full render.',
+  muted:n => `${n} bypassed (wires kept)`, unmuted:n => `${n} re-enabled`, added:n => `${n} added to the graph`, exists:n => `${n} is already in the graph`,
+  removed:n => `${n} removed`, imported:f => `${f} imported into the Orbit`, badExp:'This file is not a valid .exp package', exported:'.exp package exported',
+  refractedPkg:n => `${n} refracted into your Orbit`, you:'you', primordial:'primordial author'
+});
+Object.assign(UI.pt, {
+  orbitLive:n => `ÓRBITA AO VIVO · ${n}`, coHint:'Segunda aba aberta: as edições sincronizam ao vivo entre as abas por um CRDT Yjs. A sincronização na borda (Cloudflare Workers) chega na Fase 2.',
+  coAlone:'Abra esta página em outra aba para cocriar na mesma Órbita.', pathOn:'Path Editor ativo: arraste os pontos para desenhar a trajetória da câmera', pathOff:'Câmera de volta à vista em órbita',
+  fundPending:'A arrecadação abre com a adesão ao OSC', fundRaised:(v, p) => `${v} arrecadados · ${p}%`,
+
+  core:'Particle Field e Render Pass são nós centrais e não podem ser silenciados.', isoCore:'Este nó já mostra o render completo.',
+  muted:n => `${n} em bypass (fios mantidos)`, unmuted:n => `${n} reativado`, added:n => `${n} adicionado ao grafo`, exists:n => `${n} já está no grafo`,
+  removed:n => `${n} removido`, imported:f => `${f} importado para a Órbita`, badExp:'Este arquivo não é um pacote .exp válido', exported:'Pacote .exp exportado',
+  refractedPkg:n => `${n} refratado para a sua Órbita`, you:'você', primordial:'autor primordial'
+});
+Object.assign(UI.zh, {
+  orbitLive:n => `轨道在线 · ${n}`, coHint:'已打开第二个标签页：编辑通过 Yjs CRDT 在标签页之间实时同步。基于 Cloudflare Workers 的边缘同步将在第 2 阶段上线。',
+  coAlone:'在另一个标签页中打开本页，即可在同一轨道中共同创作。', pathOn:'路径编辑器已开启：拖动控制点来塑造相机轨迹', pathOff:'相机已恢复为环绕视角',
+  fundPending:'筹款将在完成 OSC 入驻后开放', fundRaised:(v, p) => `已筹集 ${v} · ${p}%`,
+
+  core:'Particle Field 和 Render Pass 是核心节点，无法旁路。', isoCore:'此节点已显示完整渲染。',
+  muted:n => `${n} 已旁路（连线保留）`, unmuted:n => `${n} 已重新启用`, added:n => `已将 ${n} 加入节点图`, exists:n => `${n} 已在节点图中`,
+  removed:n => `已删除 ${n}`, imported:f => `已将 ${f} 导入你的轨道`, badExp:'此文件不是有效的 .exp 包', exported:'已导出 .exp 包',
+  refractedPkg:n => `已将 ${n} 折射到你的轨道`, you:'你', primordial:'原始作者'
+});
+const ADA = {
+  en:{
+    hello:'Hi, I am Dra. Ada. I read the Prism Studio graph live and explain the pipeline. Try <b>Diagnose graph</b> or <b>Auto-fix</b>.',
+    askDiag:'Diagnose graph', askFix:'Auto-fix',
+    pipe:d => `<b>Pipeline.</b> Time ${d.frozen ? 'is bypassed, so the vortex is frozen;' : 'drives'} Speed ×${d.speed} → Particle Field computes <b>${d.count}</b> particles in ${d.wg} workgroups of 64 → Spectrum Color mixes ${d.a} → ${d.b} (mix ${d.mix}) → Render Pass on <b>${d.backend}</b>${d.fps ? ` at ${d.fps} FPS` : ''}.`,
+    mods:l => `<b>Modifiers:</b> ${l}.`,
+    noMods:'<b>Modifiers:</b> none yet. Hover the canvas and press <kbd>Tab</kbd> or <kbd>Space</kbd> to add Turbulence, Twist, Pulse or Scale.',
+    warn:'Attention', ok:'No issues found: the graph is valid TSL and ready for <b>[ ⚡&#xFE0E; EJECT TYPESCRIPT ]</b>.',
+    w:{ muted:n => `Bypassed nodes: ${n}. Press <kbd>M</kbd> on the node to re-enable.`, iso:n => `Isolated view on ${n}. Press <kbd>Esc</kbd> to see the full render.`,
+        flat:'Spectrum A and B are the same color, so the gradient is flat.', heavy:c => `${c} particles without WebGPU may drop frames: lower Density.`, slow:f => `Measured ${f} FPS: lower Density or Scale.` },
+    fixed:n => n ? `Auto-fix applied ${n} change(s) directly to the graph state.` : 'Nothing to fix: the graph is already healthy.'
+  },
+  pt:{
+    hello:'Oi, eu sou a Dra. Ada. Leio o grafo do Prism Studio ao vivo e explico o pipeline. Experimente <b>Diagnosticar grafo</b> ou <b>Corrigir automaticamente</b>.',
+    askDiag:'Diagnosticar grafo', askFix:'Corrigir automaticamente',
+    pipe:d => `<b>Pipeline.</b> Time ${d.frozen ? 'está em bypass, então o vórtice está congelado;' : 'alimenta'} Speed ×${d.speed} → Particle Field calcula <b>${d.count}</b> partículas em ${d.wg} workgroups de 64 → Spectrum Color mistura ${d.a} → ${d.b} (mix ${d.mix}) → Render Pass em <b>${d.backend}</b>${d.fps ? ` a ${d.fps} FPS` : ''}.`,
+    mods:l => `<b>Modificadores:</b> ${l}.`,
+    noMods:'<b>Modificadores:</b> nenhum ainda. Passe o mouse no canvas e aperte <kbd>Tab</kbd> ou <kbd>Espaço</kbd> para adicionar Turbulence, Twist, Pulse ou Scale.',
+    warn:'Atenção', ok:'Nenhum problema: o grafo é TSL válida e está pronto para <b>[ ⚡&#xFE0E; EJECT TYPESCRIPT ]</b>.',
+    w:{ muted:n => `Nós em bypass: ${n}. Aperte <kbd>M</kbd> no nó para reativar.`, iso:n => `Vista isolada em ${n}. Aperte <kbd>Esc</kbd> para ver o render completo.`,
+        flat:'Spectrum A e B têm a mesma cor, então o degradê fica chapado.', heavy:c => `${c} partículas sem WebGPU podem perder quadros: diminua a Density.`, slow:f => `Medi ${f} FPS: diminua a Density ou a Scale.` },
+    fixed:n => n ? `A correção automática aplicou ${n} mudança(s) direto no estado do grafo.` : 'Nada para corrigir: o grafo já está saudável.'
+  },
+  zh:{
+    hello:'你好，我是 Dra. Ada。我会实时读取 Prism Studio 节点图并讲解渲染管线。试试<b>诊断节点图</b>或<b>自动修复</b>。',
+    askDiag:'诊断节点图', askFix:'自动修复',
+    pipe:d => `<b>管线。</b>Time ${d.frozen ? '已旁路，漩涡处于冻结状态；' : '驱动'} Speed ×${d.speed} → Particle Field 以 ${d.wg} 个 64 线程工作组计算 <b>${d.count}</b> 个粒子 → Spectrum Color 混合 ${d.a} → ${d.b}（mix ${d.mix}）→ Render Pass 运行于 <b>${d.backend}</b>${d.fps ? `，${d.fps} FPS` : ''}。`,
+    mods:l => `<b>修饰节点：</b>${l}。`,
+    noMods:'<b>修饰节点：</b>暂无。将鼠标移到画布上并按 <kbd>Tab</kbd> 或 <kbd>空格</kbd>，即可添加 Turbulence、Twist、Pulse 或 Scale。',
+    warn:'注意', ok:'未发现问题：节点图是有效的 TSL，可以直接 <b>[ ⚡&#xFE0E; EJECT TYPESCRIPT ]</b>。',
+    w:{ muted:n => `已旁路的节点：${n}。在节点上按 <kbd>M</kbd> 重新启用。`, iso:n => `${n} 处于隔离视图。按 <kbd>Esc</kbd> 查看完整渲染。`,
+        flat:'Spectrum A 与 B 颜色相同，渐变变得平淡。', heavy:c => `在没有 WebGPU 的情况下，${c} 个粒子可能掉帧：请降低 Density。`, slow:f => `实测 ${f} FPS：请降低 Density 或 Scale。` },
+    fixed:n => n ? `自动修复已直接在节点图状态中应用 ${n} 项更改。` : '无需修复：节点图状态良好。'
+  }
+};
+
 let lang = 'en';
-const enText = {}, enAria = {};
+const enText = {}, enAria = {}, enPh = {};
 const langListeners = [];
 function snapshotEn(){
   document.querySelectorAll('[data-i18n]').forEach(el => { if (!(el.dataset.i18n in enText)) enText[el.dataset.i18n] = el.innerHTML; });
   document.querySelectorAll('[data-i18n-aria]').forEach(el => { enAria[el.dataset.i18nAria] = el.getAttribute('aria-label'); });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { enPh[el.dataset.i18nPh] = el.getAttribute('placeholder'); });
 }
 let zhFont = false;
 function setLang(next, save){
@@ -1367,6 +1732,9 @@ function setLang(next, save){
   });
   document.querySelectorAll('[data-i18n-aria]').forEach(el => {
     const k = el.dataset.i18nAria; el.setAttribute('aria-label', next === 'en' ? enAria[k] : (I18N[next][k] || enAria[k]));
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const k = el.dataset.i18nPh; el.setAttribute('placeholder', next === 'en' ? enPh[k] : (I18N[next][k] || enPh[k]));
   });
   document.documentElement.lang = META[next].html;
   document.title = META[next].title;
@@ -1389,19 +1757,48 @@ const toastEl = document.getElementById('toast'); let toastT = 0;
 function toast(msg){ toastEl.textContent = msg; toastEl.classList.add('is-on'); clearTimeout(toastT); toastT = setTimeout(() => toastEl.classList.remove('is-on'), 2600); }
 
 /* ================= LINKS / CTAs ================= */
+const supportDlg = document.getElementById('supportDlg'), b2bDlg = document.getElementById('b2bDlg');
+const openDlg = d => { if (d.showModal) d.showModal(); else d.setAttribute('open', ''); };
+[supportDlg, b2bDlg].forEach(d => {
+  d.addEventListener('click', e => { if (e.target === d) d.close(); });
+  d.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => d.close()));
+});
 document.querySelectorAll('[data-cta]').forEach(a => {
   const url = LINKS[a.dataset.cta];
   if (url){ a.href = url; a.target = '_blank'; a.rel = 'noopener'; return; }
-  // Sem link real: botão vira estado "em breve", sem levar a lugar nenhum.
-  a.dataset.i18n = 'sup.soon'; a.setAttribute('aria-disabled', 'true'); a.removeAttribute('href'); a.setAttribute('role', 'link');
+  // Sem link real ainda: o botão explica o enquadramento via OSC / GitHub Sponsors (nada de checkout falso)
+  a.removeAttribute('href'); a.setAttribute('role', 'button'); a.tabIndex = 0;
+  const open = e => {
+    e.preventDefault();
+    if (a.dataset.cta === 'b2b'){ openDlg(b2bDlg); return; }
+    const tier = a.closest('.tier');
+    document.getElementById('supTier').textContent = tier ? `${tier.querySelector('h3').textContent} · ${tier.querySelector('.price').textContent}` : 'SUPPORT TIERS';
+    openDlg(supportDlg);
+  };
+  a.addEventListener('click', open);
+  a.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(e); });
 });
-enText['sup.soon'] = 'Opening soon';
 if (LINKS.whatsapp){ const wa = document.getElementById('waFloat'); wa.href = LINKS.whatsapp; wa.hidden = false; }
 const extra = document.getElementById('extraLinks');
 [['Discord', LINKS.discord], ['X', LINKS.x]].filter(([,u]) => u).forEach(([n,u]) => {
   const li = document.createElement('li'); const a = document.createElement('a'); a.href = u; a.target = '_blank'; a.rel = 'noopener'; a.textContent = n;
   li.appendChild(a); extra.before(li);
 });
+
+/* ================= METAS DE ARRECADAÇÃO ================= */
+function renderFunding(){
+  const loc = lang === 'pt' ? 'pt-BR' : lang === 'zh' ? 'zh-CN' : 'en-US';
+  const f = new Intl.NumberFormat(loc, { style:'currency', currency:'BRL', maximumFractionDigits:0 });
+  document.querySelectorAll('[data-goal]').forEach(bar => {
+    const note = bar.nextElementSibling, goal = Number(bar.dataset.goal), raised = FUNDING.raisedBRL;
+    if (raised == null){ bar.classList.add('is-pending'); bar.setAttribute('aria-label', UI[lang].fundPending); note.textContent = UI[lang].fundPending; return; }
+    const pct = Math.min(100, Math.round(raised / goal * 100));
+    bar.classList.remove('is-pending'); bar.style.setProperty('--p', pct + '%'); bar.setAttribute('role', 'progressbar');
+    bar.setAttribute('aria-valuenow', pct); bar.setAttribute('aria-valuemin', 0); bar.setAttribute('aria-valuemax', 100);
+    note.textContent = UI[lang].fundRaised(f.format(raised), pct);
+  });
+}
+langListeners.push(renderFunding);
 
 /* ================= HEADER / REVEAL / ANO ================= */
 const topEl = document.getElementById('top');
@@ -1438,12 +1835,12 @@ const Sound = (() => {
 })();
 
 /* ================= TELEMETRIA ================= */
-const BACKEND_LABEL = { webgpu:'WEBGPU NATIVE', webgl2:'WEBGL2 FALLBACK', canvas2d:'CANVAS 2D FALLBACK', pending:'BOOTING RUNTIME' };
+const BACKEND_LABEL = { webgpu:'WEBGPU ACTIVE', webgl2:'WEBGL2 FALLBACK', canvas2d:'CANVAS 2D FALLBACK', pending:'BOOTING RUNTIME' };
 const BACKEND_SHORT = { webgpu:'WebGPU', webgl2:'WebGL2', canvas2d:'Canvas 2D', pending:'—' };
 const telEl = document.getElementById('telemetry'), telText = document.getElementById('telText');
 function reportTelemetry(backend, fps, ms){
   telEl.dataset.state = backend;
-  telText.textContent = fps ? `${BACKEND_LABEL[backend]} // ${fps} FPS` : BACKEND_LABEL[backend];
+  telText.textContent = fps ? `${BACKEND_LABEL[backend]} // ${fps} FPS · ${ms.toFixed(1)} MS` : BACKEND_LABEL[backend];
   document.getElementById('trBackend').textContent = BACKEND_SHORT[backend];
   if (fps){ document.getElementById('trFps').textContent = fps; document.getElementById('trMs').textContent = ms.toFixed(1); }
 }
@@ -1451,27 +1848,49 @@ function reportTelemetry(backend, fps, ms){
 /* ================= SINAPSE ENGINE (three/webgpu + TSL) ================= */
 const PALETTE = { emerald:'#10B981', copper:'#FF9F1C', violet:'#A855F7', cyan:'#06B6D4' };
 const countFromDensity = d => 1024 + Math.round(d * 240) * 64;   // 1 024 … 16 384, múltiplos de 64
+const MOD_TYPES = {
+  turb:  { name:'Turbulence', tag:'NOISE',  key:'amount', out:'uTurbulence', min:0,  max:1,   def:.5 },
+  twist: { name:'Twist',      tag:'SPIRAL', key:'amount', out:'uTwist',      min:0,  max:1,   def:.45 },
+  pulse: { name:'Pulse',      tag:'TIME',   key:'depth',  out:'uPulse',      min:0,  max:1,   def:.7 },
+  size:  { name:'Scale',      tag:'SIZE',   key:'scale',  out:'uScale',      min:.4, max:2.5, def:1.6 }
+};
+// Node Wrangler: vista isolada de cada nó (0 = render completo)
+const VIEW_IDS = { time:1, speed:2, density:3, color:4, turb:5, twist:6, pulse:7, size:8 };
+const baseParams = () => ({ speed:.5, density:.55, colorA:'emerald', colorB:'violet', mix:.35, turb:0, twist:0, pulse:0, size:1, view:0, frozen:false, cam:null });
 let threeP = null;
 const loadThree = () => threeP || (threeP = Promise.all([import('three/webgpu'), import('three/tsl')]));
+// LCP: o runtime de GPU só é carregado depois do load, em tempo ocioso
+const whenIdle = cb => {
+  let done = false; const run = () => { if (!done){ done = true; cb(); } };
+  const go = () => { if ('requestIdleCallback' in window) requestIdleCallback(run, { timeout:1500 }); setTimeout(run, 1200); };
+  document.readyState === 'complete' ? go() : addEventListener('load', go, { once:true });
+};
 
 async function createGpuVortex(canvas){
   const [THREE, T] = await loadThree();
-  const { Fn, uniform, instancedArray, instanceIndex, hash, float, vec3, mix, clamp, sin, cos, uv, length, smoothstep } = T;
+  const { Fn, uniform, instancedArray, instanceIndex, hash, float, vec3, color, mix, clamp, sin, cos, abs, fract, uv, length, smoothstep, select } = T;
   const renderer = new THREE.WebGPURenderer({ canvas, antialias:true, alpha:true });
   await renderer.init();
   const isGPU = renderer.backend && renderer.backend.isWebGPUBackend === true;
   renderer.setClearColor(0x000000, 0);
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(38, 1, 0.01, 50);
-  const MAX = 16384;
-  const uPhase = uniform(0), uMix = uniform(0.35);
-  const uA = uniform(new THREE.Color(PALETTE.emerald)), uB = uniform(new THREE.Color(PALETTE.violet));
-  // Mesma TSL que o arquivo ejetado
+  const MAX = 16384, TAU = 6.2831853;
+  const U = {
+    phase:uniform(0), clock:uniform(0), mix:uniform(0.35),
+    a:uniform(new THREE.Color(PALETTE.emerald)), b:uniform(new THREE.Color(PALETTE.violet)),
+    turb:uniform(0), twist:uniform(0), pulse:uniform(0), size:uniform(1), view:uniform(0)
+  };
+  // Mesma TSL do arquivo ejetado (genTS)
+  const radius = i => hash(i).mul(0.92).add(0.08);
   const vortex = Fn(([i]) => {
-    const r = hash(i).mul(0.92).add(0.08);
-    const a = hash(i.add(7)).mul(6.2831853).add(uPhase.mul(0.35).div(r.add(0.12)));
-    const y = hash(i.add(3)).sub(0.5).mul(0.12).mul(float(1).sub(r));
-    return vec3(cos(a).mul(r), y, sin(a).mul(r));
+    const r = radius(i);
+    const a = hash(i.add(7)).mul(TAU).add(U.phase.mul(0.35).div(r.add(0.12))).add(U.twist.mul(r).mul(6.0));
+    const n1 = sin(U.clock.mul(1.7).add(hash(i.add(11)).mul(TAU)));
+    const n2 = sin(U.clock.mul(2.3).add(hash(i.add(13)).mul(TAU)));
+    const rr = r.add(n1.mul(U.turb).mul(0.06));
+    const y = hash(i.add(3)).sub(0.5).mul(0.12).mul(float(1).sub(r)).add(n2.mul(U.turb).mul(0.14));
+    return vec3(cos(a).mul(rr), y, sin(a).mul(rr));
   });
   const material = new THREE.SpriteNodeMaterial({ transparent:true, depthWrite:false, blending:THREE.AdditiveBlending });
   let computeNode = null;
@@ -1482,9 +1901,24 @@ async function createGpuVortex(canvas){
   } else {
     material.positionNode = vortex(instanceIndex);   // WebGL2: mesma função no vertex stage
   }
-  material.colorNode = mix(uA, uB, clamp(uMix.add(hash(instanceIndex.add(1)).sub(0.5).mul(0.6)), 0, 1));
+  const i = instanceIndex, r = radius(i);
+  const k = clamp(U.mix.add(hash(i.add(1)).sub(0.5).mul(0.6)).add(sin(U.clock.mul(3.0).add(r.mul(6.0))).mul(U.pulse).mul(0.45)), 0, 1);
+  const white = vec3(0.92, 0.94, 0.98), dim = vec3(0.12, 0.13, 0.16);
+  const views = [
+    [1, mix(dim, white, sin(U.phase.mul(2.0)).mul(0.5).add(0.5))],                                              // Time
+    [2, mix(color(0x06B6D4), color(0xFF9F1C), clamp(float(0.35).div(r.add(0.12)).div(3.0), 0, 1))],            // Speed
+    [3, white],                                                                                                // Density
+    [4, mix(U.a, U.b, r)],                                                                                      // Spectrum ramp
+    [5, mix(dim, color(0xFF9F1C), abs(sin(U.clock.mul(1.7).add(hash(i.add(11)).mul(TAU)))).mul(U.turb))],     // Turbulence
+    [6, mix(dim, color(0xA855F7), fract(U.twist.mul(r).mul(6.0).div(TAU)))],                                    // Twist
+    [7, mix(dim, color(0x10B981), sin(U.clock.mul(3.0).add(r.mul(6.0))).mul(0.5).add(0.5).mul(U.pulse))],       // Pulse
+    [8, mix(dim, color(0x06B6D4), hash(i.add(5)))]                                                              // Scale
+  ];
+  let colorNode = mix(U.a, U.b, k);
+  for (const [v, c] of views) colorNode = select(U.view.equal(v), c, colorNode);
+  material.colorNode = colorNode;
   material.opacityNode = float(1).sub(smoothstep(0, 0.5, length(uv().sub(0.5))));
-  material.scaleNode = hash(instanceIndex.add(5)).mul(0.014).add(0.008);
+  material.scaleNode = hash(i.add(5)).mul(0.014).add(0.008).mul(U.size);
   const particles = new THREE.Sprite(material);
   particles.count = 4096; particles.frustumCulled = false;
   scene.add(particles);
@@ -1494,11 +1928,13 @@ async function createGpuVortex(canvas){
     resize(w, h){ renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2)); renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); },
     tilt(x, y){ tiltX = x; tiltY = y; },
     render(p, dt){
-      uPhase.value += dt * p.speed * 2.4;
-      uMix.value = p.mix; uA.value.set(PALETTE[p.colorA]); uB.value.set(PALETTE[p.colorB]);
+      if (!p.frozen){ U.phase.value += dt * p.speed * 2.4; U.clock.value += dt; }
+      U.mix.value = p.mix; U.a.value.set(PALETTE[p.colorA]); U.b.value.set(PALETTE[p.colorB]);
+      U.turb.value = p.turb; U.twist.value = p.twist; U.pulse.value = p.pulse; U.size.value = p.size; U.view.value = p.view;
       particles.count = countFromDensity(p.density);
       const zoom = camera.aspect < 1.1 ? 2.9 : 2.25;
-      camera.position.set(tiltX * 0.35, 1.2 + tiltY * 0.25, zoom); camera.lookAt(0, 0, 0);
+      if (p.cam) camera.position.set(p.cam.x, p.cam.y, p.cam.z); else camera.position.set(tiltX * 0.35, 1.2 + tiltY * 0.25, zoom);
+      camera.lookAt(0, 0, 0);
       if (computeNode) renderer.compute(computeNode);
       renderer.render(scene, camera);
     },
@@ -1506,12 +1942,12 @@ async function createGpuVortex(canvas){
   };
 }
 
-// Fallback sem GPU: mesmo vórtice desenhado em Canvas 2D
+// Fallback sem GPU: mesmo vórtice (aproximado) em Canvas 2D
 function create2dVortex(canvas){
   const ctx = canvas.getContext('2d'); if (!ctx) return null;
-  const MAX = 4096, P = new Float32Array(MAX * 4);
-  for (let i = 0; i < MAX; i++){ P[i*4] = .08 + Math.random() * .92; P[i*4+1] = Math.random() * Math.PI * 2; P[i*4+2] = Math.random(); P[i*4+3] = Math.random(); }
-  let w = 0, h = 0, phase = 0, key = '', sprites = [];
+  const MAX = 4096, S = 5, P = new Float32Array(MAX * S), TAU = Math.PI * 2;
+  for (let i = 0; i < MAX; i++){ P[i*S] = .08 + Math.random() * .92; P[i*S+1] = Math.random() * TAU; P[i*S+2] = Math.random(); P[i*S+3] = Math.random(); P[i*S+4] = Math.random(); }
+  let w = 0, h = 0, phase = 0, clock = 0, key = '', sprites = [];
   const rgb = hx => [1,3,5].map(i => parseInt(hx.slice(i, i+2), 16));
   function sprite(c){ const s = document.createElement('canvas'); s.width = s.height = 32; const g = s.getContext('2d'); const gr = g.createRadialGradient(16,16,0,16,16,16);
     gr.addColorStop(0, `rgba(${c},1)`); gr.addColorStop(.22, `rgba(${c},.55)`); gr.addColorStop(1, `rgba(${c},0)`); g.fillStyle = gr; g.fillRect(0,0,32,32); return s; }
@@ -1520,27 +1956,37 @@ function create2dVortex(canvas){
     resize(cw, ch){ const d = Math.min(window.devicePixelRatio || 1, 2); w = cw; h = ch; canvas.width = Math.round(cw*d); canvas.height = Math.round(ch*d); ctx.setTransform(d,0,0,d,0,0); },
     tilt(){},
     render(p, dt){
-      phase += dt * p.speed * 2.4;
-      const k = p.colorA + p.colorB;
-      if (k !== key){ key = k; const A = rgb(PALETTE[p.colorA]), B = rgb(PALETTE[p.colorB]); sprites = Array.from({length:12}, (_, j) => sprite([0,1,2].map(i => Math.round(A[i] + (B[i]-A[i]) * j/11)))); }
+      if (!p.frozen){ phase += dt * p.speed * 2.4; clock += dt; }
+      const kk = p.colorA + p.colorB;
+      if (kk !== key){ key = kk; const A = rgb(PALETTE[p.colorA]), B = rgb(PALETTE[p.colorB]); sprites = Array.from({length:12}, (_, j) => sprite([0,1,2].map(i => Math.round(A[i] + (B[i]-A[i]) * j/11)))); }
       ctx.globalCompositeOperation = 'source-over'; ctx.clearRect(0, 0, w, h);
       ctx.globalCompositeOperation = 'lighter';
       const cx = w/2, cy = h/2, R = Math.min(w, h*1.6) * .44, n = Math.min(countFromDensity(p.density), w < 480 ? 1500 : 2600), base = Math.max(6, R/22);
       for (let i = 0; i < n; i++){
-        const r = P[i*4], ph = P[i*4+1], h1 = P[i*4+2], h2 = P[i*4+3];
-        const a = ph + phase * (.35/(r+.12));
-        const x = cx + Math.cos(a)*r*R, y = cy + Math.sin(a)*r*R*.5 + (h1-.5)*R*.08*(1-r);
-        const s = base*(.5 + (1-r)*.9)*(.6 + h1*.6);
-        ctx.drawImage(sprites[Math.round(Math.max(0, Math.min(1, p.mix + (h2-.5)*.6)) * 11)], x-s/2, y-s/2, s, s);
+        const r = P[i*S], ph = P[i*S+1], h1 = P[i*S+2], h2 = P[i*S+3], h3 = P[i*S+4];
+        const a = ph + phase * (.35/(r+.12)) + p.twist * r * 6;
+        const rr = r + Math.sin(clock*1.7 + h3*TAU) * p.turb * .06;
+        const x = cx + Math.cos(a)*rr*R, y = cy + Math.sin(a)*rr*R*.5 + (h1-.5)*R*.08*(1-r) + Math.sin(clock*2.3 + h3*9) * p.turb * R * .07;
+        let k;
+        switch (p.view){
+          case 1: k = .5 + .5 * Math.sin(phase * 2); break;
+          case 2: k = 1 - r; break;
+          case 4: k = r; break;
+          case 0: k = p.mix + (h2-.5)*.6 + Math.sin(clock*3 + r*6) * p.pulse * .45; break;
+          default: k = h2;
+        }
+        const s = base*(.5 + (1-r)*.9)*(.6 + h1*.6) * p.size;
+        ctx.drawImage(sprites[Math.round(Math.max(0, Math.min(1, k)) * 11)], x-s/2, y-s/2, s, s);
       }
     },
     dispose(){}
   };
 }
 
-/* Monta um vórtice num canvas: tenta GPU (WebGPU → WebGL2), cai para 2D. Anima só visível. */
+/* Monta um vórtice: carrega a GPU só quando o canvas fica visível e o navegador está ocioso.
+   WebGPU → WebGL2 (automático no WebGPURenderer) → Canvas 2D (timeout de 8 s ou erro). */
 function mountVortex(canvas, getParams, onState){
-  let engine = null, raf = 0, visible = false, last = 0, frames = 0, acc = 0, dtSum = 0;
+  let engine = null, booting = false, raf = 0, visible = false, last = 0, frames = 0, acc = 0, dtSum = 0;
   const size = () => { const r = canvas.getBoundingClientRect(); if (engine && r.width) engine.resize(r.width, r.height); };
   const tick = now => {
     const dt = last ? Math.min((now - last) / 1000, 0.1) : 0.016; last = now;
@@ -1552,31 +1998,35 @@ function mountVortex(canvas, getParams, onState){
   const start = () => { if (engine && !raf && visible && !document.hidden && !reduceMotion.matches){ last = 0; raf = requestAnimationFrame(tick); } };
   const stop = () => { cancelAnimationFrame(raf); raf = 0; };
   const once = () => { if (engine && !raf) engine.render(getParams(), 0); };
+  const boot = () => {
+    if (booting) return; booting = true;
+    whenIdle(async () => {
+      let gpu = null;
+      try {
+        await loadThree();                 // o download do runtime não conta no tempo limite
+        gpu = createGpuVortex(canvas);
+        engine = await Promise.race([gpu, new Promise((_, rej) => setTimeout(() => rej(new Error('GPU init timeout')), 10000))]);
+      } catch (err){
+        console.warn('[Sinapse] GPU renderer unavailable, using Canvas 2D:', err);
+        if (gpu) gpu.then(e => e.dispose(), () => {});
+        const fresh = canvas.cloneNode(false); canvas.replaceWith(fresh); canvas = fresh;   // o canvas antigo pode já ter contexto de GPU
+        engine = create2dVortex(fresh);
+      }
+      if (!engine) return;
+      size(); onState(engine.backend, 0, 0); once(); start();
+    });
+  };
   const host = canvas.parentElement;
-  new IntersectionObserver(([e]) => { visible = e.isIntersecting; visible ? start() : stop(); }, { rootMargin:'120px' }).observe(host);
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible){ boot(); start(); } else stop(); }, { rootMargin:'300px' }).observe(host);
   document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
   new ResizeObserver(() => { size(); once(); }).observe(host);
   onState('pending', 0, 0);
-  (async () => {
-    const gpu = createGpuVortex(canvas);
-    try {
-      engine = await Promise.race([gpu, new Promise((_, rej) => setTimeout(() => rej(new Error('GPU init timeout')), 8000))]);
-    } catch (err){
-      console.warn('[Sinapse] GPU renderer unavailable, using Canvas 2D:', err);
-      gpu.then(e => e.dispose(), () => {});
-      // o canvas antigo pode já ter um contexto de GPU: troca por um novo para o 2D
-      const fresh = canvas.cloneNode(false); canvas.replaceWith(fresh); canvas = fresh;
-      engine = create2dVortex(fresh);
-    }
-    if (!engine) return;
-    size(); onState(engine.backend, 0, 0); once(); start();
-  })();
   return { refresh: once, tilt:(x, y) => { if (engine){ engine.tilt(x, y); once(); } } };
 }
 
 /* ================= HERO ================= */
 (() => {
-  const params = { speed:.5, density:.55, colorA:'emerald', colorB:'violet', mix:.35 };
+  const params = baseParams();
   const canvas = document.getElementById('heroCanvas'), stage = document.getElementById('heroStage'), meta = document.getElementById('heroMeta');
   const bars = [1,2,3,4].map(i => document.getElementById('fq' + i));
   let t = 0;
@@ -1593,25 +2043,60 @@ function mountVortex(canvas, getParams, onState){
 })();
 
 /* ================= PRISM STUDIO ================= */
-(() => {
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const hl = s => esc(s).replace(/(\/\/[^\n]*)|('[^'\n]*'|&quot;[^\n]*?&quot;)|\b(import|from|export|const|new|function|return|true|false|if)\b|\b(\d+(?:\.\d+)?)\b/g,
+  (m, c, str, k, n) => c ? `<span class="c">${c}</span>` : str ? `<span class="s">${str}</span>` : k ? `<span class="k">${k}</span>` : `<span class="n">${n}</span>`);
+const numbered = (src, owners) => src.replace(/\n$/, '').split('\n').map((l, i) => `<span class="l" data-ln="${i + 1}"${owners && owners[i] ? ` data-n="${owners[i]}"` : ''}>${hl(l) || ' '}</span>`).join('');
+function download(name, text, type){
+  const url = URL.createObjectURL(new Blob([text], { type: type || 'text/plain' }));
+  const a = document.createElement('a'); a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+const Prism = (() => {
   const root = document.getElementById('studio');
   const graph = document.getElementById('graph'), svg = document.getElementById('wires');
   const ORIGINAL = '#4096-VORTEX';
-  const state = { speed:.55, density:.45, colorA:'emerald', colorB:'violet', mix:.35, workspace:ORIGINAL, refractions:0 };
-  const EDGES = [['time.tick','output.tick','exec'],['time.t','speed.t','val'],['speed.out','field.speed','val'],
-                 ['density.out','field.count','val'],['color.out','field.color','vec'],['field.out','output.material','tsl']];
+  const state = { speed:.55, density:.45, colorA:'emerald', colorB:'violet', mix:.35, workspace:ORIGINAL, refractions:0,
+                  mods:{}, bypass:{}, iso:null, lineage:[{ id:ORIGINAL, author:'Gabriel Mezzetti', kind:'root' }],
+                  path:{ on:false, pts:[[.22,.3],[.78,.24],[.82,.76],[.2,.72]] } };
+  let Collab = { push(){}, };
+  let pathT = 0;
+  const CORE_EDGES = [['time.tick','output.tick','exec'],['time.t','speed.t','val'],['speed.out','field.speed','val'],
+                      ['density.out','field.count','val'],['color.out','field.color','vec'],['field.out','output.material','tsl']];
   const PRESETS = [
-    { name:'EMERALD BLOOM', speed:.4,  density:.55, colorA:'emerald', colorB:'violet', mix:.25 },
-    { name:'COPPER VORTEX', speed:.9,  density:.4,  colorA:'copper',  colorB:'emerald', mix:.3 },
-    { name:'VIOLET NEBULA', speed:.25, density:.85, colorA:'violet',  colorB:'copper', mix:.2 },
-    { name:'CYAN TELEMETRY', speed:.65, density:.7, colorA:'cyan', colorB:'violet', mix:.3 }
+    { id:'emerald-bloom',  name:'EMERALD BLOOM',  speed:.4,  density:.55, colorA:'emerald', colorB:'violet', mix:.25, desc:'pkg.1' },
+    { id:'copper-vortex',  name:'COPPER VORTEX',  speed:.9,  density:.4,  colorA:'copper',  colorB:'emerald', mix:.3, desc:'pkg.2' },
+    { id:'violet-nebula',  name:'VIOLET NEBULA',  speed:.25, density:.85, colorA:'violet',  colorB:'copper', mix:.2, desc:'pkg.3' },
+    { id:'cyan-telemetry', name:'CYAN TELEMETRY', speed:.65, density:.7,  colorA:'cyan',    colorB:'violet', mix:.3, desc:'pkg.4' }
   ];
-  const count = () => countFromDensity(state.density);
+  const PKG_DESC = {
+    'pkg.1':'A slow emerald bloom drifting into violet. A calm starting point.',
+    'pkg.2':'A fast copper vortex fading into emerald. High energy, lower density.',
+    'pkg.3':'A dense violet nebula with copper highlights and a slow drift.',
+    'pkg.4':'A cyan telemetry ring with violet depth, tuned for dashboards.'
+  };
+  const NAMES = { time:'Time', speed:'Speed', density:'Density', color:'Spectrum Color', field:'Particle Field', output:'Render Pass',
+                  turb:'Turbulence', twist:'Twist', pulse:'Pulse', size:'Scale' };
   const desktop = window.matchMedia('(min-width:1000px)');
   const nodes = {}; graph.querySelectorAll('.node').forEach(n => nodes[n.dataset.node] = n);
-  let backend = 'pending', fpsNow = 0, msNow = 0;
+  let backend = 'pending', fpsNow = 0, msNow = 0, selected = null;
 
-  /* layout + fios */
+  /* parâmetros efetivos (bypass, modificadores e vista isolada aplicados) */
+  function eff(){
+    const by = state.bypass, p = baseParams();
+    p.speed = by.speed ? 1 : state.speed;
+    p.frozen = !!by.time;
+    p.density = by.density ? .25 : state.density;
+    if (!by.color){ p.colorA = state.colorA; p.colorB = state.colorB; p.mix = state.mix; }
+    for (const [t, m] of Object.entries(state.mods)) if (!by[t]) p[t] = m.value;
+    p.view = state.iso ? VIEW_IDS[state.iso] : 0;
+    if (state.path.on) p.cam = camAt(pathT);
+    return p;
+  }
+  const count = () => countFromDensity(eff().density);
+
+  /* ---------- layout ---------- */
   const LAYOUT = { time:[0,.03], speed:[1,.03], density:[0,.265], color:[0,.55], field:[1,.40], output:[2,.30] };
   function clampNode(n, x, y){
     const W = graph.clientWidth, H = graph.clientHeight;
@@ -1619,40 +2104,86 @@ function mountVortex(canvas, getParams, onState){
     n.style.top  = Math.max(4, Math.min(H - n.offsetHeight - 4, y)) + 'px';
   }
   function layout(){
-    if (!desktop.matches){ Object.values(nodes).forEach(n => { n.style.left = n.style.top = ''; delete n.dataset.moved; }); return; }
+    if (!desktop.matches){ Object.values(nodes).forEach(n => { n.style.left = n.style.top = ''; }); return; }
     const W = graph.clientWidth, H = graph.clientHeight;
-    for (const [id, [c, fy]] of Object.entries(LAYOUT)){
-      const n = nodes[id], colW = (W - 40 - n.offsetWidth) / 2;
-      if (!n.dataset.moved){ n.style.left = Math.round(20 + c * colW) + 'px'; n.style.top = Math.round(fy * H) + 'px'; }
-      else clampNode(n, n.offsetLeft, n.offsetTop);
+    let modIdx = 0;
+    for (const [id, n] of Object.entries(nodes)){
+      const colW = (W - 40 - n.offsetWidth) / 2;
+      if (n.dataset.moved){ clampNode(n, n.offsetLeft, n.offsetTop); continue; }
+      const L = LAYOUT[id] || [2, .62 + .04 * modIdx++];
+      clampNode(n, Math.round(20 + L[0] * colW), Math.round(L[1] * H));
     }
   }
+
+  /* ---------- fios ---------- */
   const NS = 'http://www.w3.org/2000/svg';
-  const wireEls = EDGES.map(([,,type]) => {
-    const glow = document.createElementNS(NS,'path'); glow.setAttribute('class', `wire-glow w-${type}`);
-    const main = document.createElementNS(NS,'path'); main.setAttribute('class', `wire w-${type}` + (reduceMotion.matches ? '' : ' flow'));
-    svg.append(glow, main); return [glow, main];
-  });
+  const edges = () => CORE_EDGES.concat(Object.keys(state.mods).map(t => [`${t}.out`, 'field.mods', 'val']));
+  let wireEls = [];
+  function buildWires(){
+    svg.textContent = '';
+    wireEls = edges().map(([a, b, type]) => {
+      const glow = document.createElementNS(NS, 'path'); glow.setAttribute('class', `wire-glow w-${type}`);
+      const main = document.createElementNS(NS, 'path'); main.setAttribute('class', `wire w-${type}` + (reduceMotion.matches ? '' : ' flow'));
+      svg.append(glow, main);
+      return { a, b, glow, main, src: a.split('.')[0] };
+    });
+    styleWires(); drawWires();
+  }
+  function styleWires(){ wireEls.forEach(w => { const m = !!state.bypass[w.src]; w.main.classList.toggle('is-muted', m); w.glow.classList.toggle('is-muted', m); }); }
   const sockEl = id => graph.querySelector(`[data-sock="${id}"]`);
   function drawWires(){
     if (!desktop.matches || graph.offsetParent === null) return;
     const g = graph.getBoundingClientRect();
-    EDGES.forEach(([a, b], i) => {
-      const ra = sockEl(a).getBoundingClientRect(), rb = sockEl(b).getBoundingClientRect();
+    wireEls.forEach(w => {
+      const sa = sockEl(w.a), sb = sockEl(w.b); if (!sa || !sb) return;
+      const ra = sa.getBoundingClientRect(), rb = sb.getBoundingClientRect();
       const x0 = ra.left + ra.width/2 - g.left, y0 = ra.top + ra.height/2 - g.top, x3 = rb.left + rb.width/2 - g.left, y3 = rb.top + rb.height/2 - g.top;
       const dx = Math.max(50, Math.abs(x3 - x0) * .5);
       const d = `M${x0},${y0} C${x0+dx},${y0} ${x3-dx},${y3} ${x3},${y3}`;
-      wireEls[i][0].setAttribute('d', d); wireEls[i][1].setAttribute('d', d);
+      w.glow.setAttribute('d', d); w.main.setAttribute('d', d);
     });
   }
   let wireRaf = 0; const queueWires = () => { if (!wireRaf) wireRaf = requestAnimationFrame(() => { wireRaf = 0; drawWires(); }); };
+  // pulso luminoso nos fios que saem do nó alterado
+  function pulseFrom(src){
+    if (reduceMotion.matches) return;
+    wireEls.filter(w => w.src === src).forEach(w => [w.main, w.glow].forEach(el => {
+      el.classList.remove('is-pulse'); requestAnimationFrame(() => el.classList.add('is-pulse'));
+      clearTimeout(el._pt); el._pt = setTimeout(() => el.classList.remove('is-pulse'), 800);
+    }));
+  }
 
-  Object.values(nodes).forEach(n => {
-    const head = n.querySelector('.node-head');
-    head.setAttribute('aria-label', 'Node ' + head.lastChild.textContent.trim() + ' (arrow keys move it)');
+  /* ---------- seleção, bypass (M) e isolamento (Alt + clique) ---------- */
+  const isoBadge = document.getElementById('isoBadge');
+  function selectNode(id){ selected = id; Object.entries(nodes).forEach(([k, n]) => n.classList.toggle('is-selected', k === id)); renderPeek(id); }
+  function toggleMute(id){
+    if (id === 'field' || id === 'output'){ toast(UI[lang].core); return; }
+    state.bypass[id] = !state.bypass[id];
+    nodes[id].classList.toggle('is-muted', state.bypass[id]);
+    styleWires(); changed(); Sound.click();
+    toast((state.bypass[id] ? UI[lang].muted : UI[lang].unmuted)(NAMES[id]));
+  }
+  function toggleIso(id){
+    if (!(id in VIEW_IDS)){ state.iso = null; toast(UI[lang].isoCore); }
+    else state.iso = state.iso === id ? null : id;
+    Object.entries(nodes).forEach(([k, n]) => n.classList.toggle('is-isolated', k === state.iso));
+    isoBadge.hidden = !state.iso;
+    isoBadge.textContent = state.iso ? `ISOLATED // ${NAMES[state.iso].toUpperCase()}` : '';
+    if (state.iso) Sound.wave(3);
+    changed();
+  }
+
+  /* ---------- interação de cada nó ---------- */
+  function wireNode(n){
+    const id = n.dataset.node, head = n.querySelector('.node-head');
+    head.setAttribute('aria-label', `Node ${NAMES[id]}: M mute, I isolate${MOD_TYPES[id] ? ', Delete remove' : ''}, arrow keys move`);
     let ox = 0, oy = 0, dragging = false;
+    n.addEventListener('pointerdown', e => {
+      if (e.altKey){ e.preventDefault(); toggleIso(id); return; }
+      selectNode(id);
+    });
     head.addEventListener('pointerdown', e => {
-      if (!desktop.matches || e.button > 0) return;
+      if (e.altKey || !desktop.matches || e.button > 0 || e.target.closest('.rm')) return;
       dragging = true; try { head.setPointerCapture(e.pointerId); } catch(err){}
       n.classList.add('is-drag'); Sound.click();
       const g = graph.getBoundingClientRect(); ox = e.clientX - g.left - n.offsetLeft; oy = e.clientY - g.top - n.offsetTop;
@@ -1662,63 +2193,195 @@ function mountVortex(canvas, getParams, onState){
       const g = graph.getBoundingClientRect();
       clampNode(n, e.clientX - g.left - ox, e.clientY - g.top - oy); n.dataset.moved = '1'; queueWires();
     });
-    const end = () => { dragging = false; n.classList.remove('is-drag'); };
+    const end = () => { if (dragging) Collab.push(); dragging = false; n.classList.remove('is-drag'); };
     head.addEventListener('pointerup', end); head.addEventListener('pointercancel', end);
+    head.addEventListener('focus', () => selectNode(id));
+    n.addEventListener('pointerenter', () => renderPeek(id));
+    n.addEventListener('pointerleave', () => renderPeek(selected));
     head.addEventListener('keydown', e => {
       if (!desktop.matches) return;
       const step = e.shiftKey ? 36 : 12, k = { ArrowLeft:[-step,0], ArrowRight:[step,0], ArrowUp:[0,-step], ArrowDown:[0,step] }[e.key];
       if (!k) return; e.preventDefault();
-      clampNode(n, n.offsetLeft + k[0], n.offsetTop + k[1]); n.dataset.moved = '1'; queueWires();
+      clampNode(n, n.offsetLeft + k[0], n.offsetTop + k[1]); n.dataset.moved = '1'; queueWires(); Collab.push();
     });
-  });
+    const rm = n.querySelector('.rm'); if (rm) rm.addEventListener('click', e => { e.stopPropagation(); removeMod(id); });
+    n.querySelectorAll('input, select').forEach(el => el.addEventListener('input', () => onControl(el, id)));
+  }
 
-  /* controles */
-  const binds = root.querySelectorAll('[data-bind]');
+  /* ---------- controles ---------- */
+  function onControl(el, id){
+    if (el.dataset.bind){ const k = el.dataset.bind; state[k] = el.tagName === 'SELECT' ? el.value : parseFloat(el.value); }
+    if (el.dataset.mod){ state.mods[el.dataset.mod].value = parseFloat(el.value); }
+    changed(); pulseFrom(id);
+  }
   function syncControls(){
-    binds.forEach(el => { el.value = state[el.dataset.bind]; });
+    root.querySelectorAll('[data-bind]').forEach(el => { el.value = state[el.dataset.bind]; });
+    root.querySelectorAll('[data-mod]').forEach(el => { el.value = state.mods[el.dataset.mod].value; });
     root.querySelector('[data-show="speed"]').textContent = state.speed.toFixed(2);
     root.querySelector('[data-show="density"]').textContent = state.density.toFixed(2);
     root.querySelector('[data-show="mix"]').textContent = state.mix.toFixed(2);
     root.querySelector('[data-show="count"]').textContent = count();
+    Object.entries(state.mods).forEach(([t, m]) => { const o = root.querySelector(`[data-show="${t}"]`); if (o) o.textContent = m.value.toFixed(2); });
   }
-  binds.forEach(el => el.addEventListener('input', () => {
-    const k = el.dataset.bind; state[k] = el.tagName === 'SELECT' ? el.value : parseFloat(el.value); changed();
-  }));
 
-  /* gerador de TS (idêntico à TSL da prévia) */
-  const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  const hl = s => esc(s).replace(/(\/\/[^\n]*)|('[^'\n]*'|"[^"\n]*")|\b(import|from|export|const|new|function|return|true|false)\b|\b(\d+(?:\.\d+)?)\b/g,
-    (m, c, str, k, n) => c ? `<span class="c">${c}</span>` : str ? `<span class="s">${str}</span>` : k ? `<span class="k">${k}</span>` : `<span class="n">${n}</span>`);
+  /* ---------- nós modificadores ---------- */
+  function addMod(type, pos, opts){
+    opts = opts || {};
+    if (state.mods[type]){
+      selectNode(type); nodes[type].querySelector('.node-head').focus({ preventScroll:true });
+      if (!opts.silent) toast(UI[lang].exists(NAMES[type])); return;
+    }
+    const T = MOD_TYPES[type], value = opts.value != null ? opts.value : T.def;
+    state.mods[type] = { value };
+    const n = document.createElement('div');
+    n.className = 'node node--mod'; n.dataset.node = type;
+    n.innerHTML = `<div class="node-head" tabindex="0"><span class="eyebrow">${T.tag}</span>${T.name}<button type="button" class="rm" aria-label="Remove ${T.name}">×</button></div>
+      <div class="node-body">
+        <label class="ctl"><span>${T.key} <output data-show="${type}">${value.toFixed(2)}</output></span><input type="range" min="${T.min}" max="${T.max}" step="0.01" value="${value}" data-mod="${type}"></label>
+        <div class="port out"><span>${T.out}</span><i class="sock val" data-sock="${type}.out"></i></div>
+      </div>`;
+    graph.insertBefore(n, nodes.field);
+    nodes[type] = n; wireNode(n);
+    if (desktop.matches){
+      if (pos){ clampNode(n, pos.x - n.offsetWidth / 2, pos.y - 40); n.dataset.moved = '1'; }
+      else layout();
+    }
+    buildWires(); changed();
+    if (!opts.silent){ selectNode(type); Sound.riff(); toast(UI[lang].added(T.name)); }
+  }
+  function removeMod(type, silent){
+    if (!state.mods[type]) return;
+    delete state.mods[type]; delete state.bypass[type];
+    if (state.iso === type){ state.iso = null; isoBadge.hidden = true; }
+    nodes[type].remove(); delete nodes[type];
+    if (selected === type) selected = null;
+    buildWires(); layout(); changed();
+    if (!silent){ Sound.click(); toast(UI[lang].removed(NAMES[type])); }
+  }
+
+  /* ---------- Quick-Add: anel radial com busca fuzzy (Tab / Espaço) ---------- */
+  const palette = document.getElementById('palette'), palInput = document.getElementById('paletteInput'), addBtn = document.getElementById('addNodeBtn');
+  const opts = Object.entries(MOD_TYPES).map(([type, T], idx) => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'opt'; b.dataset.type = type;
+    const ang = -Math.PI / 2 + idx * Math.PI / 2;
+    b.style.left = (50 + Math.cos(ang) * 41) + '%'; b.style.top = (50 + Math.sin(ang) * 41) + '%';
+    b.addEventListener('click', () => insertFromPalette(type));
+    palette.appendChild(b); return b;
+  });
+  let palPos = null, palFromCursor = false, palActive = 0, hover = null;
+  graph.addEventListener('pointermove', e => { const g = graph.getBoundingClientRect(); hover = { x:e.clientX - g.left, y:e.clientY - g.top }; });
+  graph.addEventListener('pointerleave', () => { hover = null; });
+  function fuzzy(q, text){
+    q = q.toLowerCase(); text = text.toLowerCase(); if (!q) return 1;
+    let ti = 0, score = 0, streak = 0;
+    for (const ch of q){ const f = text.indexOf(ch, ti); if (f < 0) return 0; streak = f === ti ? streak + 1 : 0; score += 1 + streak * 2 + (f === 0 ? 3 : 0); ti = f + 1; }
+    return score;
+  }
+  function filterPal(){
+    const q = palInput.value.trim();
+    const ok = opts.map(o => { const T = MOD_TYPES[o.dataset.type]; return { o, s: fuzzy(q, `${T.name} ${T.tag} ${o.dataset.type}`) }; })
+      .map(x => { x.o.classList.toggle('is-dim', x.s === 0); return x; })
+      .filter(x => x.s > 0).sort((a, b) => b.s - a.s).map(x => x.o);
+    palActive = Math.min(palActive, Math.max(0, ok.length - 1));
+    opts.forEach(o => o.classList.remove('is-active'));
+    if (ok[palActive]) ok[palActive].classList.add('is-active');
+    return ok;
+  }
+  function openPalette(at){
+    const g = graph.getBoundingClientRect(), W = graph.clientWidth, H = graph.clientHeight;
+    palFromCursor = !!at;
+    const p = at || { x: W / 2, y: Math.max(140, Math.min(H - 140, innerHeight / 2 - g.top)) };
+    palPos = { x: Math.max(135, Math.min(W - 135, p.x)), y: Math.max(135, Math.min(H - 135, p.y)) };
+    palette.style.left = palPos.x + 'px'; palette.style.top = palPos.y + 'px';
+    opts.forEach(o => { const T = MOD_TYPES[o.dataset.type]; o.innerHTML = `<i></i>${T.name.toUpperCase()}${state.mods[o.dataset.type] ? ' <em>✓</em>' : ''}`; });
+    palette.hidden = false; addBtn.setAttribute('aria-expanded', 'true');
+    palInput.value = ''; palActive = 0; filterPal();
+    palInput.focus({ preventScroll:true }); Sound.click();
+  }
+  function closePalette(refocus){ palette.hidden = true; addBtn.setAttribute('aria-expanded', 'false'); if (refocus) graph.focus({ preventScroll:true }); }
+  // sob o cursor quando aberto por Tab/Espaço; sem cursor, vai para a coluna livre à direita
+  function insertFromPalette(type){ const pos = palFromCursor ? palPos : null; closePalette(); addMod(type, desktop.matches ? pos : null); }
+  palInput.addEventListener('input', () => { palActive = 0; filterPal(); });
+  palInput.addEventListener('keydown', e => {
+    const ok = filterPal();
+    if (e.key === 'Escape'){ e.preventDefault(); closePalette(true); }
+    else if (e.key === 'Enter'){ e.preventDefault(); if (ok[palActive]) insertFromPalette(ok[palActive].dataset.type); }
+    else if (['ArrowDown','ArrowRight','Tab'].includes(e.key) && ok.length){ e.preventDefault(); palActive = (palActive + 1) % ok.length; filterPal(); }
+    else if (['ArrowUp','ArrowLeft'].includes(e.key) && ok.length){ e.preventDefault(); palActive = (palActive - 1 + ok.length) % ok.length; filterPal(); }
+  });
+  addBtn.addEventListener('click', () => palette.hidden ? openPalette(null) : closePalette());
+  document.addEventListener('pointerdown', e => { if (!palette.hidden && !palette.contains(e.target) && e.target !== addBtn) closePalette(); });
+  graph.tabIndex = 0;
+  graph.setAttribute('aria-label', 'Node canvas. Press Space to quick-add a node.');
+
+  // Atalhos do editor (só quando o cursor ou o foco estão no estúdio)
+  document.addEventListener('keydown', e => {
+    if (e.defaultPrevented || e.ctrlKey || e.metaKey) return;
+    const t = e.target;
+    if (t.closest && (t.closest('input, select, textarea, [contenteditable], dialog') || t.closest('.ada'))) return;
+    const over = graph.matches(':hover'), focusIn = root.contains(document.activeElement);
+    if (!over && !focusIn) return;
+    const k = e.key;
+    if ((k === 'Tab' && over && !e.shiftKey) || (k === ' ' && (over || graph.contains(document.activeElement)) && !(t.closest && t.closest('button')))){
+      e.preventDefault(); openPalette(over && hover ? hover : null); return;
+    }
+    if (!selected) { if (k === 'Escape' && state.iso) toggleIso(state.iso); return; }
+    if (k === 'm' || k === 'M'){ e.preventDefault(); toggleMute(selected); }
+    else if (k === 'i' || k === 'I'){ e.preventDefault(); toggleIso(selected); }
+    else if ((k === 'Delete' || k === 'Backspace') && MOD_TYPES[selected]){ e.preventDefault(); removeMod(selected); }
+    else if (k === 'Escape' && state.iso){ toggleIso(state.iso); }
+  });
+
+  /* ---------- gerador de TS (idêntico à TSL da prévia) ---------- */
   function genTS(){
-    const A = PALETTE[state.colorA], B = PALETTE[state.colorB];
+    const p = eff(), A = PALETTE[p.colorA], B = PALETTE[p.colorB], n = countFromDensity(p.density);
+    const used = Object.keys(state.mods).filter(t => !state.bypass[t]).map(t => MOD_TYPES[t].name);
     return [
+`// SPDX-License-Identifier: Apache-2.0`,
 `// ${state.workspace}: ejected from Expctral Prism Studio`,
-...(state.refractions ? [`// Refracted from ORBIT ${ORIGINAL}. Original author: Gabriel Mezzetti (Mezzetti4096 Studio)`] : []),
+...(state.lineage.length > 1 ? [`// Lineage: ${state.lineage.map(l => `${l.id} (${l.kind === 'you' ? 'you' : l.author})`).join(' -> ')}`] : []),
 `// Depends only on standard Three.js (three/webgpu + three/tsl). 0% lock-in.`,
 `// Same TSL that renders the live preview on https://mezzetti4096.github.io/expctral/`,
 ``,
 `import * as THREE from 'three/webgpu';`,
 `import { Fn, uniform, instancedArray, instanceIndex, hash, float, vec3, mix, clamp, sin, cos, uv, length, smoothstep } from 'three/tsl';`,
 ``,
-`// Density node: particle count, multiple of the workgroup size (64)`,
-`export const PARTICLE_COUNT = ${count()};`,
+`const TAU = 6.2831853;`,
 ``,
-`// Speed node`,
-`export const SPEED = ${state.speed.toFixed(2)};`,
+`// Density node${state.bypass.density ? ' (bypassed: default)' : ''}: particle count, multiple of the workgroup size (64)`,
+`export const PARTICLE_COUNT = ${n};`,
 ``,
-`// Spectrum Color node`,
-`export const uMix = uniform(${state.mix.toFixed(2)});`,
+`// Speed node${state.bypass.speed ? ' (bypassed: 1.0)' : ''}`,
+`export const SPEED = ${p.speed.toFixed(2)};`,
+``,
+`// Time node${p.frozen ? ' (bypassed: frozen)' : ''}`,
+`export const FROZEN = ${p.frozen};`,
+``,
+`// Spectrum Color node${state.bypass.color ? ' (bypassed: default spectrum)' : ''}`,
+`export const uMix = uniform(${p.mix.toFixed(2)});`,
 `const uSpectrumA = uniform(new THREE.Color('${A}'));`,
 `const uSpectrumB = uniform(new THREE.Color('${B}'));`,
 ``,
-`// Time node: phase accumulated on the CPU, read by the GPU`,
+`// Modifier nodes (0 = not in the graph)${used.length ? ': ' + used.join(', ') : ''}`,
+`export const uTurbulence = uniform(${p.turb.toFixed(2)});`,
+`export const uTwist = uniform(${p.twist.toFixed(2)});`,
+`export const uPulse = uniform(${p.pulse.toFixed(2)});`,
+`export const uScale = uniform(${p.size.toFixed(2)});`,
+``,
+`// Time node: phase and clock accumulated on the CPU, read by the GPU`,
 `export const uPhase = uniform(0);`,
+`export const uClock = uniform(0);`,
+``,
+`const radius = (i) => hash(i).mul(0.92).add(0.08);`,
 ``,
 `const vortex = Fn(([i]) => {`,
-`  const r = hash(i).mul(0.92).add(0.08);`,
-`  const a = hash(i.add(7)).mul(6.2831853).add(uPhase.mul(0.35).div(r.add(0.12)));`,
-`  const y = hash(i.add(3)).sub(0.5).mul(0.12).mul(float(1).sub(r));`,
-`  return vec3(cos(a).mul(r), y, sin(a).mul(r));`,
+`  const r = radius(i);`,
+`  const a = hash(i.add(7)).mul(TAU).add(uPhase.mul(0.35).div(r.add(0.12))).add(uTwist.mul(r).mul(6.0));`,
+`  const n1 = sin(uClock.mul(1.7).add(hash(i.add(11)).mul(TAU)));`,
+`  const n2 = sin(uClock.mul(2.3).add(hash(i.add(13)).mul(TAU)));`,
+`  const rr = r.add(n1.mul(uTurbulence).mul(0.06));`,
+`  const y = hash(i.add(3)).sub(0.5).mul(0.12).mul(float(1).sub(r)).add(n2.mul(uTurbulence).mul(0.14));`,
+`  return vec3(cos(a).mul(rr), y, sin(a).mul(rr));`,
 `});`,
 ``,
 `// Compute Pass: storage buffer (vec3 uses a 16-byte stride)`,
@@ -1728,11 +2391,13 @@ function mountVortex(canvas, getParams, onState){
 `})().compute(PARTICLE_COUNT, [64]);`,
 ``,
 `// Particle Field node -> Render Pass (TSL material)`,
+`const k = clamp(uMix.add(hash(instanceIndex.add(1)).sub(0.5).mul(0.6))`,
+`  .add(sin(uClock.mul(3.0).add(radius(instanceIndex).mul(6.0))).mul(uPulse).mul(0.45)), 0, 1);`,
 `export const material = new THREE.SpriteNodeMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending });`,
 `material.positionNode = positions.toAttribute();`,
-`material.colorNode = mix(uSpectrumA, uSpectrumB, clamp(uMix.add(hash(instanceIndex.add(1)).sub(0.5).mul(0.6)), 0, 1));`,
+`material.colorNode = mix(uSpectrumA, uSpectrumB, k);`,
 `material.opacityNode = float(1).sub(smoothstep(0, 0.5, length(uv().sub(0.5))));`,
-`material.scaleNode = hash(instanceIndex.add(5)).mul(0.014).add(0.008);`,
+`material.scaleNode = hash(instanceIndex.add(5)).mul(0.014).add(0.008).mul(uScale);`,
 ``,
 `// Output node: call update(dt) once per frame (Time -> tick)`,
 `export function createVortex(renderer: THREE.WebGPURenderer) {`,
@@ -1741,34 +2406,54 @@ function mountVortex(canvas, getParams, onState){
 `  return {`,
 `    object: particles,`,
 `    update(dt: number) {`,
-`      uPhase.value += dt * SPEED * 2.4;`,
+`      if (!FROZEN) {`,
+`        uPhase.value += dt * SPEED * 2.4;`,
+`        uClock.value += dt;`,
+`      }`,
 `      renderer.compute(computeVortex);`,
 `    },`,
 `  };`,
 `}`,
+...(state.path.on ? [
+``,
+`// Camera path (Path Editor "Trajeto"): closed Catmull-Rom curve around the vortex`,
+`export const cameraPath = new THREE.CatmullRomCurve3([`,
+...state.path.pts.map(pt => { const w = toWorld(pt); return `  new THREE.Vector3(${w.x.toFixed(2)}, ${w.y.toFixed(2)}, ${w.z.toFixed(2)}),`; }),
+`], true, 'catmullrom', 0.5);`,
+`export function cameraOnPath(camera: THREE.PerspectiveCamera, t: number) {`,
+`  camera.position.copy(cameraPath.getPoint(((t % 1) + 1) % 1));`,
+`  camera.lookAt(0, 0, 0);`,
+`}`] : []),
 ``].join('\n');
   }
   let simPhase = 0;
   function genMath(){
+    const p = eff();
     return JSON.stringify({
       orbit: state.workspace,
-      'time.phase': +simPhase.toFixed(2),
-      'speed.value': state.speed, 'density.value': state.density, 'density.count': count(),
-      'spectrum.a': PALETTE[state.colorA], 'spectrum.b': PALETTE[state.colorB], 'spectrum.mix': state.mix,
+      'time.phase': +simPhase.toFixed(2), 'time.frozen': p.frozen,
+      'speed.value': p.speed, 'density.value': p.density, 'density.count': countFromDensity(p.density),
+      'spectrum.a': PALETTE[p.colorA], 'spectrum.b': PALETTE[p.colorB], 'spectrum.mix': p.mix,
+      modifiers: Object.fromEntries(Object.entries(state.mods).map(([t, m]) => [t, +m.value.toFixed(2)])),
+      bypass: Object.keys(state.bypass).filter(k => state.bypass[k]),
+      isolated: state.iso,
       'output.material': 'SpriteNodeMaterial'
     }, null, 2);
   }
   function genGPU(){
     const n = count();
     const rows = [
+      ['GPU memory (est.)', backend === 'webgpu' ? '≈ 256 KB storage buffer + sprite geometry' : backend === 'webgl2' ? 'no storage buffer (vertex path)' : '—'],
       ['Renderer', 'THREE.WebGPURenderer (three r186)'],
       ['Backend (live)', BACKEND_SHORT[backend] + (fpsNow ? ` · ${fpsNow} FPS · ${msNow.toFixed(1)} ms` : '')],
-      ['Compute pass', backend === 'webgpu' ? 'computeVortex · storage buffer' : 'vertex stage (WebGL2 path)'],
+      ['Compute pass', backend === 'webgpu' ? 'computeVortex · storage buffer' : backend === 'webgl2' ? 'vertex stage (WebGL2 path)' : 'Canvas 2D fallback'],
       ['Particles', n.toLocaleString('en-US')],
       ['Workgroup size', '64'],
-      ['Dispatch', `${Math.ceil(16384 / 64)} workgroups (16 384 slots)`],
-      ['Storage buffer', `16 384 × 16 B = 256 KB`],
+      ['Dispatch', `${16384 / 64} workgroups (16 384 slots)`],
+      ['Storage buffer', '16 384 × 16 B = 256 KB'],
       ['Alignment', '16 bytes (vec3 → vec4 stride, std430)'],
+      ['Modifiers', Object.keys(state.mods).map(t => MOD_TYPES[t].name).join(', ') || '—'],
+      ['Isolated view', state.iso ? NAMES[state.iso] : '—'],
       ['Render pass', 'SpriteNodeMaterial · AdditiveBlending']
     ];
     return rows.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
@@ -1777,11 +2462,12 @@ function mountVortex(canvas, getParams, onState){
   let activePanel = 'wave-visual';
   function renderPanels(){
     if (activePanel === 'wave-math') mathEl.innerHTML = hl(genMath());
-    if (activePanel === 'wave-tsl') tslEl.innerHTML = hl(genTS());
+    if (activePanel === 'wave-tsl'){ const src = genTS(); tslEl.innerHTML = numbered(src, ownersOf(src)); }
+    renderPeek(peekId);
     if (activePanel === 'wave-gpu') gpuEl.innerHTML = genGPU();
   }
 
-  /* abas (com som) */
+  /* ---------- abas das 4 frequências (com som) ---------- */
   const tabs = [...root.querySelectorAll('[role=tab]')];
   function selectTab(tab, focus){
     tabs.forEach(t => { const on = t === tab; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; document.getElementById(t.getAttribute('aria-controls')).hidden = !on; });
@@ -1789,24 +2475,24 @@ function mountVortex(canvas, getParams, onState){
     Sound.wave(tabs.indexOf(tab));
     if (focus) tab.focus();
     renderPanels();
-    if (activePanel === 'wave-visual'){ layout(); drawWires(); }
+    if (activePanel === 'wave-visual'){ layout(); drawWires(); } else closePalette();
   }
   tabs.forEach((t, i) => {
     t.addEventListener('click', () => selectTab(t));
     t.addEventListener('keydown', e => { const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (d){ e.preventDefault(); selectTab(tabs[(i + d + tabs.length) % tabs.length], true); } });
   });
 
-  /* som on/off */
   const soundBtn = document.getElementById('soundBtn');
   soundBtn.setAttribute('aria-pressed', String(Sound.on));
   soundBtn.addEventListener('click', () => soundBtn.setAttribute('aria-pressed', String(Sound.toggle())));
 
-  /* Primordial Spectra */
+  /* ---------- Primordial Spectra ---------- */
   const presetBtn = document.getElementById('presetBtn'), menu = document.getElementById('presetMenu');
+  function applyPreset(p){ Object.assign(state, { speed:p.speed, density:p.density, colorA:p.colorA, colorB:p.colorB, mix:p.mix }); changed(); }
   PRESETS.forEach(p => {
     const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'menuitem');
     b.innerHTML = `<i style="--a:${PALETTE[p.colorA]};--b:${PALETTE[p.colorB]}"></i>${p.name}`;
-    b.addEventListener('click', () => { Object.assign(state, { speed:p.speed, density:p.density, colorA:p.colorA, colorB:p.colorB, mix:p.mix }); closeMenu(true); changed(); Sound.riff(); toast(`${UI[lang].preset}: ${p.name}`); });
+    b.addEventListener('click', () => { applyPreset(p); closeMenu(true); Sound.riff(); toast(`${UI[lang].preset}: ${p.name}`); ['speed','density','color'].forEach(pulseFrom); });
     menu.appendChild(b);
   });
   function openMenu(){ menu.hidden = false; presetBtn.setAttribute('aria-expanded', 'true'); menu.querySelector('button').focus(); Sound.click(); }
@@ -1819,20 +2505,32 @@ function mountVortex(canvas, getParams, onState){
   });
   document.addEventListener('click', e => { if (!menu.hidden && !menu.contains(e.target) && e.target !== presetBtn) closeMenu(); });
 
-  /* Refract */
-  const wsName = document.getElementById('wsName'), refractTag = document.getElementById('refractTag');
-  document.getElementById('refractBtn').addEventListener('click', () => {
-    state.refractions++; state.workspace = `${ORIGINAL}-R${state.refractions}`;
-    wsName.textContent = state.workspace; refractTag.hidden = false;
-    refractTag.textContent = `⑂ REFRACTED FROM ${ORIGINAL} // AUTHOR: GABRIEL MEZZETTI`;
-    renderPanels(); Sound.wave(2); toast(UI[lang].refracted);
-  });
+  /* ---------- Refração + linhagem ---------- */
+  const wsName = document.getElementById('wsName'), refractTag = document.getElementById('refractTag'), lineageEl = document.getElementById('lineage');
+  function renderLineage(){
+    lineageEl.innerHTML = state.lineage.map((l, i) =>
+      `<li class="${l.kind}" style="margin-left:${i * .9}rem"><b>${esc(l.id)}</b> · ${l.kind === 'you' ? UI[lang].you : esc(l.author)}${l.kind === 'root' ? ' · ' + UI[lang].primordial : ''}</li>`).join('');
+    const rootL = state.lineage[0];
+    refractTag.hidden = state.lineage.length < 2;
+    refractTag.textContent = `⑂ REFRACTED FROM ${rootL.id} // AUTHOR: ${String(rootL.author).toUpperCase()}`;
+    wsName.textContent = state.workspace;
+  }
+  function doRefract(silent){
+    state.refractions++;
+    const base = state.lineage[0].kind === 'root' && state.lineage[0].id.startsWith('#') ? state.lineage[0].id : '#' + state.lineage[0].id.replace(/\.exp$/, '').toUpperCase();
+    state.workspace = `${base}-R${state.refractions}`;
+    state.lineage.push({ id: state.workspace, author: 'you', kind: 'you' });
+    renderLineage(); renderPanels(); Sound.wave(2);
+    if (!silent) toast(UI[lang].refracted);
+  }
+  document.getElementById('refractBtn').addEventListener('click', () => doRefract());
 
-  /* Eject (barra superior, estúdio e arquitetura) */
+  /* ---------- Eject (barra superior, estúdio e arquitetura) ---------- */
   const dlg = document.getElementById('ejectDlg'), ejectCode = document.getElementById('ejectCode');
   const fileName = () => `expctral-${state.workspace.replace('#', '').toLowerCase()}.ts`;
   document.querySelectorAll('[data-eject]').forEach(b => b.addEventListener('click', () => {
-    ejectCode.innerHTML = hl(genTS()); document.getElementById('ejectFile').textContent = fileName();
+    const src = genTS(); ejectCode.innerHTML = numbered(src, ownersOf(src));
+    document.getElementById('ejectFile').textContent = fileName(); document.getElementById('ejectTab').textContent = fileName();
     Sound.riff();
     if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
   }));
@@ -1842,37 +2540,411 @@ function mountVortex(canvas, getParams, onState){
     try { await navigator.clipboard.writeText(genTS()); toast(UI[lang].copied); Sound.click(); }
     catch(e){ const r = document.createRange(); r.selectNodeContents(ejectCode); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast(UI[lang].copyFail); }
   });
-  document.getElementById('dlBtn').addEventListener('click', () => {
-    const url = URL.createObjectURL(new Blob([genTS()], { type:'text/plain' }));
-    const a = document.createElement('a'); a.href = url; a.download = fileName(); document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000); toast(UI[lang].downloaded);
-  });
+  document.getElementById('dlBtn').addEventListener('click', () => { download(fileName(), genTS()); toast(UI[lang].downloaded); });
 
-  /* prévia ao vivo */
+  /* ---------- pacotes .exp (exportar / importar) ---------- */
+  function toExp(src){
+    const g = src || state;
+    return JSON.stringify({
+      format:'expctral.exp', version:1, license:'Apache-2.0',
+      workspace: src ? `#${src.id.toUpperCase()}` : state.workspace,
+      createdWith:'Expctral Prism Studio (landing prototype)',
+      lineage: src ? [{ id:`${src.id}.exp`, author:'Gabriel Mezzetti', kind:'root' }] : state.lineage,
+      graph:{ speed:g.speed, density:g.density, colorA:g.colorA, colorB:g.colorB, mix:g.mix,
+              mods: src ? {} : Object.fromEntries(Object.entries(state.mods).map(([k, m]) => [k, m.value])),
+              bypass: src ? {} : { ...state.bypass } }
+    }, null, 2);
+  }
+  const num = (v, lo, hi, d) => { v = Number(v); return Number.isFinite(v) ? Math.max(lo, Math.min(hi, v)) : d; };
+  function loadExp(obj){
+    if (!obj || obj.format !== 'expctral.exp' || typeof obj.graph !== 'object') throw new Error('format');
+    const g = obj.graph;
+    Object.keys(state.mods).forEach(t => { nodes[t].remove(); delete nodes[t]; });
+    state.mods = {}; state.bypass = {}; state.iso = null; isoBadge.hidden = true;
+    Object.values(nodes).forEach(n => n.classList.remove('is-muted', 'is-isolated'));
+    state.speed = num(g.speed, .05, 1.5, .55); state.density = num(g.density, 0, 1, .45); state.mix = num(g.mix, 0, 1, .35);
+    state.colorA = PALETTE[g.colorA] ? g.colorA : 'emerald'; state.colorB = PALETTE[g.colorB] ? g.colorB : 'violet';
+    Object.entries(g.mods || {}).forEach(([t, v]) => { if (MOD_TYPES[t]) addMod(t, null, { silent:true, value: num(v, MOD_TYPES[t].min, MOD_TYPES[t].max, MOD_TYPES[t].def) }); });
+    Object.entries(g.bypass || {}).forEach(([t, v]) => { if (v && nodes[t] && t !== 'field' && t !== 'output'){ state.bypass[t] = true; nodes[t].classList.add('is-muted'); } });
+    const lin = Array.isArray(obj.lineage) ? obj.lineage.slice(0, 20).map(l => ({ id: String(l.id || '?').slice(0, 48), author: String(l.author || '?').slice(0, 48), kind: ['root','you','ref'].includes(l.kind) ? l.kind : 'ref' })) : [];
+    state.lineage = lin.length ? lin : [{ id: ORIGINAL, author: 'Gabriel Mezzetti', kind:'root' }];
+    state.workspace = String(obj.workspace || ORIGINAL).slice(0, 48);
+    state.refractions = state.lineage.filter(l => l.kind !== 'root').length;
+    buildWires(); layout(); styleWires(); renderLineage(); changed();
+  }
+  document.getElementById('expExport').addEventListener('click', () => { download(`expctral-${state.workspace.replace('#', '').toLowerCase()}.exp`, toExp(), 'application/json'); toast(UI[lang].exported); });
+  const drop = document.getElementById('drop'), fileIn = document.getElementById('expFile');
+  async function readFile(f){
+    if (!f) return;
+    try { const txt = await f.text(); if (txt.length > 200000) throw new Error('size'); loadExp(JSON.parse(txt)); toast(UI[lang].imported(f.name)); Sound.riff(); document.getElementById('prism').scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth' }); }
+    catch(e){ toast(UI[lang].badExp); }
+  }
+  ['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('is-over'); }));
+  ['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('is-over'); }));
+  drop.addEventListener('drop', e => readFile(e.dataTransfer.files[0]));
+  fileIn.addEventListener('change', () => { readFile(fileIn.files[0]); fileIn.value = ''; });
+
+  /* ---------- Spectral Registry: catálogo ---------- */
+  const pkgsEl = document.getElementById('pkgs'), regSearch = document.getElementById('regSearch'), regEmpty = document.getElementById('regEmpty');
+  PRESETS.forEach(p => {
+    const a = document.createElement('article');
+    a.className = 'pkg glass reticle hoverable'; a.dataset.id = p.id; a.style.setProperty('--c', PALETTE[p.colorA]);
+    a.innerHTML = `<div class="pkg-swatch" style="--a:${PALETTE[p.colorA]};--b:${PALETTE[p.colorB]}"></div>
+      <h3 class="h">${p.name}<small>${p.id}.exp</small></h3>
+      <p data-i18n="${p.desc}">${PKG_DESC[p.desc]}</p>
+      <p class="meta">Gabriel Mezzetti · Apache-2.0 · ${countFromDensity(p.density).toLocaleString('en-US')} particles</p>
+      <div class="btns">
+        <button type="button" class="btn btn--primary btn--sm btn--tac" data-refract="${p.id}">[ ⑂ REFRACT ]</button>
+        <button type="button" class="btn btn--glass btn--sm" data-dl="${p.id}" data-i18n="reg.dl">Download .exp</button>
+      </div>`;
+    a.querySelector('[data-refract]').addEventListener('click', () => {
+      if (state.iso) toggleIso(state.iso);
+      Object.keys(state.mods).forEach(removeModSilently);
+      Object.keys(state.bypass).forEach(k => { if (nodes[k]) nodes[k].classList.remove('is-muted'); });
+      state.bypass = {}; styleWires(); layout();
+      applyPreset(p);
+      state.lineage = [{ id:`${p.id}.exp`, author:'Gabriel Mezzetti', kind:'root' }]; state.refractions = 0;
+      doRefract(true); toast(UI[lang].refractedPkg(p.name));
+      document.getElementById('prism').scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+    });
+    a.querySelector('[data-dl]').addEventListener('click', () => { download(`${p.id}.exp`, toExp(p), 'application/json'); toast(UI[lang].downloaded); });
+    pkgsEl.appendChild(a);
+  });
+  function removeModSilently(t){ delete state.mods[t]; delete state.bypass[t]; nodes[t].remove(); delete nodes[t]; buildWires(); }
+  let filter = 'all';
+  function filterPkgs(){
+    const q = regSearch.value.trim().toLowerCase(); let shown = 0;
+    pkgsEl.querySelectorAll('.pkg').forEach(el => {
+      const p = PRESETS.find(x => x.id === el.dataset.id);
+      const hay = `${p.name} ${p.id} ${p.colorA} ${p.colorB} ${el.textContent}`.toLowerCase();
+      const ok = (filter === 'all' || p.colorA === filter || p.colorB === filter) && (!q || hay.includes(q));
+      el.hidden = !ok; if (ok) shown++;
+    });
+    regEmpty.hidden = shown > 0;
+  }
+  regSearch.addEventListener('input', filterPkgs);
+  document.querySelectorAll('.fchip').forEach(b => b.addEventListener('click', () => {
+    filter = b.dataset.filter; document.querySelectorAll('.fchip').forEach(x => x.setAttribute('aria-pressed', String(x === b))); filterPkgs();
+  }));
+
+  /* ---------- simulação do split 85/15 ---------- */
+  const price = document.getElementById('price'), vC = document.getElementById('vCreator'), vP = document.getElementById('vPlatform');
+  function renderSplit(){
+    const loc = lang === 'pt' ? 'pt-BR' : lang === 'zh' ? 'zh-CN' : 'en-US';
+    const f = new Intl.NumberFormat(loc, { style:'currency', currency:'BRL' }), v = Number(price.value);
+    vC.textContent = f.format(v * .85); vP.textContent = f.format(v * .15);
+    price.setAttribute('aria-valuetext', f.format(v));
+  }
+  price.addEventListener('input', renderSplit);
+
+  /* ---------- prévia ao vivo ---------- */
   const statusEl = document.getElementById('gpuStatus'), outT = document.getElementById('outT');
   const renderStatus = () => { statusEl.dataset.state = backend; statusEl.querySelector('span').textContent = UI[lang].previewOn[backend] + (fpsNow ? ` · ${fpsNow} FPS` : ''); };
-  langListeners.push(renderStatus);
+  langListeners.push(renderStatus, renderLineage, renderSplit);
   let lastMath = -1;
-  const preview = mountVortex(document.getElementById('previewCanvas'), () => state, (b, fps, ms) => {
+  const preview = mountVortex(document.getElementById('previewCanvas'), eff, (b, fps, ms) => {
     backend = b; fpsNow = fps; msNow = ms; renderStatus();
     if (fps) reportTelemetry(b, fps, ms);   // a telemetria do topo acompanha o canvas que estiver rodando
     if (activePanel === 'wave-gpu') gpuEl.innerHTML = genGPU();
   });
-  // fase exibida (mesma regra da GPU)
   (function phaseLoop(prev){
     requestAnimationFrame(now => {
-      if (prev) simPhase += Math.min((now - prev) / 1000, .1) * state.speed * 2.4;
+      const p = eff();
+      const dtl = prev ? Math.min((now - prev) / 1000, .1) : 0;
+      if (!p.frozen) simPhase += dtl * p.speed * 2.4;
+      if (state.path.on && !reduceMotion.matches){ pathT = (pathT + dtl * .04 * (.5 + p.speed)) % 1; drawCamDot(); }
       if (activePanel === 'wave-visual' && !reduceMotion.matches) outT.textContent = simPhase.toFixed(2);
       if (activePanel === 'wave-math' && (now / 200 | 0) !== lastMath){ lastMath = now / 200 | 0; mathEl.innerHTML = hl(genMath()); }
       phaseLoop(now);
     });
   })(0);
 
-  function changed(){ syncControls(); renderPanels(); preview.refresh(); }
+  function changed(){ syncControls(); renderPanels(); preview.refresh(); Collab.push(); }
+  Object.values(nodes).forEach(wireNode);
   new ResizeObserver(() => { layout(); drawWires(); }).observe(graph);
-  desktop.addEventListener && desktop.addEventListener('change', () => { layout(); drawWires(); });
+  desktop.addEventListener && desktop.addEventListener('change', () => { layout(); buildWires(); });
   document.fonts && document.fonts.ready.then(() => { layout(); drawWires(); });
-  syncControls(); renderStatus(); layout(); drawWires();
+  syncControls(); renderStatus(); layout(); buildWires(); renderLineage(); renderSplit();
+
+  /* ---------- Sourcemap bidirecional: nó ↔ linhas de TSL ---------- */
+  function ownersOf(src){
+    let sec = null;
+    return src.split('\n').map(l => {
+      if (/^\/\/ Density node/.test(l)) sec = 'density';
+      else if (/^\/\/ Speed node/.test(l)) sec = 'speed';
+      else if (/^\/\/ Time node/.test(l)) sec = 'time';
+      else if (/^\/\/ Spectrum Color node/.test(l)) sec = 'color';
+      else if (/^\/\/ Modifier nodes/.test(l)) sec = 'mods';
+      else if (/^const radius|^const vortex|^\/\/ Compute Pass|^\/\/ Particle Field node/.test(l)) sec = 'field';
+      else if (/^\/\/ Output node/.test(l)) sec = 'output';
+      else if (/^\/\/ Camera path/.test(l)) sec = 'path';
+      else if (/^import|^\/\/ SPDX|^const TAU/.test(l)) sec = null;
+      if (/uTurbulence/.test(l)) return 'turb';
+      if (/uTwist/.test(l)) return 'twist';
+      if (/uPulse/.test(l)) return 'pulse';
+      if (/uScale/.test(l)) return 'size';
+      if (/\bSPEED\b/.test(l) && sec === 'output') return 'speed';
+      if (/FROZEN|uPhase\.value|uClock\.value/.test(l) && sec === 'output') return 'time';
+      if (l.trim() === '' || sec === 'mods' || sec === 'path') return null;
+      return sec;
+    });
+  }
+  const peekEl = document.getElementById('peek'), peekName = document.getElementById('peekName');
+  let peekId = 'field';
+  function renderPeek(id){
+    peekId = id || 'field';
+    const src = genTS(), owners = ownersOf(src), lines = src.split('\n');
+    let html = '', prev = -2;
+    owners.forEach((o, i) => {
+      if (o !== peekId) return;
+      if (prev >= 0 && i !== prev + 1) html += '<span class="l" data-ln="⋮"> </span>';
+      html += `<span class="l" data-ln="${i + 1}">${hl(lines[i]) || ' '}</span>`; prev = i;
+    });
+    peekEl.innerHTML = html || `<span class="l" data-ln="—">${esc('// ' + NAMES[peekId] + ': no TSL emitted')}</span>`;
+    peekName.textContent = (NAMES[peekId] || '').toUpperCase();
+  }
+  const smapNode = document.getElementById('smapNode');
+  tslEl.addEventListener('mouseover', e => {
+    const l = e.target.closest('.l'); const n = l && l.dataset.n;
+    tslEl.querySelectorAll('.l.is-hl').forEach(x => x.classList.remove('is-hl'));
+    if (!n){ smapNode.textContent = ''; return; }
+    tslEl.querySelectorAll(`.l[data-n="${n}"]`).forEach(x => x.classList.add('is-hl'));
+    smapNode.textContent = `↔ ${NAMES[n].toUpperCase()}`;
+  });
+  tslEl.addEventListener('click', e => {
+    const l = e.target.closest('.l'); const n = l && l.dataset.n;
+    if (!n || !nodes[n]) return;
+    selectTab(document.getElementById('tab-visual'));
+    selectNode(n);
+    const node = nodes[n]; node.classList.remove('is-flash'); requestAnimationFrame(() => node.classList.add('is-flash'));
+    node.querySelector('.node-head').focus({ preventScroll:true });
+    node.scrollIntoView({ block:'nearest', behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+  });
+
+  /* ---------- Path Editor ("Trajeto"): trajetória da câmera em Catmull-Rom ---------- */
+  const pathBtn = document.getElementById('pathBtn'), pathmap = document.getElementById('pathmap'), pathSvg = document.getElementById('pathSvg');
+  const cr = (p0, p1, p2, p3, t) => { const t2 = t * t, t3 = t2 * t; return .5 * ((2 * p1) + (-p0 + p2) * t + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t2 + (-p0 + 3 * p1 - 3 * p2 + p3) * t3); };
+  function pathPoint(t){
+    const P = state.path.pts, n = P.length, s = (((t % 1) + 1) % 1) * n, i = Math.floor(s), u = s - i, g = k => P[((k % n) + n) % n];
+    return [0, 1].map(c => cr(g(i - 1)[c], g(i)[c], g(i + 1)[c], g(i + 2)[c], u));
+  }
+  // mapa de cima: x → X, y → Z (±2.6), altura fixa 1.1, sempre olhando para o vórtice
+  function toWorld([x, y]){ return { x:(x - .5) * 5.2, y:1.1, z:(y - .5) * 5.2 }; }
+  function camAt(t){ return toWorld(pathPoint(t)); }
+  const SVGNS = 'http://www.w3.org/2000/svg';
+  const mk = (tag, attrs) => { const el = document.createElementNS(SVGNS, tag); Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v)); pathSvg.appendChild(el); return el; };
+  mk('circle', { cx:50, cy:50, r:19, fill:'rgba(168,85,247,.16)', stroke:'rgba(168,85,247,.55)', 'stroke-width':1 });
+  const curve = mk('polyline', { fill:'none', stroke:'#FF9F1C', 'stroke-width':1.3, 'stroke-dasharray':'3 2' });
+  const handles = state.path.pts.map((_, i) => { const h = mk('circle', { class:'ph', r:5.5, tabindex:0, 'data-i':i, 'aria-label':`Path point ${i + 1}` }); return h; });
+  const camDot = mk('circle', { r:3.6, fill:'#06B6D4' });
+  function drawCamDot(){ const [x, y] = pathPoint(pathT); camDot.setAttribute('cx', x * 100); camDot.setAttribute('cy', y * 100); }
+  function drawPath(){
+    const pts = []; for (let k = 0; k <= 64; k++){ const [x, y] = pathPoint(k / 64); pts.push(`${(x * 100).toFixed(1)},${(y * 100).toFixed(1)}`); }
+    curve.setAttribute('points', pts.join(' '));
+    state.path.pts.forEach(([x, y], i) => { handles[i].setAttribute('cx', x * 100); handles[i].setAttribute('cy', y * 100); });
+    drawCamDot();
+  }
+  let dragI = -1;
+  const setPt = (i, x, y) => { state.path.pts[i] = [Math.max(.04, Math.min(.96, x)), Math.max(.04, Math.min(.96, y))]; drawPath(); preview.refresh(); };
+  handles.forEach((h, i) => {
+    h.addEventListener('pointerdown', e => { e.preventDefault(); dragI = i; try { pathSvg.setPointerCapture(e.pointerId); } catch(err){} });
+    h.addEventListener('keydown', e => {
+      const d = e.shiftKey ? .06 : .02, k = { ArrowLeft:[-d,0], ArrowRight:[d,0], ArrowUp:[0,-d], ArrowDown:[0,d] }[e.key];
+      if (!k) return; e.preventDefault(); const [x, y] = state.path.pts[i]; setPt(i, x + k[0], y + k[1]); renderPanels(); Collab.push();
+    });
+  });
+  pathSvg.addEventListener('pointermove', e => {
+    if (dragI < 0) return;
+    const r = pathSvg.getBoundingClientRect(); setPt(dragI, (e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height);
+  });
+  const endDrag = () => { if (dragI >= 0){ dragI = -1; renderPanels(); Collab.push(); } };
+  pathSvg.addEventListener('pointerup', endDrag); pathSvg.addEventListener('pointercancel', endDrag);
+  function syncPathUI(){ pathmap.hidden = !state.path.on; pathBtn.setAttribute('aria-pressed', String(state.path.on)); drawPath(); }
+  pathBtn.addEventListener('click', () => {
+    state.path.on = !state.path.on; syncPathUI(); changed(); Sound.wave(state.path.on ? 1 : 0);
+    toast(state.path.on ? UI[lang].pathOn : UI[lang].pathOff);
+  });
+  syncPathUI();
+  renderPeek('field');
+
+  /* ---------- Multiplayer: CRDT Yjs entre abas (BroadcastChannel) + presença ---------- */
+  Collab = (() => {
+    const coBtn = document.getElementById('coBtn');
+    if (!('BroadcastChannel' in window)){ coBtn.hidden = true; return { push(){} }; }
+    const ch = new BroadcastChannel('expctral-orbit-v1');
+    const COLORS = Object.values(PALETTE);
+    const me = { id: Math.random().toString(16).slice(2, 10) };
+    me.name = 'ORBIT-' + me.id.slice(0, 4).toUpperCase();
+    me.color = COLORS[parseInt(me.id.slice(0, 2), 16) % COLORS.length];
+    let Y = null, doc = null, ready = false, applying = false, pushRaf = 0, cursor = { x:null, y:null };
+    const peers = new Map(), peerEls = new Map();
+    const presence = document.getElementById('presence');
+
+    function push(){
+      if (!doc || !ready || applying) return;
+      cancelAnimationFrame(pushRaf);
+      pushRaf = requestAnimationFrame(() => doc.transact(() => {
+        const g = doc.getMap('graph');
+        ['speed','density','colorA','colorB','mix','workspace'].forEach(k => { if (g.get(k) !== state[k]) g.set(k, state[k]); });
+        const path = JSON.stringify(state.path); if (g.get('path') !== path) g.set('path', path);
+        const m = doc.getMap('mods');
+        [...m.keys()].forEach(k => { if (!state.mods[k]) m.delete(k); });
+        Object.entries(state.mods).forEach(([k, v]) => { if (m.get(k) !== v.value) m.set(k, v.value); });
+        const b = doc.getMap('bypass');
+        Object.keys(NAMES).forEach(k => { const v = !!state.bypass[k]; if (!!b.get(k) !== v) b.set(k, v); });
+        if (desktop.matches){
+          const pos = doc.getMap('positions');
+          Object.entries(nodes).forEach(([k, n]) => {
+            if (!n.dataset.moved) return;
+            const v = [+(n.offsetLeft / graph.clientWidth).toFixed(4), +(n.offsetTop / graph.clientHeight).toFixed(4)], o = pos.get(k);
+            if (!o || o[0] !== v[0] || o[1] !== v[1]) pos.set(k, v);
+          });
+        }
+        const lin = doc.getArray('lineage');
+        if (JSON.stringify(lin.toArray()) !== JSON.stringify(state.lineage)){ lin.delete(0, lin.length); lin.insert(0, state.lineage.map(l => ({ ...l }))); }
+      }, 'local'));
+    }
+    function pull(){
+      applying = true;
+      try {
+        const g = doc.getMap('graph');
+        ['speed','density','mix'].forEach(k => { const v = g.get(k); if (typeof v === 'number') state[k] = num(v, 0, 1.5, state[k]); });
+        ['colorA','colorB'].forEach(k => { const v = g.get(k); if (PALETTE[v]) state[k] = v; });
+        if (typeof g.get('workspace') === 'string') state.workspace = g.get('workspace').slice(0, 48);
+        try {
+          const pth = JSON.parse(g.get('path') || 'null');
+          if (pth && Array.isArray(pth.pts) && pth.pts.length === 4) state.path = { on: !!pth.on, pts: pth.pts.map(pt => [num(pt[0], 0, 1, .5), num(pt[1], 0, 1, .5)]) };
+        } catch(e){}
+        const m = doc.getMap('mods');
+        Object.keys(state.mods).forEach(k => { if (!m.has(k)) removeMod(k, true); });
+        m.forEach((v, k) => {
+          const T = MOD_TYPES[k]; if (!T) return;
+          const val = num(v, T.min, T.max, T.def);
+          if (state.mods[k]) state.mods[k].value = val; else addMod(k, null, { silent:true, value:val });
+        });
+        const b = doc.getMap('bypass');
+        Object.keys(nodes).forEach(k => { const v = !!b.get(k) && k !== 'field' && k !== 'output'; state.bypass[k] = v; nodes[k].classList.toggle('is-muted', v); });
+        if (desktop.matches){
+          doc.getMap('positions').forEach((v, k) => { const n = nodes[k]; if (n && Array.isArray(v)){ n.dataset.moved = '1'; clampNode(n, v[0] * graph.clientWidth, v[1] * graph.clientHeight); } });
+        }
+        const lin = doc.getArray('lineage').toArray();
+        if (lin.length){
+          state.lineage = lin.slice(0, 20).map(l => ({ id:String(l.id || '?').slice(0, 48), author:String(l.author || '?').slice(0, 48), kind:['root','you','ref'].includes(l.kind) ? l.kind : 'ref' }));
+          state.refractions = state.lineage.filter(l => l.kind !== 'root').length;
+        }
+        syncPathUI(); renderLineage(); styleWires(); changed(); drawWires();
+      } finally { applying = false; }
+    }
+
+    /* presença (awareness) */
+    const safeColor = c => COLORS.includes(c) ? c : PALETTE.cyan;
+    function beat(){ ch.postMessage({ t:'aw', id:me.id, name:me.name, color:me.color, x:cursor.x, y:cursor.y }); }
+    function renderPeers(){
+      const list = [{ id:me.id, name:me.name, color:me.color, me:true }, ...peers.values()];
+      presence.hidden = peers.size === 0;
+      presence.innerHTML = `<span>${UI[lang].orbitLive(list.length)}</span>` +
+        list.map(p => `<span class="av" style="--c:${safeColor(p.color)}" title="${esc(p.name)}${p.me ? ' (you)' : ''}">${esc(String(p.name).slice(6, 8))}</span>`).join('');
+      peers.forEach((p, k) => {
+        let el = peerEls.get(k);
+        if (!el){ el = document.createElement('div'); el.className = 'peer'; el.setAttribute('aria-hidden', 'true'); el.innerHTML = '<svg><use href="#i-cursor"/></svg><span></span>'; graph.appendChild(el); peerEls.set(k, el); }
+        el.style.setProperty('--c', safeColor(p.color)); el.querySelector('span').textContent = String(p.name).slice(0, 16);
+        const show = desktop.matches && typeof p.x === 'number' && typeof p.y === 'number' && activePanel === 'wave-visual';
+        el.hidden = !show;
+        if (show){ el.style.left = (p.x * graph.clientWidth) + 'px'; el.style.top = (p.y * graph.clientHeight) + 'px'; }
+      });
+      peerEls.forEach((el, k) => { if (!peers.has(k)){ el.remove(); peerEls.delete(k); } });
+    }
+    ch.onmessage = ({ data:m }) => {
+      if (!m || typeof m !== 'object') return;
+      if (m.t === 'aw' && typeof m.id === 'string'){ peers.set(m.id, { id:m.id, name:String(m.name || 'ORBIT'), color:m.color, x:m.x, y:m.y, seen:Date.now() }); renderPeers(); return; }
+      if (m.t === 'bye'){ peers.delete(m.id); renderPeers(); return; }
+      if (!doc) return;
+      if (m.t === 'hello'){ if (ready) ch.postMessage({ t:'state', u:Y.encodeStateAsUpdate(doc) }); beat(); }
+      else if ((m.t === 'state' || m.t === 'u') && m.u instanceof Uint8Array){ ready = true; Y.applyUpdate(doc, m.u, 'remote'); }
+    };
+    let lastBeat = 0;
+    graph.addEventListener('pointermove', () => {
+      if (!hover) return;
+      cursor = { x:+(hover.x / graph.clientWidth).toFixed(4), y:+(hover.y / graph.clientHeight).toFixed(4) };
+      const now = performance.now(); if (now - lastBeat > 50){ lastBeat = now; beat(); }
+    });
+    graph.addEventListener('pointerleave', () => { cursor = { x:null, y:null }; beat(); });
+    setInterval(() => {
+      beat();
+      const now = Date.now(); let gone = false;
+      peers.forEach((p, k) => { if (now - p.seen > 3500){ peers.delete(k); gone = true; } });
+      if (gone) renderPeers();
+    }, 1000);
+    addEventListener('pagehide', () => ch.postMessage({ t:'bye', id:me.id }));
+    langListeners.push(renderPeers);
+    coBtn.addEventListener('click', () => {
+      window.open(location.href.split('#')[0] + '#prism', '_blank');
+      toast(UI[lang].coHint);
+    });
+
+    let started = false;
+    new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting || started) return; started = true;
+      whenIdle(async () => {
+        try {
+          Y = await import('https://cdn.jsdelivr.net/npm/yjs@13.6.33/+esm');
+          doc = new Y.Doc();
+          doc.on('update', (u, origin) => { if (origin === 'remote') pull(); else ch.postMessage({ t:'u', u }); });
+          ch.postMessage({ t:'hello', id:me.id }); beat();
+          setTimeout(() => { if (!ready){ ready = true; push(); } }, 450);
+        } catch (err){ console.warn('[Orbit] Yjs unavailable, multiplayer disabled:', err); coBtn.hidden = true; }
+      });
+    }, { rootMargin:'400px' }).observe(root);
+    return { push };
+  })();
+
+  /* ---------- API para a Dra. Ada ---------- */
+  function issues(){
+    const W = ADA[lang].w, out = [], p = eff(), c = countFromDensity(p.density);
+    const muted = Object.keys(state.bypass).filter(k => state.bypass[k]);
+    if (muted.length) out.push({ fix:'muted', msg: W.muted(muted.map(k => NAMES[k]).join(', ')) });
+    if (state.iso) out.push({ fix:'iso', msg: W.iso(NAMES[state.iso]) });
+    if (!state.bypass.color && state.colorA === state.colorB) out.push({ fix:'flat', msg: W.flat });
+    if (backend !== 'webgpu' && backend !== 'pending' && c > 9000) out.push({ fix:'heavy', msg: W.heavy(c.toLocaleString(lang === 'pt' ? 'pt-BR' : lang === 'zh' ? 'zh-CN' : 'en-US')) });
+    else if (fpsNow && fpsNow < 40) out.push({ fix:'slow', msg: W.slow(fpsNow) });
+    return out;
+  }
+  function diagnose(){
+    const L = ADA[lang], p = eff(), c = countFromDensity(p.density);
+    const d = { frozen:p.frozen, speed:p.speed.toFixed(2), count:c.toLocaleString(lang === 'pt' ? 'pt-BR' : lang === 'zh' ? 'zh-CN' : 'en-US'), wg:Math.ceil(c / 64), a:p.colorA, b:p.colorB, mix:p.mix.toFixed(2), backend:BACKEND_SHORT[backend], fps:fpsNow };
+    const mods = Object.entries(state.mods).map(([t, m]) => `${MOD_TYPES[t].name} ${m.value.toFixed(2)}${state.bypass[t] ? ' (muted)' : ''}`);
+    const w = issues();
+    return `<p>${L.pipe(d)}</p><p>${mods.length ? L.mods(mods.join(', ')) : L.noMods}</p>` +
+      (w.length ? `<p><b>${L.warn}</b></p><ul>${w.map(x => `<li class="warn">${x.msg}</li>`).join('')}</ul>` : `<p>${L.ok}</p>`);
+  }
+  function autofix(){
+    let n = 0;
+    for (const i of issues()){
+      if (i.fix === 'muted'){ Object.keys(state.bypass).forEach(k => { if (state.bypass[k]){ state.bypass[k] = false; if (nodes[k]) nodes[k].classList.remove('is-muted'); n++; } }); }
+      if (i.fix === 'iso'){ toggleIso(state.iso); n++; }
+      if (i.fix === 'flat'){ const keys = Object.keys(PALETTE); state.colorB = keys[(keys.indexOf(state.colorA) + 2) % keys.length]; n++; }
+      if (i.fix === 'heavy' || i.fix === 'slow'){ state.density = Math.min(state.density, .3); if (state.mods.size) state.mods.size.value = Math.min(state.mods.size.value, 1); n++; }
+    }
+    styleWires(); changed(); ['speed','density','color'].forEach(pulseFrom);
+    return n;
+  }
+  return { diagnose, autofix };
+})();
+
+/* ================= DRA. ADA (prévia: diagnóstico por regras, no navegador) ================= */
+(() => {
+  const panel = document.getElementById('adaPanel'), toggle = document.getElementById('adaToggle'), log = document.getElementById('adaLog');
+  let greeted = false;
+  function say(html, you){ const d = document.createElement('div'); d.className = 'ada-msg' + (you ? ' ada-msg--you' : ''); d.innerHTML = html; log.appendChild(d); log.scrollTop = log.scrollHeight; }
+  function setOpen(open){
+    panel.hidden = !open; toggle.setAttribute('aria-expanded', String(open));
+    if (open && !greeted){ greeted = true; say(ADA[lang].hello); }
+    if (open) Sound.wave(3);
+  }
+  toggle.addEventListener('click', () => setOpen(panel.hidden));
+  panel.addEventListener('keydown', e => { if (e.key === 'Escape'){ setOpen(false); toggle.focus(); } });
+  document.getElementById('adaDiag').addEventListener('click', () => { say(esc(ADA[lang].askDiag), true); say(Prism.diagnose()); });
+  document.getElementById('adaFix').addEventListener('click', () => { say(esc(ADA[lang].askFix), true); const n = Prism.autofix(); say(`<p>${ADA[lang].fixed(n)}</p>` + Prism.diagnose()); });
 })();
 
 /* ================= IDIOMA INICIAL ================= */
