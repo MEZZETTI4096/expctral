@@ -397,11 +397,19 @@
      },
      {
       "t": {
-       "en": "Simulated economy: fixed prices, append-only ledger, 75/25 split in this MVP",
-       "pt": "Economia simulada: preços fixos, ledger append-only, split 75/25 neste MVP",
-       "zh": "模拟经济：固定价格、只追加账本，本 MVP 中为 75/25 分成"
+       "en": "Simulated economy: fixed prices and append-only ledger",
+       "pt": "Economia simulada: preços fixos e ledger append-only",
+       "zh": "模拟经济：固定价格与只追加账本"
       },
       "s": "built"
+     },
+     {
+      "t": {
+       "en": "Official revenue model: 85% to the creator, 15% to the platform",
+       "pt": "Modelo de receita oficial: 85% para o criador, 15% para a plataforma",
+       "zh": "官方收益模式：创作者 85%，平台 15%"
+      },
+      "s": "spec"
      },
      {
       "t": {
@@ -437,9 +445,9 @@
     "items": [
      {
       "t": {
-       "en": "Align the split to 85/15 (MVP uses 75/25)",
-       "pt": "Alinhar o split a 85/15 (o MVP usa 75/25)",
-       "zh": "将分成调整为 85/15（MVP 使用 75/25）"
+       "en": "Apply the 85/15 split in the Archives economy service",
+       "pt": "Aplicar o split 85/15 no serviço de economia do Archives",
+       "zh": "在 Archives 经济服务中应用 85/15 分成"
       },
       "s": "planned"
      },
@@ -1198,9 +1206,9 @@
     },
     {
      "t": {
-      "en": "Simulated marketplace economy (75/25)",
-      "pt": "Economia de marketplace simulada (75/25)",
-      "zh": "模拟的市场经济（75/25）"
+      "en": "Simulated marketplace economy",
+      "pt": "Economia de marketplace simulada",
+      "zh": "模拟的市场经济"
      },
      "s": "built"
     },
