@@ -21,6 +21,13 @@ Landing page da **Expctral**, ecossistema open-core de criação 3D no navegador
 - **Apoio**: botões abrem o enquadramento OSC / GitHub Sponsors; barras de meta ficam "pendentes" até `FUNDING.raisedBRL` ser preenchido.
 - Runtime WebGPU carregado de forma lazy (após o load, em tempo ocioso, quando o canvas fica visível).
 
+## V4 — Central de atualizações (12/10/2026)
+- **Página `/atualizacoes/`**: status de cada face da Expctral (agora ↔ próxima versão, com evidências), linha do tempo das Fases 0–4 com "você está aqui", changelog com datas reais e o explorador dos **52 nós** do Prism Studio (ficha técnica = NodeRegistry do Station).
+- **Seção `#atualizacoes` na landing** com o resumo das 8 faces e chips de status nos cards das superfícies.
+- **Fonte única:** `atualizacoes/data.json`. Para atualizar o status, edite esse arquivo (textos em `en`/`pt`/`zh`) e dê `git push`; a landing e a página leem dele.
+- Vocabulário de status: `live` (no ar), `built` (implementado, roda localmente), `prototype`, `spec`, `dev`, `planned`, `pending`, `paused`.
+- Meta-prompt Awwwards da página: `../meta-prompt-atualizacoes-awwwards.md`.
+
 ## Configuração
 Arquivo único (`index.html`), sem build. No início do script, o objeto `LINKS` guarda os links que ainda não existem
 (apoio/checkout, B2B, WhatsApp, Discord, X). Enquanto estiverem vazios, os botões de apoio mostram "Abertura em breve"

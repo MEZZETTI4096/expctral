@@ -1,0 +1,2445 @@
+{
+ "updated": "2026-10-12",
+ "currentPhase": 0,
+ "repo": "https://github.com/MEZZETTI4096/expctral",
+ "statuses": {
+  "live": {
+   "en": "LIVE",
+   "pt": "AO VIVO",
+   "zh": "已上线",
+   "color": "#10B981"
+  },
+  "built": {
+   "en": "BUILT · LOCAL",
+   "pt": "IMPLEMENTADO · LOCAL",
+   "zh": "已实现 · 本地",
+   "color": "#34D399"
+  },
+  "prototype": {
+   "en": "PROTOTYPE",
+   "pt": "PROTÓTIPO",
+   "zh": "原型",
+   "color": "#06B6D4"
+  },
+  "spec": {
+   "en": "SPECIFIED",
+   "pt": "ESPECIFICADO",
+   "zh": "已定义规格",
+   "color": "#A855F7"
+  },
+  "dev": {
+   "en": "IN DEVELOPMENT",
+   "pt": "EM DESENVOLVIMENTO",
+   "zh": "开发中",
+   "color": "#FF9F1C"
+  },
+  "planned": {
+   "en": "PLANNED",
+   "pt": "PLANEJADO",
+   "zh": "计划中",
+   "color": "#A3ABBA"
+  },
+  "pending": {
+   "en": "PENDING",
+   "pt": "PENDENTE",
+   "zh": "待定",
+   "color": "#FF9F1C"
+  },
+  "paused": {
+   "en": "PAUSED",
+   "pt": "PAUSADO",
+   "zh": "已暂停",
+   "color": "#7E879A"
+  }
+ },
+ "faces": [
+  {
+   "id": "sinapse",
+   "name": "Sinapse Engine",
+   "tag": "ENGINE // SINAPSE",
+   "color": "#10B981",
+   "status": "built",
+   "now": {
+    "version": {
+     "en": "Reafforesthree Engine v0.1 · 69 nodes",
+     "pt": "Reafforesthree Engine v0.1 · 69 nós",
+     "zh": "Reafforesthree Engine v0.1 · 69 个节点"
+    },
+    "summary": {
+     "en": "A complete web game engine: editor + runtime on Three.js (WebGPU with WebGL fallback), Rapier physics and TypeScript. Its node system, Sinapse, compiles graphs into readable TypeScript with no runtime interpreter.",
+     "pt": "Uma game engine web completa: editor + runtime em Three.js (WebGPU com fallback WebGL), física Rapier e TypeScript. O sistema de nós, Sinapse, compila grafos em TypeScript legível, sem interpretador em tempo de execução.",
+     "zh": "完整的网页游戏引擎：基于 Three.js（WebGPU，可回退 WebGL）、Rapier 物理与 TypeScript 的编辑器 + 运行时。其节点系统 Sinapse 将节点图编译为可读的 TypeScript，运行时无需解释器。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "Sinapse: 69 nodes in 13 families (flow, player, camera, combat, AI, world, VFX, HUD, audio, physics, objects, vectors, data)",
+       "pt": "Sinapse: 69 nós em 13 famílias (fluxo, jogador, câmera, combate, IA, mundo, VFX, HUD, áudio, física, objetos, vetores, dados)",
+       "zh": "Sinapse：13 个家族共 69 个节点（流程、玩家、相机、战斗、AI、世界、VFX、HUD、音频、物理、对象、向量、数据）"
+      },
+      "s": "built"
+     },
+     {
+      "t": {
+       "en": "Path Editor \"Trajeto\", hitstop and camera shake (gate F3, Bullet-Hell template)",
+       "pt": "Path Editor \"Trajeto\", hitstop e camera shake (gate F3, template Bullet-Hell)",
+       "zh": "路径编辑器 “Trajeto”、命中停顿与镜头震动（F3 关卡，弹幕模板）"
+      },
+      "s": "built"
+     },
+     {
+      "t": {
+       "en": "5 playable templates (Platform, Arena, Bullet-Hell, Horde, ARPG), 10 mechanic packs and 5 one-click styles",
+       "pt": "5 templates jogáveis (Plataforma, Arena, Bullet-Hell, Horda, ARPG), 10 pacotes de mecânicas e 5 estilos de 1 clique",
+       "zh": "5 个可玩模板（平台、竞技场、弹幕、群敌、ARPG），10 个机制包与 5 种一键风格"
+      },
+      "s": "built"
+     },
+     {
+      "t": {
+       "en": "Playable build export (.zip that runs on any static host) and local Archives",
+       "pt": "Exportação de build jogável (.zip que roda em qualquer hospedagem estática) e Archives local",
+       "zh": "可玩构建导出（可在任意静态托管运行的 .zip）与本地 Archives"
+      },
+      "s": "built"
+     },
+     {
+      "t": {
+       "en": "105 tests, CI (typecheck, test, build) and a PT-BR manual covering every node",
+       "pt": "105 testes, CI (typecheck, testes, build) e manual em PT-BR cobrindo todos os nós",
+       "zh": "105 项测试、CI（类型检查、测试、构建），以及覆盖全部节点的葡语手册"
+      },
+      "s": "built"
+     },
+     {
+      "t": {
+       "en": "WebGPURenderer with compute pass on this landing (three r186)",
+       "pt": "WebGPURenderer com compute pass nesta landing (three r186)",
+       "zh": "本落地页上的 WebGPURenderer 与 Compute Pass（three r186）"
+      },
+      "s": "live",
+      "ev": "../#main"
+     }
+    ]
+   },
+   "next": {
+    "version": {
+     "en": "F7 polish + F8 · Sinapse Compiler on WebGPU/TSL",
+     "pt": "Acabamento F7 + F8 · Sinapse Compiler em WebGPU/TSL",
+     "zh": "F7 打磨 + F8 · 基于 WebGPU/TSL 的 Sinapse 编译器"
+    },
+    "phase": 1,
+    "summary": {
+     "en": "Public release of the engine, the TSL shader pipeline of the Expctral plan and the next Path Editor rounds.",
+     "pt": "Lançamento público da engine, o pipeline de shaders TSL do plano Expctral e as próximas rodadas do Path Editor.",
+     "zh": "引擎公开发布、Expctral 规划中的 TSL 着色器管线，以及路径编辑器的后续迭代。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "Public deploy of the engine (today it runs locally)",
+       "pt": "Deploy público da engine (hoje roda localmente)",
+       "zh": "引擎公开部署（目前在本地运行）"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "F7 visual pass: align/distribute, colored frames, launch video",
+       "pt": "Passe visual F7: alinhar/distribuir, frames coloridos, vídeo de lançamento",
+       "zh": "F7 视觉打磨：对齐/分布、彩色分组框、发布视频"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Dual WebGPU pipelines (Compute + Render) and @babel/parser AST sanitization on the BFF",
+       "pt": "Pipelines duplos WebGPU (Compute + Render) e sanitização AST com @babel/parser no BFF",
+       "zh": "WebGPU 双管线（Compute + Render）与 BFF 上的 @babel/parser AST 清理"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Path rounds: melee arcs, path platforms and patrols, modifiers, markers, three.quarks",
+       "pt": "Rodadas de trajeto: melee em arco, plataformas e patrulhas em path, modificadores, marcadores, three.quarks",
+       "zh": "路径迭代：弧形近战、路径平台与巡逻、修饰器、标记、three.quarks"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "AI: navmesh + A*, behavior tree, multi-phase boss",
+       "pt": "IA: navmesh + A*, behavior tree, boss multi-fase",
+       "zh": "AI：导航网格 + A*、行为树、多阶段 Boss"
+      },
+      "s": "planned"
+     }
+    ]
+   },
+   "links": [
+    {
+     "label": {
+      "en": "See it live",
+      "pt": "Ver ao vivo",
+      "zh": "实时查看"
+     },
+     "href": "../#superficies"
+    }
+   ],
+   "sources": [
+    {
+     "en": "Engine git history: 9 commits, 21–23/07/2026",
+     "pt": "Histórico git da Engine: 9 commits, 21–23/07/2026",
+     "zh": "Engine git 历史：9 次提交，2026/07/21–23"
+    },
+    {
+     "en": "PLANO-CONTINUACAO.md: F0–F7 foundations done, 105 tests",
+     "pt": "PLANO-CONTINUACAO.md: fundações F0–F7 concluídas, 105 testes",
+     "zh": "PLANO-CONTINUACAO.md：F0–F7 基础完成，105 项测试"
+    }
+   ]
+  },
+  {
+   "id": "prism",
+   "name": "Prism Studio",
+   "tag": "STUDIO // PRISM",
+   "color": "#A855F7",
+   "status": "built",
+   "now": {
+    "version": {
+     "en": "Reafforesthree Station (NodeForge) · 52 nodes",
+     "pt": "Reafforesthree Station (NodeForge) · 52 nós",
+     "zh": "Reafforesthree Station（NodeForge）· 52 个节点"
+    },
+    "summary": {
+     "en": "The shader and texture editor already implements the whole taxonomy of the technical sheet: 52 nodes in 8 categories, compiling to TSL materials on three/webgpu, with a code panel and export.",
+     "pt": "O editor de shaders e texturas já implementa toda a taxonomia da ficha técnica: 52 nós em 8 categorias, compilando para materiais TSL em three/webgpu, com painel de código e exportação.",
+     "zh": "着色器与纹理编辑器已实现技术规格中的完整分类：8 个类别共 52 个节点，编译为基于 three/webgpu 的 TSL 材质，并带代码面板与导出功能。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "52 nodes in 8 categories, from a single NodeRegistry (React Flow + Zustand)",
+       "pt": "52 nós em 8 categorias, a partir de um único NodeRegistry (React Flow + Zustand)",
+       "zh": "8 个类别共 52 个节点，来自单一 NodeRegistry（React Flow + Zustand）"
+      },
+      "s": "built",
+      "ev": "#taxonomy"
+     },
+     {
+      "t": {
+       "en": "Compiler to TSL materials (MeshStandardNodeMaterial) with validation and VFX compilation",
+       "pt": "Compilador para materiais TSL (MeshStandardNodeMaterial) com validação e compilação de VFX",
+       "zh": "编译为 TSL 材质（MeshStandardNodeMaterial），含校验与 VFX 编译"
+      },
+      "s": "built"
+     },
+     {
+      "t": {
+       "en": "Export: TSX code, PNG, baked textures and 3D model",
+       "pt": "Exportação: código TSX, PNG, texturas bakeadas e modelo 3D",
+       "zh": "导出：TSX 代码、PNG、烘焙纹理与 3D 模型"
+      },
+      "s": "built"
+     },
+     {
+      "t": {
+       "en": "Paint Station: 3D texture painting with layers, UV unwrap (xatlas) and remesh",
+       "pt": "Paint Station: pintura de textura 3D com camadas, unwrap UV (xatlas) e remesh",
+       "zh": "Paint Station：分层 3D 纹理绘制、UV 展开（xatlas）与重拓扑"
+      },
+      "s": "paused"
+     },
+     {
+      "t": {
+       "en": "Landing prototype: quick-add, isolate, bypass, Path Editor and node ↔ TSL sourcemap",
+       "pt": "Protótipo na landing: quick-add, isolar, bypass, Path Editor e sourcemap nó ↔ TSL",
+       "zh": "落地页原型：快速添加、隔离、旁路、路径编辑器与节点 ↔ TSL 源映射"
+      },
+      "s": "live",
+      "ev": "../#prism"
+     }
+    ]
+   },
+   "next": {
+    "version": {
+     "en": "Prism Studio — Web Authoring (Station → Studios)",
+     "pt": "Prism Studio — Web Authoring (Station → Studios)",
+     "zh": "Prism Studio — 网页创作（Station → Studios）"
+    },
+    "phase": 2,
+    "summary": {
+     "en": "Rename and integrate: the studio produces assets for the engine, collaborates in real time and works offline.",
+     "pt": "Renomear e integrar: o estúdio produz assets para a engine, colabora em tempo real e funciona offline.",
+     "zh": "更名并整合：工作室为引擎产出资产，支持实时协作与离线使用。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "Station → Studios / Prism Studio rebrand",
+       "pt": "Rebrand Station → Studios / Prism Studio",
+       "zh": "Station → Studios / Prism Studio 品牌更名"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Integration with the engine: materials and textures as engine assets (shared format)",
+       "pt": "Integração com a engine: materiais e texturas como assets da engine (formato compartilhado)",
+       "zh": "与引擎集成：材质与纹理作为引擎资产（共享格式）"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Yjs multiplayer, offline-first PWA and Web Audio synthesis",
+       "pt": "Multiplayer Yjs, PWA offline-first e síntese Web Audio",
+       "zh": "Yjs 多人协作、离线优先 PWA 与 Web Audio 合成"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Animation Studio: timeline, easing curves, state machine",
+       "pt": "Animation Studio: timeline, curvas de easing, state machine",
+       "zh": "动画工作室：时间轴、缓动曲线、状态机"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Resume the Paint Station (PBR channel packing, export to the Registry)",
+       "pt": "Retomar a Paint Station (channel packing PBR, exportar para o Registry)",
+       "zh": "恢复 Paint Station（PBR 通道打包、导出到 Registry）"
+      },
+      "s": "planned"
+     }
+    ]
+   },
+   "links": [
+    {
+     "label": {
+      "en": "Open the prototype",
+      "pt": "Abrir o protótipo",
+      "zh": "打开原型"
+     },
+     "href": "../#prism"
+    },
+    {
+     "label": {
+      "en": "Node taxonomy",
+      "pt": "Taxonomia de nós",
+      "zh": "节点分类"
+     },
+     "href": "#taxonomy"
+    }
+   ],
+   "sources": [
+    {
+     "en": "Station code: src/core/nodes/registry.ts (52 definitions), last change 02/08/2026",
+     "pt": "Código do Station: src/core/nodes/registry.ts (52 definições), última mudança 02/08/2026",
+     "zh": "Station 代码：src/core/nodes/registry.ts（52 个定义），最近修改 2026/08/02"
+    },
+    {
+     "en": "Prism Studio official technical sheet (12/10/2026)",
+     "pt": "Ficha técnica oficial do Prism Studio (12/10/2026)",
+     "zh": "Prism Studio 官方技术规格（2026/10/12）"
+    },
+    {
+     "en": "docs/PAINT.md: Paint paused at phase A4",
+     "pt": "docs/PAINT.md: Paint pausado na fase A4",
+     "zh": "docs/PAINT.md：Paint 暂停于 A4 阶段"
+    }
+   ]
+  },
+  {
+   "id": "registry",
+   "name": "Spectral Registry",
+   "tag": "REGISTRY // ORBIT CLUSTER",
+   "color": "#FF9F1C",
+   "status": "built",
+   "now": {
+    "version": {
+     "en": "Reafforesthree Archives v0.1 (MVP)",
+     "pt": "Reafforesthree Archives v0.1 (MVP)",
+     "zh": "Reafforesthree Archives v0.1（MVP）"
+    },
+    "summary": {
+     "en": "A library, marketplace and social network of procedural shaders: server, web app and a shared package contract. Payments are 100% simulated.",
+     "pt": "Biblioteca, marketplace e rede social de shaders procedurais: servidor, app web e um contrato de pacote compartilhado. Pagamentos 100% simulados.",
+     "zh": "程序化着色器的资源库、市场与社交网络：服务器、网页应用与共享的包格式约定。支付为 100% 模拟。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "Monorepo: Fastify + SQLite/Drizzle server and Vite + React web app",
+       "pt": "Monorepo: servidor Fastify + SQLite/Drizzle e app web Vite + React",
+       "zh": "Monorepo：Fastify + SQLite/Drizzle 服务器与 Vite + React 网页应用"
+      },
+      "s": "built"
+     },
+     {
+      "t": {
+       "en": "Accounts, feed, collections, likes and follows; live WebGPU shader preview",
+       "pt": "Contas, feed, coleções, curtidas e seguir; preview ao vivo de shaders em WebGPU",
+       "zh": "账户、动态、收藏、点赞与关注；WebGPU 着色器实时预览"
+      },
+      "s": "built"
+     },
+     {
+      "t": {
+       "en": "Fork with permanent lineage (Growth Tree), recorded server-side",
+       "pt": "Fork com linhagem permanente (Growth Tree), gravada no servidor",
+       "zh": "带永久谱系的分叉（Growth Tree），记录在服务器端"
+      },
+      "s": "built"
+     },
+     {
+      "t": {
+       "en": "Simulated economy: fixed prices, append-only ledger, 75/25 split in this MVP",
+       "pt": "Economia simulada: preços fixos, ledger append-only, split 75/25 neste MVP",
+       "zh": "模拟经济：固定价格、只追加账本，本 MVP 中为 75/25 分成"
+      },
+      "s": "built"
+     },
+     {
+      "t": {
+       "en": ".rft package format validated with zod (WGSL, uniforms, license)",
+       "pt": "Formato de pacote .rft validado com zod (WGSL, uniforms, licença)",
+       "zh": "经 zod 校验的 .rft 包格式（WGSL、uniform、许可证）"
+      },
+      "s": "built"
+     },
+     {
+      "t": {
+       "en": "Landing simulation: .exp import/export, refraction lineage, 85/15 split",
+       "pt": "Simulação na landing: import/export .exp, linhagem de refração, split 85/15",
+       "zh": "落地页模拟：.exp 导入/导出、折射谱系、85/15 分成"
+      },
+      "s": "live",
+      "ev": "../#registry"
+     }
+    ]
+   },
+   "next": {
+    "version": {
+     "en": "Spectral Registry & Marketplace",
+     "pt": "Spectral Registry & Marketplace",
+     "zh": "Spectral Registry 与市场"
+    },
+    "phase": 3,
+    "summary": {
+     "en": "From simulation to real money: the Expctral model with 85% to the creator, .exp packages and public publishing.",
+     "pt": "Da simulação ao dinheiro real: o modelo Expctral com 85% para o criador, pacotes .exp e publicação pública.",
+     "zh": "从模拟走向真实交易：Expctral 模式下创作者获得 85%，.exp 包与公开发布。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "Align the split to 85/15 (MVP uses 75/25)",
+       "pt": "Alinhar o split a 85/15 (o MVP usa 75/25)",
+       "zh": "将分成调整为 85/15（MVP 使用 75/25）"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Real payments: Stripe Connect or Open Source Collective",
+       "pt": "Pagamentos reais: Stripe Connect ou Open Source Collective",
+       "zh": "真实支付：Stripe Connect 或 Open Source Collective"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Unify .rft (Archives) and .exp (Expctral) into one package format",
+       "pt": "Unificar .rft (Archives) e .exp (Expctral) em um só formato de pacote",
+       "zh": "将 .rft（Archives）与 .exp（Expctral）统一为单一包格式"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Publish straight from the engine and Remix button opening the editor",
+       "pt": "Publicar direto da engine e botão Remix abrindo o editor",
+       "zh": "从引擎直接发布，并提供在编辑器中打开的 Remix 按钮"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Sandbox for third-party scripts (iframe + CSP), malware scan and curation badges",
+       "pt": "Sandbox para scripts de terceiros (iframe + CSP), verificação de malware e selos de curadoria",
+       "zh": "第三方脚本沙箱（iframe + CSP）、恶意软件扫描与精选徽章"
+      },
+      "s": "planned"
+     }
+    ]
+   },
+   "links": [
+    {
+     "label": {
+      "en": "Try the Registry",
+      "pt": "Testar o Registry",
+      "zh": "试用 Registry"
+     },
+     "href": "../#registry"
+    }
+   ],
+   "sources": [
+    {
+     "en": "Archives code: server/src (auth, feed, market, economy, fork), tests for economy and fork; last change 23/09/2026",
+     "pt": "Código do Archives: server/src (auth, feed, market, economy, fork), testes de economia e fork; última mudança 23/09/2026",
+     "zh": "Archives 代码：server/src（auth、feed、market、economy、fork），含经济与分叉测试；最近修改 2026/09/23"
+    }
+   ]
+  },
+  {
+   "id": "landing",
+   "name": "Landing Hub",
+   "tag": "HUB // DEV PORTAL",
+   "color": "#06B6D4",
+   "status": "live",
+   "now": {
+    "version": {
+     "en": "Landing V4 · this update",
+     "pt": "Landing V4 · esta atualização",
+     "zh": "Landing V4 · 本次更新"
+    },
+    "summary": {
+     "en": "The public site is live on GitHub Pages in English, Portuguese and Chinese, with the Prompt Mestre V1.1 fully applied and now an updates hub.",
+     "pt": "O site público está no ar no GitHub Pages em inglês, português e chinês, com o Prompt Mestre V1.1 aplicado e agora uma central de atualizações.",
+     "zh": "公开网站已在 GitHub Pages 上线，支持英文、葡萄牙文和中文，已完整应用 Prompt Mestre V1.1，并新增更新中心。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "Live at mezzetti4096.github.io/expctral in EN / PT / 中文",
+       "pt": "No ar em mezzetti4096.github.io/expctral em EN / PT / 中文",
+       "zh": "已在 mezzetti4096.github.io/expctral 上线（EN / PT / 中文）"
+      },
+      "s": "live",
+      "ev": "../"
+     },
+     {
+      "t": {
+       "en": "Reafforesthree Station public page (previous hub), updated 24/09/2026",
+       "pt": "Página pública do Reafforesthree Station (hub anterior), atualizada em 24/09/2026",
+       "zh": "Reafforesthree Station 公开页面（上一代 Hub），2026/09/24 更新"
+      },
+      "s": "live",
+      "ev": "https://mezzetti4096.github.io/reafforesthree/"
+     },
+     {
+      "t": {
+       "en": "No visible placeholders; missing links stay hidden until they exist",
+       "pt": "Sem marcadores visíveis; links que faltam ficam ocultos até existirem",
+       "zh": "无可见占位符；缺失的链接在可用前保持隐藏"
+      },
+      "s": "live",
+      "ev": "../"
+     },
+     {
+      "t": {
+       "en": "Schema.org JSON-LD (Organization, Person, SoftwareApplication) for AIO/GEO",
+       "pt": "JSON-LD Schema.org (Organization, Person, SoftwareApplication) para AIO/GEO",
+       "zh": "用于 AIO/GEO 的 Schema.org JSON-LD（Organization、Person、SoftwareApplication）"
+      },
+      "s": "live",
+      "ev": "../"
+     },
+     {
+      "t": {
+       "en": "Updates hub with the status of every face",
+       "pt": "Central de atualizações com o status de cada face",
+       "zh": "展示各模块状态的更新中心"
+      },
+      "s": "live",
+      "ev": "./"
+     }
+    ]
+   },
+   "next": {
+    "version": {
+     "en": "Awwwards SOTD submission",
+     "pt": "Submissão ao Awwwards SOTD",
+     "zh": "提交 Awwwards SOTD"
+    },
+    "phase": 4,
+    "summary": {
+     "en": "Real community links, the official fiscal host page and a jury-level polish pass before submitting.",
+     "pt": "Links reais da comunidade, a página oficial da hospedagem fiscal e um polimento em nível de júri antes da submissão.",
+     "zh": "加入真实社区链接、官方财务托管页面，并在提交前完成评审级打磨。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "Official links: Open Source Collective, Discord and X",
+       "pt": "Links oficiais: Open Source Collective, Discord e X",
+       "zh": "官方链接：Open Source Collective、Discord 和 X"
+      },
+      "s": "pending"
+     },
+     {
+      "t": {
+       "en": "Founder's official biography",
+       "pt": "Biografia oficial do fundador",
+       "zh": "创始人官方简介"
+      },
+      "s": "pending"
+     },
+     {
+      "t": {
+       "en": "Awwwards jury review (Design 40 · Usability 30 · Creativity 20 · Content 10)",
+       "pt": "Revisão de júri Awwwards (Design 40 · Usabilidade 30 · Criatividade 20 · Conteúdo 10)",
+       "zh": "Awwwards 评审复核（设计 40 · 可用性 30 · 创意 20 · 内容 10）"
+      },
+      "s": "planned"
+     }
+    ]
+   },
+   "links": [
+    {
+     "label": {
+      "en": "Back to the Hub",
+      "pt": "Voltar à Hub",
+      "zh": "返回 Hub"
+     },
+     "href": "../"
+    }
+   ],
+   "sources": [
+    {
+     "en": "Expctral repository: 4 versions published on 09/10 and 12/10/2026",
+     "pt": "Repositório da Expctral: 4 versões publicadas em 09/10 e 12/10/2026",
+     "zh": "Expctral 仓库：2026/10/09 与 10/12 发布 4 个版本"
+    }
+   ]
+  },
+  {
+   "id": "ada",
+   "name": "Dra. Ada",
+   "tag": "ASSISTANT // LOCAL",
+   "color": "#06B6D4",
+   "status": "prototype",
+   "now": {
+    "version": {
+     "en": "Rule-based preview",
+     "pt": "Prévia por regras",
+     "zh": "基于规则的预览"
+    },
+    "summary": {
+     "en": "A floating dock reads the real Prism Studio graph and explains the pipeline. No AI model runs on the page yet.",
+     "pt": "Um dock flutuante lê o grafo real do Prism Studio e explica o pipeline. Ainda nenhum modelo de IA roda na página.",
+     "zh": "浮动面板读取真实的 Prism Studio 节点图并讲解管线。页面上尚未运行任何 AI 模型。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "Station AI dock: placeholder, not connected to a model yet",
+       "pt": "AI dock do Station: placeholder, ainda sem modelo conectado",
+       "zh": "Station 的 AI 面板：占位，尚未接入模型"
+      },
+      "s": "spec"
+     },
+     {
+      "t": {
+       "en": "\"Diagnose graph\": pipeline explanation from the live state",
+       "pt": "\"Diagnosticar grafo\": explicação do pipeline a partir do estado ao vivo",
+       "zh": "“诊断节点图”：根据实时状态讲解管线"
+      },
+      "s": "prototype",
+      "ev": "../#prism"
+     },
+     {
+      "t": {
+       "en": "\"Auto-fix\": re-enables bypassed nodes, exits isolation, fixes flat gradients and heavy density",
+       "pt": "\"Corrigir automaticamente\": reativa nós em bypass, sai do isolamento, corrige degradê chapado e densidade pesada",
+       "zh": "“自动修复”：重新启用旁路节点、退出隔离、修复平淡渐变和过高密度"
+      },
+      "s": "prototype",
+      "ev": "../#prism"
+     }
+    ]
+   },
+   "next": {
+    "version": {
+     "en": "Local AI assistant",
+     "pt": "Assistente de IA local",
+     "zh": "本地 AI 助手"
+    },
+    "phase": 2,
+    "summary": {
+     "en": "Inference in the browser with no server cost, watching the store and the framebuffer.",
+     "pt": "Inferência no navegador sem custo de servidor, observando a store e o framebuffer.",
+     "zh": "在浏览器中推理，无服务器成本，并监控 store 与帧缓冲。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "Engine F8: an assistant that explains nodes and generates subgraphs from a prompt (Claude API)",
+       "pt": "F8 da Engine: assistente que explica nós e gera subgrafos por prompt (API Claude)",
+       "zh": "引擎 F8：解释节点并根据提示生成子图的助手（Claude API）"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "onnxruntime-web (WebGPU) + Transformers.js v4 — documented target of 30–70 tokens/s",
+       "pt": "onnxruntime-web (WebGPU) + Transformers.js v4 — meta documentada de 30–70 tokens/s",
+       "zh": "onnxruntime-web（WebGPU）+ Transformers.js v4——文档目标 30–70 tokens/s"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Framebuffer monitor that catches TSL compilation errors at runtime",
+       "pt": "Monitor de framebuffer que captura erros de compilação TSL em tempo de execução",
+       "zh": "帧缓冲监控，在运行时捕获 TSL 编译错误"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Static RAG over the TSL / Three.js docs, embedded at build time",
+       "pt": "RAG estático sobre a documentação de TSL / Three.js, vetorizada no build",
+       "zh": "基于 TSL / Three.js 文档的静态 RAG，在构建时向量化"
+      },
+      "s": "planned"
+     }
+    ]
+   },
+   "links": [
+    {
+     "label": {
+      "en": "Open Dra. Ada",
+      "pt": "Abrir a Dra. Ada",
+      "zh": "打开 Dra. Ada"
+     },
+     "href": "../#prism"
+    }
+   ],
+   "sources": [
+    {
+     "en": "Station code: src/ui/docks/AiDock.tsx (\"arrives in Phase 4\")",
+     "pt": "Código do Station: src/ui/docks/AiDock.tsx (\"chega na Fase 4\")",
+     "zh": "Station 代码：src/ui/docks/AiDock.tsx（“将在第 4 阶段上线”）"
+    }
+   ]
+  },
+  {
+   "id": "orbit",
+   "name": "Multiplayer / Orbit",
+   "tag": "ORBIT // CRDT",
+   "color": "#A855F7",
+   "status": "prototype",
+   "now": {
+    "version": {
+     "en": "Yjs between tabs of one browser",
+     "pt": "Yjs entre abas do mesmo navegador",
+     "zh": "同一浏览器标签页之间的 Yjs"
+    },
+    "summary": {
+     "en": "Real CRDT sync with Y.Map and Y.Array over BroadcastChannel, with presence and colored cursors.",
+     "pt": "Sincronização CRDT real com Y.Map e Y.Array via BroadcastChannel, com presença e cursores coloridos.",
+     "zh": "通过 BroadcastChannel 使用 Y.Map 和 Y.Array 进行真实 CRDT 同步，并显示在线状态与彩色光标。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "Parameters, modifiers, bypass, node positions, camera path and lineage synced",
+       "pt": "Parâmetros, modificadores, bypass, posições dos nós, trajeto da câmera e linhagem sincronizados",
+       "zh": "同步参数、修饰节点、旁路、节点位置、相机路径和谱系"
+      },
+      "s": "prototype",
+      "ev": "../#prism"
+     },
+     {
+      "t": {
+       "en": "Presence avatars and live cursors with thermal glow",
+       "pt": "Avatares de presença e cursores ao vivo com brilho térmico",
+       "zh": "带热辉光的在线头像与实时光标"
+      },
+      "s": "prototype",
+      "ev": "../#prism"
+     }
+    ]
+   },
+   "next": {
+    "version": {
+     "en": "Edge multiplayer",
+     "pt": "Multiplayer na borda",
+     "zh": "边缘多人协作"
+    },
+    "phase": 2,
+    "summary": {
+     "en": "Co-creation between people on different computers through the edge.",
+     "pt": "Cocriação entre pessoas em computadores diferentes, pela borda.",
+     "zh": "通过边缘网络，让不同电脑上的人共同创作。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "y-websocket provider on Cloudflare Workers, persistence on R2",
+       "pt": "Provedor y-websocket em Cloudflare Workers, persistência no R2",
+       "zh": "Cloudflare Workers 上的 y-websocket 提供方，R2 持久化"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Awareness API: presence, avatars and telemetry cursors in the Orbit",
+       "pt": "Awareness API: presença, avatares e cursores de telemetria na Órbita",
+       "zh": "Awareness API：轨道中的在线状态、头像与遥测光标"
+      },
+      "s": "planned"
+     }
+    ]
+   },
+   "links": [
+    {
+     "label": {
+      "en": "Co-create in two tabs",
+      "pt": "Cocriar em duas abas",
+      "zh": "在两个标签页中共同创作"
+     },
+     "href": "../#prism"
+    }
+   ],
+   "sources": [
+    {
+     "en": "Engine plan: multiplayer in F8 (state already serializable in GameState)",
+     "pt": "Plano da Engine: multiplayer na F8 (estado já serializável no GameState)",
+     "zh": "引擎规划：多人协作在 F8（状态已可在 GameState 中序列化）"
+    }
+   ]
+  },
+  {
+   "id": "eject",
+   "name": "Code Ejection",
+   "tag": "EJECT // 0% LOCK-IN",
+   "color": "#10B981",
+   "status": "built",
+   "now": {
+    "version": {
+     "en": "Ejection in the Engine, the Station and the landing",
+     "pt": "Ejeção na Engine, no Station e na landing",
+     "zh": "Engine、Station 与落地页中的代码导出"
+    },
+    "summary": {
+     "en": "[ ⚡ EJECT TYPESCRIPT ] generates a standalone .ts with the exact TSL that renders the preview.",
+     "pt": "[ ⚡ EJECT TYPESCRIPT ] gera um .ts autônomo com exatamente a TSL que desenha a prévia.",
+     "zh": "[ ⚡ EJECT TYPESCRIPT ] 生成独立的 .ts 文件，其中正是驱动预览的 TSL。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "Engine: \"Export code\" downloads the readable .ts of each Sinapse graph",
+       "pt": "Engine: \"Exportar código\" baixa o .ts legível de cada grafo Sinapse",
+       "zh": "Engine：“导出代码”可下载每个 Sinapse 节点图的可读 .ts"
+      },
+      "s": "built"
+     },
+     {
+      "t": {
+       "en": "Station: TSX export of the material code",
+       "pt": "Station: exportação TSX do código do material",
+       "zh": "Station：导出材质代码为 TSX"
+      },
+      "s": "built"
+     },
+     {
+      "t": {
+       "en": "Landing: standalone .ts with the exact TSL of the preview, only three/webgpu and three/tsl",
+       "pt": "Landing: .ts autônomo com exatamente a TSL da prévia, só three/webgpu e three/tsl",
+       "zh": "落地页：仅依赖 three/webgpu 与 three/tsl、与预览完全一致的独立 .ts"
+      },
+      "s": "live",
+      "ev": "../#prism"
+     },
+     {
+      "t": {
+       "en": "SPDX Apache-2.0 header, one-click copy and download",
+       "pt": "Cabeçalho SPDX Apache-2.0, cópia em um clique e download",
+       "zh": "SPDX Apache-2.0 文件头、一键复制与下载"
+      },
+      "s": "live",
+      "ev": "../#prism"
+     }
+    ]
+   },
+   "next": {
+    "version": {
+     "en": "Ejector of the Sinapse Compiler",
+     "pt": "Ejetor do Sinapse Compiler",
+     "zh": "Sinapse 编译器导出器"
+    },
+    "phase": 1,
+    "summary": {
+     "en": "Transpiling any graph from the real editor into a clean TypeScript module.",
+     "pt": "Transpilar qualquer grafo do editor real em um módulo TypeScript limpo.",
+     "zh": "将真实编辑器中的任意节点图转译为整洁的 TypeScript 模块。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "Graph JSON → pure TSL functions for all 52 nodes",
+       "pt": "JSON do grafo → funções TSL puras para os 52 nós",
+       "zh": "节点图 JSON → 全部 52 个节点的纯 TSL 函数"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Inspection and ejection in Monaco Editor",
+       "pt": "Inspeção e ejeção no Monaco Editor",
+       "zh": "在 Monaco Editor 中检查与导出"
+      },
+      "s": "planned"
+     }
+    ]
+   },
+   "links": [
+    {
+     "label": {
+      "en": "Eject a file",
+      "pt": "Ejetar um arquivo",
+      "zh": "导出文件"
+     },
+     "href": "../#prism"
+    }
+   ]
+  },
+  {
+   "id": "governance",
+   "name": "Governance & Monetization",
+   "tag": "OSC // APACHE 2.0",
+   "color": "#FF9F1C",
+   "status": "pending",
+   "now": {
+    "version": {
+     "en": "Defined model, fundraising not open",
+     "pt": "Modelo definido, arrecadação não aberta",
+     "zh": "模式已确定，筹款尚未开放"
+    },
+    "summary": {
+     "en": "License, support tiers and goals are defined. Enrollment with the Open Source Collective has not been completed yet.",
+     "pt": "Licença, tiers de apoio e metas estão definidos. A adesão ao Open Source Collective ainda não foi concluída.",
+     "zh": "许可证、支持方案和目标均已确定。Open Source Collective 的入驻尚未完成。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "Open-core under Apache 2.0",
+       "pt": "Open-core sob Apache 2.0",
+       "zh": "基于 Apache 2.0 的开放核心"
+      },
+      "s": "live",
+      "ev": "../#governanca"
+     },
+     {
+      "t": {
+       "en": "Tiers: Espectro Semente R$ 25, Dev da Galáxia R$ 75, Órbita Residente R$ 250, B2B custom",
+       "pt": "Tiers: Espectro Semente R$ 25, Dev da Galáxia R$ 75, Órbita Residente R$ 250, B2B sob medida",
+       "zh": "方案：Espectro Semente R$ 25、Dev da Galáxia R$ 75、Órbita Residente R$ 250、B2B 定制"
+      },
+      "s": "spec",
+      "ev": "../#apoio"
+     },
+     {
+      "t": {
+       "en": "Goals: R$ 15,000 (MVP V1.0) and R$ 50,000 (consolidation V1.5)",
+       "pt": "Metas: R$ 15.000 (MVP V1.0) e R$ 50.000 (consolidação V1.5)",
+       "zh": "目标：R$ 15,000（MVP V1.0）与 R$ 50,000（巩固 V1.5）"
+      },
+      "s": "spec",
+      "ev": "../#apoio"
+     },
+     {
+      "t": {
+       "en": "Fiscal hosting via Open Source Collective (501(c)(6)) + GitHub Sponsors",
+       "pt": "Hospedagem fiscal via Open Source Collective (501(c)(6)) + GitHub Sponsors",
+       "zh": "通过 Open Source Collective（501(c)(6)）+ GitHub Sponsors 进行财务托管"
+      },
+      "s": "pending"
+     }
+    ]
+   },
+   "next": {
+    "version": {
+     "en": "Active donations → international structure",
+     "pt": "Doações ativas → estrutura internacional",
+     "zh": "开启捐助 → 国际架构"
+    },
+    "phase": 0,
+    "summary": {
+     "en": "Phase 0 opens donations through the fiscal host; Phase 4 executes the international restructuring.",
+     "pt": "A Fase 0 abre as doações pela hospedagem fiscal; a Fase 4 executa a reorganização internacional.",
+     "zh": "第 0 阶段通过财务托管开放捐助；第 4 阶段执行国际架构重组。"
+    },
+    "items": [
+     {
+      "t": {
+       "en": "Phase 0: OSC + GitHub Sponsors enrollment and active donations",
+       "pt": "Fase 0: adesão ao OSC + GitHub Sponsors e doações ativas",
+       "zh": "第 0 阶段：入驻 OSC + GitHub Sponsors 并开放捐助"
+      },
+      "s": "pending"
+     },
+     {
+      "t": {
+       "en": "Angel investment via Convertible Loan (Brazil) or SAFE (US)",
+       "pt": "Investimento anjo via Mútuo Conversível (Brasil) ou SAFE (EUA)",
+       "zh": "通过可转换借款（巴西）或 SAFE（美国）进行天使投资"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Phase 4: Delaware Flip / Cayman Sandwich (Cayman HoldCo, Delaware Corp, Brazil OpCo)",
+       "pt": "Fase 4: Delaware Flip / Cayman Sandwich (Cayman HoldCo, Delaware Corp, Brasil OpCo)",
+       "zh": "第 4 阶段：Delaware Flip / Cayman Sandwich（开曼控股、特拉华公司、巴西运营公司）"
+      },
+      "s": "planned"
+     }
+    ]
+   },
+   "links": [
+    {
+     "label": {
+      "en": "Support tiers",
+      "pt": "Tiers de apoio",
+      "zh": "支持方案"
+     },
+     "href": "../#apoio"
+    }
+   ],
+   "sources": [
+    {
+     "en": "Business dossier and one-pagers (24/09/2026); OSC enrollment not completed according to the founder",
+     "pt": "Dossiê de negócios e one-pagers (24/09/2026); adesão ao OSC não concluída segundo o fundador",
+     "zh": "商业档案与一页纸简介（2026/09/24）；据创始人说明，OSC 入驻尚未完成"
+    }
+   ]
+  }
+ ],
+ "phases": [
+  {
+   "n": 0,
+   "weeks": "1–4",
+   "title": {
+    "en": "Foundation, AST & governance",
+    "pt": "Fundação, AST e governança",
+    "zh": "基础、AST 与治理"
+   },
+   "faces": [
+    "landing",
+    "governance",
+    "sinapse"
+   ],
+   "items": [
+    {
+     "t": {
+      "en": "Landing Hub live",
+      "pt": "Landing Hub no ar",
+      "zh": "Landing Hub 上线"
+     },
+     "s": "live"
+    },
+    {
+     "t": {
+      "en": "OSC / Apache 2.0 framework and active donations",
+      "pt": "Enquadramento OSC / Apache 2.0 e doações ativas",
+      "zh": "OSC / Apache 2.0 框架与开放捐助"
+     },
+     "s": "pending"
+    },
+    {
+     "t": {
+      "en": "@babel/parser AST parser on the BFF",
+      "pt": "Parser AST @babel/parser no BFF",
+      "zh": "BFF 上的 @babel/parser AST 解析器"
+     },
+     "s": "planned"
+    },
+    {
+     "t": {
+      "en": "Storage buffer alignment",
+      "pt": "Alinhamento de storage buffers",
+      "zh": "存储缓冲区对齐"
+     },
+     "s": "spec"
+    }
+   ]
+  },
+  {
+   "n": 1,
+   "weeks": "5–10",
+   "title": {
+    "en": "Core runtime & Sinapse Compiler",
+    "pt": "Core runtime e Sinapse Compiler",
+    "zh": "核心运行时与 Sinapse 编译器"
+   },
+   "faces": [
+    "sinapse",
+    "eject"
+   ],
+   "items": [
+    {
+     "t": {
+      "en": "Sinapse compiler: graph → readable TypeScript (Reafforesthree Engine)",
+      "pt": "Compilador Sinapse: grafo → TypeScript legível (Reafforesthree Engine)",
+      "zh": "Sinapse 编译器：节点图 → 可读 TypeScript（Reafforesthree Engine）"
+     },
+     "s": "built"
+    },
+    {
+     "t": {
+      "en": "TSL material compiler (Station)",
+      "pt": "Compilador de materiais TSL (Station)",
+      "zh": "TSL 材质编译器（Station）"
+     },
+     "s": "built"
+    },
+    {
+     "t": {
+      "en": "Functional TypeScript ejector",
+      "pt": "Ejetor TypeScript funcional",
+      "zh": "可用的 TypeScript 导出器"
+     },
+     "s": "built"
+    },
+    {
+     "t": {
+      "en": "Dual WebGPU pipelines in the engine",
+      "pt": "Pipelines duplos WebGPU na engine",
+      "zh": "引擎中的 WebGPU 双管线"
+     },
+     "s": "planned"
+    },
+    {
+     "t": {
+      "en": "Public engine release",
+      "pt": "Lançamento público da engine",
+      "zh": "引擎公开发布"
+     },
+     "s": "planned"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "weeks": "11–16",
+   "title": {
+    "en": "Prism Studio & multiplayer CRDTs",
+    "pt": "Prism Studio e multiplayer CRDT",
+    "zh": "Prism Studio 与多人 CRDT"
+   },
+   "faces": [
+    "prism",
+    "orbit",
+    "ada"
+   ],
+   "items": [
+    {
+     "t": {
+      "en": "React Flow + Zustand canvas (Station and Engine)",
+      "pt": "Canvas React Flow + Zustand (Station e Engine)",
+      "zh": "React Flow + Zustand 画布（Station 与 Engine）"
+     },
+     "s": "built"
+    },
+    {
+     "t": {
+      "en": "Yjs CRDTs on the edge",
+      "pt": "CRDTs Yjs na borda",
+      "zh": "边缘上的 Yjs CRDT"
+     },
+     "s": "planned"
+    },
+    {
+     "t": {
+      "en": "Offline-first PWA",
+      "pt": "PWA offline-first",
+      "zh": "离线优先 PWA"
+     },
+     "s": "planned"
+    },
+    {
+     "t": {
+      "en": "Dra. Ada (local model)",
+      "pt": "Dra. Ada (modelo local)",
+      "zh": "Dra. Ada（本地模型）"
+     },
+     "s": "planned"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "weeks": "17–22",
+   "title": {
+    "en": "Spectral Registry, refraction & monetization",
+    "pt": "Spectral Registry, refração e monetização",
+    "zh": "Spectral Registry、折射与变现"
+   },
+   "faces": [
+    "registry"
+   ],
+   "items": [
+    {
+     "t": {
+      "en": "Fork with permanent lineage (Archives Growth Tree)",
+      "pt": "Fork com linhagem permanente (Growth Tree do Archives)",
+      "zh": "带永久谱系的分叉（Archives Growth Tree）"
+     },
+     "s": "built"
+    },
+    {
+     "t": {
+      "en": "Simulated marketplace economy (75/25)",
+      "pt": "Economia de marketplace simulada (75/25)",
+      "zh": "模拟的市场经济（75/25）"
+     },
+     "s": "built"
+    },
+    {
+     "t": {
+      "en": "Monolithic .exp packages and 85/15 split with real payouts",
+      "pt": "Pacotes monolíticos .exp e split 85/15 com repasses reais",
+      "zh": "单体 .exp 包与真实分账的 85/15 分成"
+     },
+     "s": "planned"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "weeks": "23–28",
+   "title": {
+    "en": "International restructuring & global launch",
+    "pt": "Reorganização internacional e lançamento global",
+    "zh": "国际架构重组与全球发布"
+   },
+   "faces": [
+    "governance",
+    "landing"
+   ],
+   "items": [
+    {
+     "t": {
+      "en": "Delaware Flip / Cayman Sandwich",
+      "pt": "Delaware Flip / Cayman Sandwich",
+      "zh": "Delaware Flip / Cayman Sandwich"
+     },
+     "s": "planned"
+    },
+    {
+     "t": {
+      "en": "Awwwards SOTD submission",
+      "pt": "Submissão ao Awwwards SOTD",
+      "zh": "提交 Awwwards SOTD"
+     },
+     "s": "planned"
+    }
+   ]
+  }
+ ],
+ "changelog": [
+  {
+   "date": "2026-10-12",
+   "version": "Landing V4",
+   "faces": [
+    "landing",
+    "prism",
+    "sinapse",
+    "registry"
+   ],
+   "commit": null,
+   "title": {
+    "en": "Updates hub and node taxonomy",
+    "pt": "Central de atualizações e taxonomia de nós",
+    "zh": "更新中心与节点分类"
+   },
+   "items": [
+    {
+     "en": "New /atualizacoes/ page and #atualizacoes section with the status of the 8 faces",
+     "pt": "Nova página /atualizacoes/ e seção #atualizacoes com o status das 8 faces",
+     "zh": "新增 /atualizacoes/ 页面和 #atualizacoes 区块，展示 8 个模块的状态"
+    },
+    {
+     "en": "Real state of the Reafforesthree Engine, Station and Archives mapped into the 8 faces",
+     "pt": "Estado real da Reafforesthree Engine, do Station e do Archives mapeado nas 8 faces",
+     "zh": "将 Reafforesthree Engine、Station 与 Archives 的真实状态映射到 8 个模块"
+    },
+    {
+     "en": "Explorer of the 52 nodes of the Prism Studio technical sheet",
+     "pt": "Explorador dos 52 nós da ficha técnica do Prism Studio",
+     "zh": "Prism Studio 技术规格中 52 个节点的浏览器"
+    },
+    {
+     "en": "Hero CTAs aligned with the Prompt Mestre V1.1",
+     "pt": "CTAs do hero alinhados ao Prompt Mestre V1.1",
+     "zh": "首屏 CTA 与 Prompt Mestre V1.1 对齐"
+    }
+   ],
+   "local": false
+  },
+  {
+   "date": "2026-10-12",
+   "version": "Prism Studio · ficha",
+   "faces": [
+    "prism"
+   ],
+   "commit": null,
+   "title": {
+    "en": "Official technical sheet of Prism Studio",
+    "pt": "Ficha técnica oficial do Prism Studio",
+    "zh": "Prism Studio 官方技术规格"
+   },
+   "items": [
+    {
+     "en": "52 nodes in 8 color-coded categories, with sockets and Inspector STN—004 properties",
+     "pt": "52 nós em 8 categorias codificadas por cor, com sockets e propriedades do Inspector STN—004",
+     "zh": "8 个颜色编码类别中的 52 个节点，含接口与 Inspector STN—004 属性"
+    }
+   ],
+   "local": false
+  },
+  {
+   "date": "2026-10-09",
+   "version": "Landing V3",
+   "faces": [
+    "prism",
+    "registry",
+    "ada",
+    "orbit",
+    "eject"
+   ],
+   "commit": "f8d6642",
+   "title": {
+    "en": "Advanced editor, Yjs multiplayer, Spectral Registry and Dra. Ada",
+    "pt": "Editor avançado, multiplayer Yjs, Spectral Registry e Dra. Ada",
+    "zh": "高级编辑器、Yjs 多人协作、Spectral Registry 与 Dra. Ada"
+   },
+   "items": [
+    {
+     "en": "Quick-add, modifiers, isolation, bypass, Path Editor and node ↔ TSL sourcemap",
+     "pt": "Quick-add, modificadores, isolamento, bypass, Path Editor e sourcemap nó ↔ TSL",
+     "zh": "快速添加、修饰节点、隔离、旁路、路径编辑器以及节点 ↔ TSL 源映射"
+    },
+    {
+     "en": "Yjs CRDT between tabs with presence and cursors",
+     "pt": "CRDT Yjs entre abas com presença e cursores",
+     "zh": "标签页之间的 Yjs CRDT，含在线状态与光标"
+    },
+    {
+     "en": "Registry with .exp import/export and refraction lineage; Dra. Ada rule-based preview",
+     "pt": "Registry com import/export .exp e linhagem de refração; prévia da Dra. Ada por regras",
+     "zh": "支持 .exp 导入/导出与折射谱系的 Registry；基于规则的 Dra. Ada 预览"
+    }
+   ],
+   "local": false
+  },
+  {
+   "date": "2026-10-09",
+   "version": "Landing V2 (Prompt Mestre V1.1)",
+   "faces": [
+    "landing",
+    "sinapse"
+   ],
+   "commit": "02c9ca4",
+   "title": {
+    "en": "Real Sinapse Engine and live telemetry",
+    "pt": "Sinapse Engine real e telemetria ao vivo",
+    "zh": "真实 Sinapse Engine 与实时遥测"
+   },
+   "items": [
+    {
+     "en": "WebGPU hero (three/webgpu + TSL) with WebGL2 and Canvas 2D fallback",
+     "pt": "Hero em WebGPU (three/webgpu + TSL) com fallback WebGL2 e Canvas 2D",
+     "zh": "WebGPU 首屏（three/webgpu + TSL），可回退到 WebGL2 和 Canvas 2D"
+    },
+    {
+     "en": "Visible placeholders removed; Schema.org JSON-LD; DevTool layout",
+     "pt": "Marcadores visíveis removidos; JSON-LD Schema.org; layout de DevTool",
+     "zh": "移除可见占位符；Schema.org JSON-LD；开发者工具式布局"
+    }
+   ],
+   "local": false
+  },
+  {
+   "date": "2026-10-09",
+   "version": "Landing V1",
+   "faces": [
+    "landing",
+    "prism"
+   ],
+   "commit": "1c7d543",
+   "title": {
+    "en": "Landing Hub published",
+    "pt": "Landing Hub publicada",
+    "zh": "Landing Hub 发布"
+   },
+   "items": [
+    {
+     "en": "First version in EN / PT / 中文 with the Prism Studio prototype",
+     "pt": "Primeira versão em EN / PT / 中文 com o protótipo do Prism Studio",
+     "zh": "首个 EN / PT / 中文 版本，含 Prism Studio 原型"
+    }
+   ],
+   "local": false
+  },
+  {
+   "date": "2026-10-07",
+   "version": "Docs v2",
+   "faces": [
+    "sinapse",
+    "prism",
+    "registry",
+    "ada",
+    "governance"
+   ],
+   "commit": null,
+   "local": false,
+   "title": {
+    "en": "Technical dossier v2, design system and technology evolution analysis",
+    "pt": "Dossiê técnico v2, design system e análise de evoluções tecnológicas",
+    "zh": "技术档案 v2、设计系统与技术演进分析"
+   },
+   "items": [
+    {
+     "en": "Agentic Dra. Ada, edge AI, PWA, AST sanitizer and Web3 provenance mapped as next evolutions",
+     "pt": "Dra. Ada agêntica, IA na borda, PWA, sanitizador AST e proveniência Web3 mapeados como próximas evoluções",
+     "zh": "将智能体 Dra. Ada、边缘 AI、PWA、AST 清理器与 Web3 溯源规划为下一步演进"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-24",
+   "version": "Expctral",
+   "faces": [
+    "landing",
+    "governance"
+   ],
+   "commit": null,
+   "local": false,
+   "title": {
+    "en": "Reafforesthree becomes Expctral",
+    "pt": "O Reafforesthree vira Expctral",
+    "zh": "Reafforesthree 更名为 Expctral"
+   },
+   "items": [
+    {
+     "en": "Master plans, business dossier and one-pagers in PT / EN / 中文; Reafforesthree Station public page updated",
+     "pt": "Planos mestres, dossiê de negócios e one-pagers em PT / EN / 中文; página pública do Reafforesthree Station atualizada",
+     "zh": "总体规划、商业档案与 PT / EN / 中文 一页纸简介；Reafforesthree Station 公开页面更新"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-23",
+   "version": "Archives v0.1",
+   "faces": [
+    "registry"
+   ],
+   "commit": null,
+   "local": true,
+   "title": {
+    "en": "Archives MVP: library, marketplace and social",
+    "pt": "MVP do Archives: biblioteca, marketplace e social",
+    "zh": "Archives MVP：资源库、市场与社交"
+   },
+   "items": [
+    {
+     "en": "Fastify + SQLite server, React web app, Growth Tree, simulated economy and .rft format",
+     "pt": "Servidor Fastify + SQLite, app web React, Growth Tree, economia simulada e formato .rft",
+     "zh": "Fastify + SQLite 服务器、React 网页应用、Growth Tree、模拟经济与 .rft 格式"
+    }
+   ]
+  },
+  {
+   "date": "2026-08-02",
+   "version": "Station · NodeForge",
+   "faces": [
+    "prism"
+   ],
+   "commit": null,
+   "local": true,
+   "title": {
+    "en": "NodeForge shader studio with 52 nodes",
+    "pt": "Estúdio de shaders NodeForge com 52 nós",
+    "zh": "拥有 52 个节点的 NodeForge 着色器工作室"
+   },
+   "items": [
+    {
+     "en": "8 categories compiling to TSL, code panel and export; Paint Station paused at phase A4",
+     "pt": "8 categorias compilando para TSL, painel de código e exportação; Paint Station pausada na fase A4",
+     "zh": "8 个类别编译为 TSL，含代码面板与导出；Paint Station 暂停于 A4 阶段"
+    }
+   ]
+  },
+  {
+   "date": "2026-07-28",
+   "version": "Engine F3–F7",
+   "faces": [
+    "sinapse",
+    "eject"
+   ],
+   "commit": null,
+   "local": true,
+   "title": {
+    "en": "Engine: Path Editor, artificial life, game systems, packs and polish",
+    "pt": "Engine: Path Editor, vida artificial, sistemas de jogo, pacotes e polimento",
+    "zh": "引擎：路径编辑器、人工生命、游戏系统、机制包与打磨"
+   },
+   "items": [
+    {
+     "en": "69 nodes, 5 templates, 10 packs + 5 styles, instancing (84 enemies in 1 draw call), radial quick-add, 105 tests",
+     "pt": "69 nós, 5 templates, 10 pacotes + 5 estilos, instancing (84 inimigos em 1 draw call), quick-add radial, 105 testes",
+     "zh": "69 个节点、5 个模板、10 个机制包 + 5 种风格、实例化（84 个敌人 1 次绘制调用）、径向快速添加、105 项测试"
+    }
+   ]
+  },
+  {
+   "date": "2026-07-23",
+   "version": "Engine · Sinapse B–L",
+   "faces": [
+    "sinapse"
+   ],
+   "commit": "f1309b3",
+   "local": true,
+   "title": {
+    "en": "Sinapse families B–L and the Shooting Arena",
+    "pt": "Famílias B–L do Sinapse e a Arena de Tiro",
+    "zh": "Sinapse B–L 家族与射击竞技场"
+   },
+   "items": [
+    {
+     "en": "Combat, AI, health, HUD, VFX, audio and items; user manual with 56 nodes",
+     "pt": "Combate, IA, vida, HUD, VFX, áudio e itens; manual do usuário com 56 nós",
+     "zh": "战斗、AI、生命、HUD、VFX、音频与物品；含 56 个节点的用户手册"
+    }
+   ]
+  },
+  {
+   "date": "2026-07-22",
+   "version": "Engine · Sinapse F2",
+   "faces": [
+    "sinapse"
+   ],
+   "commit": "d039dbc",
+   "local": true,
+   "title": {
+    "en": "Character controller and Platform 3D template",
+    "pt": "Controlador de personagem e template Plataforma 3D",
+    "zh": "角色控制器与 3D 平台模板"
+   },
+   "items": [
+    {
+     "en": "Third-person camera, collectible and respawn: a full game built only with nodes",
+     "pt": "Câmera 3ª pessoa, coletável e respawn: um jogo completo montado só com nós",
+     "zh": "第三人称相机、收集物与重生：完全用节点搭建的完整游戏"
+    }
+   ]
+  },
+  {
+   "date": "2026-07-21",
+   "version": "Engine v0.1",
+   "faces": [
+    "sinapse",
+    "eject"
+   ],
+   "commit": "3bca707",
+   "local": true,
+   "title": {
+    "en": "Reafforesthree Engine v0.1",
+    "pt": "Reafforesthree Engine v0.1",
+    "zh": "Reafforesthree Engine v0.1"
+   },
+   "items": [
+    {
+     "en": "Complete editor + runtime, standalone player, local Archives, CI and the first Sinapse compiler",
+     "pt": "Editor + runtime completos, player standalone, Archives local, CI e o primeiro compilador Sinapse",
+     "zh": "完整的编辑器 + 运行时、独立播放器、本地 Archives、CI 与首个 Sinapse 编译器"
+    }
+   ]
+  }
+ ],
+ "taxonomy": {
+  "source": {
+   "en": "Prism Studio official technical sheet (12/10/2026), matching the 52 definitions of the Station NodeRegistry",
+   "pt": "Ficha técnica oficial do Prism Studio (12/10/2026), idêntica às 52 definições do NodeRegistry do Station",
+   "zh": "Prism Studio 官方技术规格（2026/10/12），与 Station NodeRegistry 的 52 个定义一致"
+  },
+  "categories": [
+   {
+    "id": "INP",
+    "color": "#10B981",
+    "name": {
+     "en": "Input",
+     "pt": "Entrada",
+     "zh": "输入"
+    },
+    "about": {
+     "en": "Data reading and constants",
+     "pt": "Leitura e constantes de dados",
+     "zh": "数据读取与常量"
+    },
+    "nodes": [
+     {
+      "name": "Image Texture",
+      "in": "UV (Vector2)",
+      "out": "Color (Vector4)",
+      "desc": {
+       "en": "Loads and samples a 2D/3D texture from an image file or buffer.",
+       "pt": "Carrega e amostra uma textura 2D/3D a partir de um arquivo de imagem ou buffer.",
+       "zh": "从图像文件或缓冲区加载并采样 2D/3D 纹理。"
+      },
+      "props": {
+       "en": "Image file picker, Projection (UV, Triplanar), Triplanar Scale (float: 1.00)",
+       "pt": "Seletor de arquivo de imagem, Projeção (UV, Triplanar), Escala Triplanar (float: 1.00)"
+      }
+     },
+     {
+      "name": "Value",
+      "in": "—",
+      "out": "Value (Float)",
+      "desc": {
+       "en": "Provides a constant floating-point scalar for numeric control.",
+       "pt": "Fornece um valor escalar constante de ponto flutuante para controle numérico.",
+       "zh": "提供用于数值控制的浮点常量。"
+      },
+      "props": {
+       "en": "Value slider and numeric field (0.00 to 1.00+)",
+       "pt": "Slider e campo numérico Value (0.00 a 1.00+)"
+      }
+     },
+     {
+      "name": "Color",
+      "in": "—",
+      "out": "Color (Vector4)",
+      "desc": {
+       "en": "Defines an RGBA/hex color constant to feed materials.",
+       "pt": "Define uma constante de cor RGBA/Hexadecimal para alimentação de materiais.",
+       "zh": "定义 RGBA/十六进制颜色常量，用于材质输入。"
+      },
+      "props": {
+       "en": "Interactive color picker and hex input (e.g. #c8ff00)",
+       "pt": "Color picker interativo e entrada de código Hexadecimal (ex.: #c8ff00)"
+      }
+     }
+    ]
+   },
+   {
+    "id": "GEN",
+    "color": "#06B6D4",
+    "name": {
+     "en": "Generate",
+     "pt": "Gerar",
+     "zh": "生成"
+    },
+    "about": {
+     "en": "Procedural generators and noises",
+     "pt": "Geradores procedurais e ruídos",
+     "zh": "程序化生成器与噪声"
+    },
+    "nodes": [
+     {
+      "name": "Noise",
+      "in": "Coord (Vector3)",
+      "out": "Value (Float)",
+      "desc": {
+       "en": "Generates continuous procedural noise (Perlin / Simplex) for organic surfaces.",
+       "pt": "Gera ruído procedural contínuo (Perlin / Simplex) para superfícies orgânicas.",
+       "zh": "生成连续的程序化噪声（Perlin / Simplex），用于有机表面。"
+      },
+      "props": {
+       "en": "Scale (float), Octaves (int: 1-8), Roughness (float), Domain (2D UV / 3D Position)",
+       "pt": "Scale (float), Octaves (int: 1-8), Roughness (float), Domínio (2D UV / 3D Posição)"
+      }
+     },
+     {
+      "name": "Voronoi",
+      "in": "Coord (Vector3)",
+      "out": "Value (Float)",
+      "desc": {
+       "en": "Generates cellular noise based on the Voronoi diagram for organic patterns and crystals.",
+       "pt": "Gera ruído celular baseado no diagrama de Voronoi para padrões orgânicos e cristais.",
+       "zh": "基于 Voronoi 图生成细胞噪声，用于有机图案与晶体。"
+      },
+      "props": {
+       "en": "Scale (float), Randomness (float), Distance metric (Euclidean, Manhattan)",
+       "pt": "Scale (float), Randomness (float), Métrica de Distância (Euclidiana, Manhattan)"
+      }
+     },
+     {
+      "name": "Cells",
+      "in": "Coord (Vector3)",
+      "out": "Value (Float)",
+      "desc": {
+       "en": "Produces discrete cells with a constant value per cellular region.",
+       "pt": "Produz células discretas com valores constantes por região celular.",
+       "zh": "生成每个区域取常量值的离散细胞。"
+      },
+      "props": {
+       "en": "Scale (float), Smoothness (float), Coordinate domain",
+       "pt": "Scale (float), Smoothness (float), Domínio de Coordenadas"
+      }
+     },
+     {
+      "name": "Checker",
+      "in": "UV (Vector2)",
+      "out": "Color (Vector4)",
+      "desc": {
+       "en": "Generates a 2D checkerboard pattern alternating between two tones.",
+       "pt": "Gera um padrão xadrez bidimensional alternando entre duas tonalidades.",
+       "zh": "生成在两种色调之间交替的二维棋盘格图案。"
+      },
+      "props": {
+       "en": "Scale (float), Color A (Hex), Color B (Hex)",
+       "pt": "Scale (float), Color A (Hex), Color B (Hex)"
+      }
+     },
+     {
+      "name": "Gradient",
+      "in": "UV (Vector2)",
+      "out": "Value (Float)",
+      "desc": {
+       "en": "Generates a procedural linear, radial or angular gradient.",
+       "pt": "Gera uma transição procedural de gradiente linear, radial ou angular.",
+       "zh": "生成程序化的线性、径向或角度渐变。"
+      },
+      "props": {
+       "en": "Gradient type (Linear, Radial, Angular), Axis (X, Y)",
+       "pt": "Tipo de Gradiente (Linear, Radial, Angular), Eixo (X, Y)"
+      }
+     },
+     {
+      "name": "Wave",
+      "in": "UV (Vector2)",
+      "out": "Value (Float)",
+      "desc": {
+       "en": "Generates procedural sine or sawtooth wave patterns.",
+       "pt": "Gera padrões de ondas procedurais senoidais ou dentes de serra.",
+       "zh": "生成程序化的正弦波或锯齿波图案。"
+      },
+      "props": {
+       "en": "Frequency (float), Phase (float), Distortion (float), Profile (Sine, Saw, Triangle)",
+       "pt": "Frequency (float), Phase (float), Distortion (float), Profile (Sine, Saw, Triangle)"
+      }
+     },
+     {
+      "name": "Brick",
+      "in": "UV (Vector2)",
+      "out": "Value (Float)",
+      "desc": {
+       "en": "Generates a procedural pattern of bricks and mortar.",
+       "pt": "Gera um padrão procedural simulando blocos de tijolos e argamassa.",
+       "zh": "生成模拟砖块与砂浆的程序化图案。"
+      },
+      "props": {
+       "en": "Brick Width, Brick Height, Mortar Size, Mortar Color, Offset",
+       "pt": "Brick Width, Brick Height, Mortar Size, Mortar Color, Offset"
+      }
+     },
+     {
+      "name": "Dots",
+      "in": "UV (Vector2)",
+      "out": "Value (Float)",
+      "desc": {
+       "en": "Generates a repeating dot screen and concentric circles.",
+       "pt": "Gera uma retícula pontilhada e círculos concêntricos repetitivos.",
+       "zh": "生成重复的点阵网格与同心圆。"
+      },
+      "props": {
+       "en": "Scale (float), Dot Radius (float), Smooth Edge (float)",
+       "pt": "Scale (float), Dot Radius (float), Smooth Edge (float)"
+      }
+     }
+    ]
+   },
+   {
+    "id": "COL",
+    "color": "#A855F7",
+    "name": {
+     "en": "Color",
+     "pt": "Cor",
+     "zh": "颜色"
+    },
+    "about": {
+     "en": "Chromatic and tonal manipulation",
+     "pt": "Manipulação cromática e tonal",
+     "zh": "色彩与色调处理"
+    },
+    "nodes": [
+     {
+      "name": "Mix",
+      "in": "A (Color), B (Color), Fac (Float)",
+      "out": "Color (Vector4)",
+      "desc": {
+       "en": "Linearly interpolates between two colors or values based on a factor.",
+       "pt": "Interpola linearmente entre duas cores ou valores de entrada com base num fator.",
+       "zh": "根据系数在两种颜色或数值之间线性插值。"
+      },
+      "props": {
+       "en": "Factor (float: 0.00 to 1.00), Blend mode (Mix, Multiply, Add, Screen)",
+       "pt": "Factor (float: 0.00 a 1.00), Modo de Mistura (Mix, Multiply, Add, Screen)"
+      },
+      "live": true
+     },
+     {
+      "name": "Color Ramp",
+      "in": "In (Float)",
+      "out": "Color (Vector4)",
+      "desc": {
+       "en": "Remaps scalar values through a gradient with multiple color stops.",
+       "pt": "Remapeia valores escalares através de um gradiente com múltiplos marcadores de cor.",
+       "zh": "通过带多个色标的渐变重新映射标量值。"
+      },
+      "props": {
+       "en": "Interactive gradient bar, color stops, interpolation (Linear, Constant, Ease)",
+       "pt": "Barra de gradiente interativa, paradas de cor (Stops), interpolação (Linear, Constant, Ease)"
+      }
+     },
+     {
+      "name": "Gradient Map",
+      "in": "In (Float)",
+      "out": "Color (Vector4)",
+      "desc": {
+       "en": "Applies a direct color mapping over an input grayscale.",
+       "pt": "Aplica um mapeamento de cor direto sobre uma escala de cinza de entrada.",
+       "zh": "在输入灰度上直接应用颜色映射。"
+      },
+      "props": {
+       "en": "Shadows Color, Highlights Color, Position A, Position B",
+       "pt": "Shadows Color, Highlights Color, Position A, Position B"
+      }
+     },
+     {
+      "name": "Brightness / Contrast",
+      "in": "Color (Vector4)",
+      "out": "Color (Vector4)",
+      "desc": {
+       "en": "Adjusts the brightness and contrast levels of the image or color vector.",
+       "pt": "Ajusta diretamente os níveis de brilho e contraste da imagem ou vetor de cor.",
+       "zh": "直接调整图像或颜色向量的亮度与对比度。"
+      },
+      "props": {
+       "en": "Brightness (float: -1.0 to 1.0), Contrast (float: -1.0 to 1.0)",
+       "pt": "Brightness (float: -1.0 a 1.0), Contrast (float: -1.0 a 1.0)"
+      }
+     },
+     {
+      "name": "HSV",
+      "in": "Color (Vector4)",
+      "out": "Color (Vector4)",
+      "desc": {
+       "en": "Controls the Hue, Saturation and Value channels.",
+       "pt": "Controla os canais de Hue (Matiz), Saturation (Saturação) e Value (Valor).",
+       "zh": "控制色相、饱和度与明度通道。"
+      },
+      "props": {
+       "en": "Hue (0.0 to 1.0), Saturation (0.0 to 2.0), Value (0.0 to 2.0)",
+       "pt": "Hue (0.0 a 1.0), Saturation (0.0 a 2.0), Value (0.0 a 2.0)"
+      }
+     },
+     {
+      "name": "Hue Shift",
+      "in": "Color (Vector4)",
+      "out": "Color (Vector4)",
+      "desc": {
+       "en": "Rotates the color wheel by an angle.",
+       "pt": "Aplica um deslocamento angular de rotação na roda de cores.",
+       "zh": "按角度旋转色轮。"
+      },
+      "props": {
+       "en": "Angle (degrees: 0° to 360°)",
+       "pt": "Angle (graus: 0° a 360°)"
+      }
+     },
+     {
+      "name": "Posterize",
+      "in": "Color (Vector4)",
+      "out": "Color (Vector4)",
+      "desc": {
+       "en": "Quantizes continuous color channels into a finite number of discrete steps.",
+       "pt": "Quantiza os canais de cor contínuos em um número finito de degraus discretos.",
+       "zh": "将连续的颜色通道量化为有限的离散级数。"
+      },
+      "props": {
+       "en": "Steps (int: 2 to 32 levels)",
+       "pt": "Steps (int: 2 a 32 níveis)"
+      }
+     },
+     {
+      "name": "Invert",
+      "in": "In (Color)",
+      "out": "Color (Vector4)",
+      "desc": {
+       "en": "Inverts the input color channels (oneMinus operator).",
+       "pt": "Inverte complementarmente os canais de cor de entrada (operador oneMinus).",
+       "zh": "对输入颜色通道取补（oneMinus 运算）。"
+      },
+      "props": {
+       "en": "Pure computation node, no extra parameters",
+       "pt": "Nó de cálculo puro sem parâmetros adicionais"
+      }
+     },
+     {
+      "name": "Luminance",
+      "in": "Color (Vector4)",
+      "out": "Value (Float)",
+      "desc": {
+       "en": "Converts a color vector into a weighted perceptual luminance scalar.",
+       "pt": "Converte um vetor de cor em um escalar de luminância perceptual ponderada.",
+       "zh": "将颜色向量转换为加权的感知亮度标量。"
+      },
+      "props": {
+       "en": "Weighting curve (Rec. 601, Rec. 709, Perceptual)",
+       "pt": "Curva de ponderação (Rec. 601, Rec. 709, Perceptual)"
+      }
+     }
+    ]
+   },
+   {
+    "id": "FIL",
+    "color": "#FF9F1C",
+    "name": {
+     "en": "Filter",
+     "pt": "Filtro",
+     "zh": "滤镜"
+    },
+    "about": {
+     "en": "Buffer and histogram processing",
+     "pt": "Processamento de buffer e histograma",
+     "zh": "缓冲区与直方图处理"
+    },
+    "nodes": [
+     {
+      "name": "Levels",
+      "in": "In (Color / Float)",
+      "out": "Color (Vector4), Value (Float)",
+      "desc": {
+       "en": "Adjusts the input histogram with black point, white point and gamma.",
+       "pt": "Ajusta o histograma de entrada controlando pontos de preto, branco e gama.",
+       "zh": "通过黑场、白场和伽马调整输入直方图。"
+      },
+      "props": {
+       "en": "In Black (0.00), In White (1.00), Gamma (1.00), Out Black (0.00), Out White (1.00)",
+       "pt": "In Black (0.00), In White (1.00), Gamma (1.00), Out Black (0.00), Out White (1.00)"
+      }
+     },
+     {
+      "name": "Blur",
+      "in": "In (Color)",
+      "out": "Color (Vector4)",
+      "desc": {
+       "en": "Applies Gaussian or box spatial blur to an input buffer.",
+       "pt": "Aplica desfoque espacial gaussiano ou de caixa em um buffer de entrada.",
+       "zh": "对输入缓冲区应用高斯或方框空间模糊。"
+      },
+      "props": {
+       "en": "Radius (float: 0.0 to 10.0 px), Sampling quality",
+       "pt": "Radius (float: 0.0 a 10.0 px), Qualidade de Amostragem"
+      }
+     }
+    ]
+   },
+   {
+    "id": "VEC",
+    "color": "#38BDF8",
+    "name": {
+     "en": "Vector",
+     "pt": "Vetor",
+     "zh": "向量"
+    },
+    "about": {
+     "en": "Coordinates, space and 2D→3D relief",
+     "pt": "Coordenadas, espaço e relevo 2D→3D",
+     "zh": "坐标、空间与 2D→3D 起伏"
+    },
+    "nodes": [
+     {
+      "name": "UV",
+      "in": "—",
+      "out": "UV (Vector2)",
+      "desc": {
+       "en": "Reads the UV mapping coordinates directly from the 3D model.",
+       "pt": "Lê as coordenadas de mapeamento UV diretamente do modelo 3D.",
+       "zh": "直接从 3D 模型读取 UV 映射坐标。"
+      },
+      "props": {
+       "en": "UV channel index (0, 1)",
+       "pt": "Canal UV Index (0, 1)"
+      }
+     },
+     {
+      "name": "Position",
+      "in": "—",
+      "out": "Position (Vector3)",
+      "desc": {
+       "en": "Captures the spatial position of the object's vertices/fragments.",
+       "pt": "Captura a posição espacial dos vértices/fragmentos do objeto.",
+       "zh": "获取物体顶点/片元的空间位置。"
+      },
+      "props": {
+       "en": "Coordinate space (Local vs World)",
+       "pt": "Espaço de Coordenada (Local Space vs World Space)"
+      }
+     },
+     {
+      "name": "Mapping",
+      "in": "UV (Vector2)",
+      "out": "UV (Vector2)",
+      "desc": {
+       "en": "Applies affine transforms (scale, offset, rotation) to UV coordinates.",
+       "pt": "Aplica transformações afins (escala, deslocamento, rotação) em coordenadas UV.",
+       "zh": "对 UV 坐标应用仿射变换（缩放、偏移、旋转）。"
+      },
+      "props": {
+       "en": "Scale (float), Offset X (float), Offset Y (float), Rotate (degrees: 0° to 360°)",
+       "pt": "Scale (float), Offset X (float), Offset Y (float), Rotate (graus: 0° a 360°)"
+      }
+     },
+     {
+      "name": "Normal Map",
+      "in": "Color (Vector4)",
+      "out": "Normal (Vector3)",
+      "desc": {
+       "en": "Decodes a tangent-space normal map for lighting.",
+       "pt": "Decodifica um mapa de normais em espaço de tangente para cálculo de iluminação.",
+       "zh": "解码切线空间法线贴图，用于光照计算。"
+      },
+      "props": {
+       "en": "Strength (float: 0.0 to 2.0), Tangent space",
+       "pt": "Strength (float: 0.0 a 2.0), Espaço de Tangente"
+      }
+     },
+     {
+      "name": "Bump",
+      "in": "Height (Float)",
+      "out": "Normal (Vector3)",
+      "desc": {
+       "en": "Perturbs surface normals from a grayscale height map.",
+       "pt": "Calcula perturbações nas normais da superfície a partir de um mapa de altura em escala de cinza.",
+       "zh": "根据灰度高度图扰动表面法线。"
+      },
+      "props": {
+       "en": "Strength (float), Distance (float)",
+       "pt": "Strength (float), Distance (float)"
+      }
+     },
+     {
+      "name": "Sobel Normal",
+      "in": "Height (Float)",
+      "out": "Normal (Vector3)",
+      "desc": {
+       "en": "Converts 2D height maps into 3D normals with the Sobel convolution.",
+       "pt": "Converte mapas de altura 2D em normais 3D usando o algoritmo de convolução de Sobel.",
+       "zh": "使用 Sobel 卷积将 2D 高度图转换为 3D 法线。"
+      },
+      "props": {
+       "en": "Strength (float: 1.00), Blur (float: 0.00), Invert Y (boolean)",
+       "pt": "Strength (float: 1.00), Blur (float: 0.00), Invert Y (boolean)"
+      }
+     },
+     {
+      "name": "Fresnel",
+      "in": "Normal (Vector3)",
+      "out": "Value (Float)",
+      "desc": {
+       "en": "Computes angular reflectivity from the angle between normal and view.",
+       "pt": "Calcula o efeito de refletividade angular baseado no ângulo entre a normal e a visão.",
+       "zh": "根据法线与视线的夹角计算角度反射率。"
+      },
+      "props": {
+       "en": "Power (float: 1.0 to 5.0)",
+       "pt": "Power (float: 1.0 a 5.0)"
+      }
+     },
+     {
+      "name": "Displacement",
+      "in": "Height (Float)",
+      "out": "Vector (Vector3)",
+      "desc": {
+       "en": "Generates a real geometric displacement vector for vertices.",
+       "pt": "Gera um vetor de deslocamento geométrico real de vértices.",
+       "zh": "生成真实的顶点几何位移向量。"
+      },
+      "props": {
+       "en": "Scale (float), Midlevel (float: 0.50)",
+       "pt": "Scale (float), Midlevel (float: 0.50)"
+      }
+     },
+     {
+      "name": "Separate RGB",
+      "in": "Color (Vector4)",
+      "out": "R (Float), G (Float), B (Float)",
+      "desc": {
+       "en": "Splits a color vector into its Red, Green and Blue scalars.",
+       "pt": "Decompõe um vetor de cor nos seus componentes escalares individuais Red, Green e Blue.",
+       "zh": "将颜色向量拆分为红、绿、蓝三个标量。"
+      },
+      "props": {
+       "en": "Pure component split, no extra parameters",
+       "pt": "Nó puro de decomposição de componentes sem parâmetros adicionais"
+      }
+     },
+     {
+      "name": "Combine RGB",
+      "in": "R (Float), G (Float), B (Float)",
+      "out": "Color (Vector4)",
+      "desc": {
+       "en": "Recombines three scalars into a single RGBA color vector.",
+       "pt": "Recompõe três valores escalares individuais num único vetor de cor RGBA.",
+       "zh": "将三个标量重新组合为一个 RGBA 颜色向量。"
+      },
+      "props": {
+       "en": "Numeric fallback values for R, G and B",
+       "pt": "Valores numéricos de fallback para R, G e B"
+      }
+     }
+    ]
+   },
+   {
+    "id": "UTI",
+    "color": "#A3ABBA",
+    "name": {
+     "en": "Utility",
+     "pt": "Utilitário",
+     "zh": "工具"
+    },
+    "about": {
+     "en": "Math, animation and organization",
+     "pt": "Matemática, animação e organização",
+     "zh": "数学、动画与组织"
+    },
+    "nodes": [
+     {
+      "name": "Math",
+      "in": "A (Float), B (Float)",
+      "out": "Value (Float)",
+      "desc": {
+       "en": "Performs basic and trigonometric math on scalars.",
+       "pt": "Executa operações matemáticas básicas e trigonométricas sobre escalares.",
+       "zh": "对标量执行基础与三角运算。"
+      },
+      "props": {
+       "en": "Operation (Add, Subtract, Multiply, Divide, Power, Min, Max, Sin, Cos, Modulo)",
+       "pt": "Operação (Add, Subtract, Multiply, Divide, Power, Min, Max, Sin, Cos, Modulo)"
+      }
+     },
+     {
+      "name": "Clamp",
+      "in": "In (Float)",
+      "out": "Value (Float)",
+      "desc": {
+       "en": "Keeps the input strictly between a minimum and a maximum.",
+       "pt": "Restringe o valor de entrada para que permaneça estritamente entre um mínimo e um máximo.",
+       "zh": "将输入限制在最小值与最大值之间。"
+      },
+      "props": {
+       "en": "Min (float: 0.00), Max (float: 1.00)",
+       "pt": "Min (float: 0.00), Max (float: 1.00)"
+      }
+     },
+     {
+      "name": "Remap",
+      "in": "In (Float)",
+      "out": "Value (Float)",
+      "desc": {
+       "en": "Linearly remaps a value from one range to another.",
+       "pt": "Remapeia linearmente um valor de um intervalo original para um novo intervalo de saída.",
+       "zh": "将数值从一个区间线性映射到另一个区间。"
+      },
+      "props": {
+       "en": "In Low (0.00), In High (1.00), Out Low (0.00), Out High (1.00)",
+       "pt": "In Low (0.00), In High (1.00), Out Low (0.00), Out High (1.00)"
+      }
+     },
+     {
+      "name": "Step",
+      "in": "In (Float)",
+      "out": "Value (Float)",
+      "desc": {
+       "en": "Returns 0.0 below the edge threshold and 1.0 at or above it.",
+       "pt": "Retorna 0.0 se a entrada for menor que o limiar (Edge) e 1.0 se for maior ou igual.",
+       "zh": "输入低于阈值时返回 0.0，大于等于阈值时返回 1.0。"
+      },
+      "props": {
+       "en": "Edge (float: cut-off threshold)",
+       "pt": "Edge (float: limiar de corte)"
+      }
+     },
+     {
+      "name": "Smoothstep",
+      "in": "In (Float)",
+      "out": "Value (Float)",
+      "desc": {
+       "en": "Smooth Hermite interpolation between two thresholds.",
+       "pt": "Aplica interpolação suave Hermite entre dois limiares de transição.",
+       "zh": "在两个阈值之间进行平滑的 Hermite 插值。"
+      },
+      "props": {
+       "en": "Edge 0 (0.00), Edge 1 (1.00)",
+       "pt": "Edge 0 (0.00), Edge 1 (1.00)"
+      }
+     },
+     {
+      "name": "Time",
+      "in": "—",
+      "out": "Time (Float)",
+      "desc": {
+       "en": "Provides a time value in seconds, continuously animated by the engine.",
+       "pt": "Fornece um valor de tempo em segundos animados continuamente pelo motor gráfico.",
+       "zh": "提供由引擎持续驱动的时间值（秒）。"
+      },
+      "props": {
+       "en": "Speed multiplier (float: 1.00), Wave mode (Sine, Linear, PingPong)",
+       "pt": "Speed multiplier (float: 1.00), Modo de Onda (Sine, Linear, PingPong)"
+      },
+      "live": true
+     },
+     {
+      "name": "Reroute",
+      "in": "In (Any)",
+      "out": "Out (Same as In)",
+      "desc": {
+       "en": "Neutral anchor point to organize and redirect wires on the canvas.",
+       "pt": "Ponto de ancoragem visual neutro usado para organizar e redirecionar fios de conexão no canvas.",
+       "zh": "用于在画布上整理和重定向连线的中性锚点。"
+      },
+      "props": {
+       "en": "Purely structural node, no parameters",
+       "pt": "Nó puramente estrutural de organização sem parâmetros"
+      }
+     },
+     {
+      "name": "Frame",
+      "in": "—",
+      "out": "—",
+      "desc": {
+       "en": "Visual, themed group box to organize related nodes.",
+       "pt": "Caixa de agrupamento visual e temática para organizar conjuntos de nós relacionados.",
+       "zh": "用于组织相关节点的可视化主题分组框。"
+      },
+      "props": {
+       "en": "Group title, Frame color, Note description",
+       "pt": "Título do Grupo, Cor do Frame, Descrição da Nota"
+      }
+     }
+    ]
+   },
+   {
+    "id": "VFX",
+    "color": "#FFC069",
+    "name": {
+     "en": "VFX",
+     "pt": "VFX",
+     "zh": "视觉特效"
+    },
+    "about": {
+     "en": "GPU physics and particle simulation",
+     "pt": "Física e simulação de partículas em GPU",
+     "zh": "GPU 物理与粒子模拟"
+    },
+    "nodes": [
+     {
+      "name": "Particle",
+      "in": "Life (Float), Mass (Float)",
+      "out": "Particle State",
+      "desc": {
+       "en": "Defines the core physical properties and mass of individual particles.",
+       "pt": "Define propriedades físicas fundamentais e massa de partículas individuais.",
+       "zh": "定义单个粒子的基本物理属性与质量。"
+      },
+      "props": {
+       "en": "Lifetime Min/Max (seconds), Mass Base",
+       "pt": "Lifetime Min/Max (segundos), Mass Base"
+      }
+     },
+     {
+      "name": "Emitter",
+      "in": "Rate (Float)",
+      "out": "Emitter Stream",
+      "desc": {
+       "en": "Manages the emission rate per second and the emitter's volume/shape.",
+       "pt": "Gerencia a taxa de emissão por segundo e o volume/forma geométrica do emissor.",
+       "zh": "管理每秒发射率以及发射器的体积/形状。"
+      },
+      "props": {
+       "en": "Emission Rate (particles/s), Shape (Cone, Point, Sphere, Box), Opening angle",
+       "pt": "Emission Rate (partículas/s), Forma (Cone, Point, Sphere, Box), Ângulo de Abertura"
+      }
+     },
+     {
+      "name": "Motion",
+      "in": "Velocity (Vector3)",
+      "out": "Motion Stream",
+      "desc": {
+       "en": "Applies dynamic motion forces: acceleration, gravity and air drag.",
+       "pt": "Aplica forças dinâmicas de movimento, aceleração, gravidade e arrasto de ar.",
+       "zh": "施加动态运动力：加速度、重力与空气阻力。"
+      },
+      "props": {
+       "en": "Initial Velocity, Gravity Vector (X, Y, Z), Air Drag Coefficient",
+       "pt": "Initial Velocity, Gravity Vector (X, Y, Z), Air Drag Coefficient"
+      }
+     },
+     {
+      "name": "Turbulence",
+      "in": "Position (Vector3), Amount (Float)",
+      "out": "Position (Vector3)",
+      "desc": {
+       "en": "Generates a 3D turbulence field and fluid noise to agitate particles.",
+       "pt": "Gera um campo de turbulência tridimensional e ruído fluido para agitação de partículas.",
+       "zh": "生成三维湍流场与流体噪声以扰动粒子。"
+      },
+      "props": {
+       "en": "Frequency (float), Octaves (int), Strength (float)",
+       "pt": "Frequency (float), Octaves (int), Strength (float)"
+      },
+      "live": true
+     },
+     {
+      "name": "Vortex",
+      "in": "Center (Vector3)",
+      "out": "Force (Vector3)",
+      "desc": {
+       "en": "Applies a rotational swirl force around a central focal axis.",
+       "pt": "Aplica uma força de rotação e redemoinho em torno de um eixo focal central.",
+       "zh": "围绕中心轴施加旋转涡流力。"
+      },
+      "props": {
+       "en": "Vortex Axis (X, Y, Z), Angular Speed, Inward Attraction",
+       "pt": "Vortex Axis (X, Y, Z), Angular Speed, Inward Attraction"
+      },
+      "live": true
+     },
+     {
+      "name": "Attractor",
+      "in": "Target (Vector3)",
+      "out": "Force (Vector3)",
+      "desc": {
+       "en": "Generates a gravitational attraction or repulsion force towards a 3D point.",
+       "pt": "Gera uma força de atração ou repulsão gravitacional em direção a um ponto 3D no espaço.",
+       "zh": "朝向三维空间中的点产生引力或斥力。"
+      },
+      "props": {
+       "en": "Attractor Strength, Falloff Radius, Repel Mode (boolean)",
+       "pt": "Attractor Strength, Falloff Radius, Repel Mode (boolean)"
+      }
+     },
+     {
+      "name": "Size over Life",
+      "in": "Size Curve",
+      "out": "Size Stream",
+      "desc": {
+       "en": "Modulates particle size along its lifetime curve.",
+       "pt": "Modula a escala/tamanho das partículas ao longo da sua curva temporal de vida útil.",
+       "zh": "沿生命周期曲线调节粒子大小。"
+      },
+      "props": {
+       "en": "Start Size, Peak Size, End Size, Curve Profile",
+       "pt": "Start Size, Peak Size, End Size, Curve Profile"
+      }
+     },
+     {
+      "name": "Color over Life",
+      "in": "Color Ramp",
+      "out": "Color Stream",
+      "desc": {
+       "en": "Applies a color gradient ramp along the particles' lifetime.",
+       "pt": "Aplica uma rampa de gradiente cromático ao longo da vida útil das partículas.",
+       "zh": "沿粒子生命周期应用颜色渐变。"
+      },
+      "props": {
+       "en": "Birth Color, Mid Color, Death Color, Opacity Profile",
+       "pt": "Birth Color, Mid Color, Death Color, Opacity Profile"
+      }
+     },
+     {
+      "name": "Fade",
+      "in": "In (Float)",
+      "out": "Opacity (Float)",
+      "desc": {
+       "en": "Controls gradual fade-in and fade-out of transparency.",
+       "pt": "Controla o surgimento e o desaparecimento gradual de transparência.",
+       "zh": "控制透明度的渐入与渐出。"
+      },
+      "props": {
+       "en": "Fade In Duration (s), Fade Out Duration (s)",
+       "pt": "Fade In Duration (seg), Fade Out Duration (seg)"
+      }
+     },
+     {
+      "name": "Sprite",
+      "in": "Texture",
+      "out": "Sprite Stream",
+      "desc": {
+       "en": "Assigns an animated atlas or sprite sheet to each particle.",
+       "pt": "Atribui uma textura de atlas ou folha de sprites animados para cada partícula.",
+       "zh": "为每个粒子分配图集纹理或动画精灵表。"
+      },
+      "props": {
+       "en": "Sprite Texture, Columns (int), Rows (int), Animation Speed",
+       "pt": "Sprite Texture, Columns (int), Rows (int), Animation Speed"
+      }
+     }
+    ]
+   },
+   {
+    "id": "OUT",
+    "color": "#E9ECF2",
+    "name": {
+     "en": "Output",
+     "pt": "Saídas",
+     "zh": "输出"
+    },
+    "about": {
+     "en": "PBR terminal compilation and VFX output",
+     "pt": "Compilação terminal PBR e saída de VFX",
+     "zh": "PBR 终端编译与 VFX 输出"
+    },
+    "nodes": [
+     {
+      "name": "Material Output",
+      "in": "Base Color (Color), Roughness (Float), Metalness (Float), Normal (Vector3), Height (Float), AO (Float)",
+      "out": "Material Terminal",
+      "desc": {
+       "en": "Fixed terminal node of the PBR surface shader; compiles the PBR channels into the final TSL shader.",
+       "pt": "Nó terminal fixo do shader de superfície PBR. Compila os canais PBR para o shader TSL final do objeto.",
+       "zh": "PBR 表面着色器的固定终端节点，将 PBR 通道编译为最终 TSL 着色器。"
+      },
+      "props": {
+       "en": "Render Side (Front, Back, Double), Shading Model (PBR Physical), Transparent (boolean)",
+       "pt": "Render Side (Front, Back, Double), Shading Model (PBR Physical), Transparent (boolean)"
+      }
+     },
+     {
+      "name": "VFX Output",
+      "in": "Position (Vector3), Color (Color), Size (Float), Opacity (Float), Sprite (Texture)",
+      "out": "VFX Terminal",
+      "desc": {
+       "en": "Particle and VFX terminal node; compiles physics, color and shape buffers for the GPU Compute Pass and Render Pass.",
+       "pt": "Nó terminal de partículas e efeitos visuais. Compila os buffers de física, cor e forma para o Compute Pass e o Render Pass da GPU.",
+       "zh": "粒子与视觉特效终端节点，为 GPU 的 Compute Pass 与 Render Pass 编译物理、颜色和形状缓冲区。"
+      },
+      "props": {
+       "en": "Max Particle Count (8,000 to 100,000), Blend Mode (Additive, Alpha, Screen), Depth Write (boolean)",
+       "pt": "Max Particle Count (8000 a 100000), Blend Mode (Additive, Alpha, Screen), Depth Write (boolean)"
+      },
+      "live": true
+     }
+    ]
+   }
+  ]
+ },
+ "note": {
+  "en": "Expctral is the evolution of Reafforesthree. Its three apps (Engine, Station and Archives) already exist and are tested, but run locally and are not public yet. Phase 0 stays open until donations through the fiscal host are active.",
+  "pt": "A Expctral é a evolução do Reafforesthree. Os três apps (Engine, Station e Archives) já existem e têm testes, mas rodam localmente e ainda não são públicos. A Fase 0 continua aberta até as doações pela hospedagem fiscal estarem ativas.",
+  "zh": "Expctral 是 Reafforesthree 的演进。其三个应用（Engine、Station 与 Archives）已经实现并有测试，但目前在本地运行，尚未公开。在通过财务托管开放捐助之前，第 0 阶段保持开启。"
+ }
+}

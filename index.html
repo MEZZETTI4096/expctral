@@ -203,7 +203,7 @@ button,input,select{font:inherit;color:inherit}
 .top.is-scrolled{background:rgba(6,7,9,.8);border-color:var(--line);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
 .top .wrap{display:flex;align-items:center;gap:1rem;min-height:70px}
 .brand{display:inline-flex;align-items:center;gap:.65rem;text-decoration:none}
-.brand-mark{width:26px;height:26px;filter:drop-shadow(0 0 8px rgba(16,185,129,.7)) drop-shadow(0 0 16px rgba(168,85,247,.45))}
+.brand-mark{flex:0 0 26px;width:26px;height:26px;filter:drop-shadow(0 0 8px rgba(16,185,129,.7)) drop-shadow(0 0 16px rgba(168,85,247,.45))}
 .brand-name{font-family:var(--f-display);font-weight:400;letter-spacing:.32em;font-size:.95rem}
 .brand-orbit{display:none;font-family:var(--f-display);font-size:.62rem;letter-spacing:.16em;color:var(--faint);border-left:1px solid var(--line-strong);padding-left:.75rem;margin-left:.15rem}
 .brand-orbit b{color:var(--violet);font-weight:500}
@@ -492,6 +492,34 @@ dialog .code{max-height:min(60dvh,560px)}
   .phase::before{left:0;top:-7px}
 }
 
+/* ================= ATUALIZAÇÕES ================= */
+.st{display:inline-flex;align-items:center;gap:.4rem;flex:0 0 auto;font-family:var(--f-display);font-size:.6rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.2rem .55rem;border-radius:var(--pill);border:1px solid color-mix(in srgb,var(--sc) 55%,transparent);color:var(--sc);background:color-mix(in srgb,var(--sc) 10%,transparent);white-space:nowrap}
+.st::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sc)}
+.st[data-s="pending"]{border-style:dashed}
+.cell .eyebrow .st{margin-left:.5rem;vertical-align:middle}
+.upd-grid{display:grid;gap:var(--s-s)}
+@media (min-width:640px){.upd-grid{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){.upd-grid{grid-template-columns:repeat(4,1fr)}}
+.upd{display:flex;flex-direction:column;gap:.55rem;padding:var(--s-m);text-decoration:none;color:inherit;border-top:2px solid var(--c)}
+.upd .eyebrow{margin:0;font-size:.62rem}
+.upd .eyebrow b{color:var(--c)}
+.upd h3{font-size:1.1rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.upd .ver{font-family:var(--mono);font-size:.74rem;line-height:1.5;color:var(--muted)}
+.upd .ver b{color:var(--text);font-weight:500}
+.upd .ver span{color:#c99bfb}
+.upd ul{list-style:none;margin:.2rem 0 0;padding:0;display:grid;gap:.3rem;font-size:.86rem;color:var(--muted)}
+.upd li{padding-left:1rem;position:relative}
+.upd li::before{content:"+";position:absolute;left:0;color:var(--c);font-family:var(--f-display)}
+.upd .go{margin-top:auto;font-family:var(--f-display);font-size:.66rem;letter-spacing:.14em;color:var(--c)}
+.upd-latest{display:flex;flex-wrap:wrap;gap:1rem 1.5rem;align-items:center;justify-content:space-between;margin-top:var(--s-l);padding:var(--s-m)}
+.upd-latest p{margin:0}
+.upd-latest time{font-family:var(--mono);font-size:.8rem;color:var(--faint)}
+.upd-latest b{font-family:var(--f-display);font-weight:400;font-size:var(--step-1)}
+.upd-note{max-width:70ch;font-size:.95rem;color:var(--muted);border-left:2px solid var(--emerald);padding:.4rem 0 .4rem 1rem;margin:0 0 var(--s-l)}
+/* tags de categoria da taxonomia nos nós do protótipo */
+.node-head .eyebrow.cat{font-family:var(--mono);letter-spacing:.06em}
+.cat-UTI{color:#A3ABBA!important}.cat-COL{color:#A855F7!important}.cat-VFX{color:#FFC069!important}.cat-OUT{color:#E9ECF2!important}.cat-INP{color:#10B981!important}
+
 /* ================= FAQ ================= */
 .faq{max-width:860px}
 .faq details{border-top:1px solid var(--line)}
@@ -706,6 +734,7 @@ kbd{font-family:var(--mono);font-size:.72rem;color:var(--text);border:1px solid 
       <a href="#arquitetura" data-i18n="nav.arch">Architecture</a>
       <a href="#governanca" data-i18n="nav.gov">OSC governance</a>
       <a href="#roadmap" data-i18n="nav.road">Roadmap</a>
+      <a href="atualizacoes/" data-i18n="nav.upd">Updates</a>
     </nav>
     <div class="langs" role="group" aria-label="Language / Idioma / 语言">
       <button type="button" data-lang="en" aria-pressed="true">EN</button>
@@ -726,10 +755,10 @@ kbd{font-family:var(--mono);font-size:.72rem;color:var(--text);border:1px solid 
   <div class="wrap">
     <span class="pill"><i class="pulse"></i><span>[ ⚡&#xFE0E; EJECT TYPESCRIPT ] · APACHE 2.0 · WEBGPU + TSL</span></span>
     <h1 class="h h1" id="hero-title" data-i18n="hero.title">Create 3D in the browser. The code is yours.</h1>
-    <p class="lead" data-i18n="hero.sub">The open-core ecosystem for creating 3D in the browser, built for 3D artists, developers and studios. Native WebGPU acceleration, a visual TSL compiler and standalone TypeScript output under Apache 2.0.</p>
+    <p class="lead" data-i18n="hero.sub">The open-core 3D creation platform with native WebGPU acceleration, a TSL transpiler and standalone TypeScript compilation under the Apache 2.0 license.</p>
     <div class="ctas">
-      <a class="btn btn--primary" href="#apoio" data-i18n="cta.support">Become a Supporter</a>
-      <a class="btn btn--glass btn--tac" href="#prism">[ ⚡&#xFE0E; <span data-i18n="cta.try">Try Prism Studio prototype</span> ]</a>
+      <a class="btn btn--primary btn--tac" href="#prism">[ ⚡&#xFE0E; ACCESS PRISM STUDIO ]</a>
+      <a class="btn btn--glass btn--tac" href="#registry">[ ⑂ REFRACT PROJECT ]</a>
     </div>
 
     <div class="stage glass reticle" id="heroStage">
@@ -815,7 +844,7 @@ kbd{font-family:var(--mono);font-size:.72rem;color:var(--text);border:1px solid 
       <p class="muted" data-i18n="surf.sub">Integrated gears designed to shorten the distance between creative intent and scalable monetization.</p>
     </div>
     <div class="bento">
-      <article class="cell cell--a glass reticle hoverable" style="--c:var(--emerald)">
+      <article class="cell cell--a glass reticle hoverable" style="--c:var(--emerald)" data-face="sinapse">
         <p class="eyebrow">ENGINE // <b>WEBGPU/TSL RUNTIME</b></p>
         <h3 class="h h3">Sinapse Engine</h3>
         <p data-i18n="surf.s1">Dual pipelines in parallel: a Compute Pass on storage buffers and a Render Pass targeting 60+ FPS, with a visual TSL compiler that only emits valid shaders.</p>
@@ -828,13 +857,13 @@ kbd{font-family:var(--mono);font-size:.72rem;color:var(--text);border:1px solid 
           <p class="muted" style="margin-top:.9rem;font-size:.9rem" data-i18n="surf.s1live">This page's hero runs on that same runtime, live.</p>
         </div>
       </article>
-      <article class="cell cell--b glass reticle hoverable" style="--c:var(--violet)">
+      <article class="cell cell--b glass reticle hoverable" style="--c:var(--violet)" data-face="prism">
         <p class="eyebrow">STUDIO // <b>VISUAL GRAPH EDITOR</b></p>
         <h3 class="h h3">Prism Studio</h3>
         <p data-i18n="surf.s2">A reactive editor in React Flow + Zustand with real-time multiplayer collaboration through Yjs CRDTs.</p>
         <div class="viz"><a class="btn btn--glass btn--sm btn--tac" href="#prism">[ ✦ <span data-i18n="surf.open">Open prototype</span> ]</a></div>
       </article>
-      <article class="cell cell--c glass reticle hoverable" style="--c:var(--copper)">
+      <article class="cell cell--c glass reticle hoverable" style="--c:var(--copper)" data-face="registry">
         <p class="eyebrow">REGISTRY // <b>ASSET &amp; SHADER HUB</b></p>
         <h3 class="h h3">Spectral Registry</h3>
         <p data-i18n="surf.s3">Portable .exp packages, Code Refraction with automatic credit and a revenue split built for creators.</p>
@@ -843,7 +872,7 @@ kbd{font-family:var(--mono);font-size:.72rem;color:var(--text);border:1px solid 
           <div class="split-legend"><span data-i18n="surf.creator">85% CREATOR</span><span data-i18n="surf.platform">15% PLATFORM</span></div>
         </div>
       </article>
-      <article class="cell cell--d glass reticle hoverable" style="--c:var(--cyan)">
+      <article class="cell cell--d glass reticle hoverable" style="--c:var(--cyan)" data-face="landing">
         <p class="eyebrow">HUB // <b>DEV PORTAL</b></p>
         <h3 class="h h3">Landing Hub</h3>
         <p data-i18n="surf.s4">Documentation, AIO/GEO structured data and community support. The site proves the product: you are looking at its first version.</p>
@@ -897,14 +926,14 @@ kbd{font-family:var(--mono);font-size:.72rem;color:var(--text);border:1px solid 
                 <input type="text" id="paletteInput" autocomplete="off" spellcheck="false" aria-label="Search nodes" data-i18n-ph="pal.ph" placeholder="Search node…">
               </div>
               <div class="node" data-node="time">
-                <div class="node-head" tabindex="0"><span class="eyebrow">INPUT</span>Time</div>
+                <div class="node-head" tabindex="0"><span class="eyebrow cat cat-UTI">UTI</span>Time</div>
                 <div class="node-body">
                   <div class="port out"><span>tick</span><i class="sock exec" data-sock="time.tick"></i></div>
                   <div class="port out"><span>phase = <output id="outT">0.00</output></span><i class="sock val" data-sock="time.t"></i></div>
                 </div>
               </div>
               <div class="node" data-node="speed">
-                <div class="node-head" tabindex="0"><span class="eyebrow">MATH</span>Speed</div>
+                <div class="node-head" tabindex="0"><span class="eyebrow cat cat-UTI">UTI</span>Speed</div>
                 <div class="node-body">
                   <div class="port in"><i class="sock val" data-sock="speed.t"></i><span>dt</span></div>
                   <label class="ctl"><span>speed <output data-show="speed">0.55</output></span><input type="range" min="0.05" max="1.5" step="0.01" value="0.55" data-bind="speed"></label>
@@ -912,14 +941,14 @@ kbd{font-family:var(--mono);font-size:.72rem;color:var(--text);border:1px solid 
                 </div>
               </div>
               <div class="node" data-node="density">
-                <div class="node-head" tabindex="0"><span class="eyebrow">MATH</span>Density</div>
+                <div class="node-head" tabindex="0"><span class="eyebrow cat cat-UTI">UTI</span>Density</div>
                 <div class="node-body">
                   <label class="ctl"><span>density <output data-show="density">0.45</output></span><input type="range" min="0" max="1" step="0.01" value="0.45" data-bind="density"></label>
                   <div class="port out"><span>count = <output data-show="count">7936</output></span><i class="sock val" data-sock="density.out"></i></div>
                 </div>
               </div>
               <div class="node" data-node="color">
-                <div class="node-head" tabindex="0"><span class="eyebrow">VEC3</span>Spectrum Color</div>
+                <div class="node-head" tabindex="0"><span class="eyebrow cat cat-COL">COL</span>Spectrum Color</div>
                 <div class="node-body">
                   <div class="ctl ctl-row">
                     <label><span class="sr">Spectrum A</span><select data-bind="colorA"><option value="emerald">emerald</option><option value="copper">copper</option><option value="violet">violet</option><option value="cyan">cyan</option></select></label>
@@ -930,7 +959,7 @@ kbd{font-family:var(--mono);font-size:.72rem;color:var(--text);border:1px solid 
                 </div>
               </div>
               <div class="node" data-node="field">
-                <div class="node-head" tabindex="0"><span class="eyebrow">COMPUTE</span>Particle Field</div>
+                <div class="node-head" tabindex="0"><span class="eyebrow cat cat-VFX">VFX</span>Vortex</div>
                 <div class="node-body">
                   <div class="port in"><i class="sock val" data-sock="field.speed"></i><span>uPhase</span></div>
                   <div class="port in"><i class="sock val" data-sock="field.count"></i><span>count</span></div>
@@ -941,7 +970,7 @@ kbd{font-family:var(--mono);font-size:.72rem;color:var(--text);border:1px solid 
                 </div>
               </div>
               <div class="node" data-node="output">
-                <div class="node-head" tabindex="0"><span class="eyebrow">OUTPUT</span>Render Pass</div>
+                <div class="node-head" tabindex="0"><span class="eyebrow cat cat-OUT">OUT</span>VFX Output</div>
                 <div class="node-body">
                   <div class="port in"><i class="sock exec" data-sock="output.tick"></i><span>tick</span></div>
                   <div class="port in"><i class="sock tsl" data-sock="output.material"></i><span>material</span></div>
@@ -1271,6 +1300,25 @@ material.colorNode = <span class="k">mix</span>(
   </div>
 </section>
 
+<!-- ================= ATUALIZAÇÕES ================= -->
+<section class="section surface-0 lab-grid" id="atualizacoes" aria-labelledby="upd-title">
+  <div class="glow glow--v" style="width:680px;height:680px;right:-240px;top:6%"></div>
+  <div class="wrap">
+    <div class="head head--split reveal">
+      <div><p class="eyebrow">UPDATES // <b>STATION STATUS</b></p><h2 class="h h2" id="upd-title" data-i18n="upd.title">Where every face stands today.</h2></div>
+      <p class="muted"><span data-i18n="upd.sub">Each face of Expctral with the version that exists now and the next one on the roadmap. Last update:</span> <b class="num" id="updDate">12/10/2026</b></p>
+    </div>
+    <p class="upd-note" id="updNote" hidden></p>
+    <div class="upd-grid" id="updGrid">
+      <p class="muted" data-i18n="upd.fallback">The full status of the Sinapse Engine, Prism Studio, Spectral Registry, Landing Hub, Dra. Ada, multiplayer, code ejection and governance is on the updates page.</p>
+    </div>
+    <div class="upd-latest glass reticle">
+      <p><time id="updLatestDate"></time> <b id="updLatestTitle"></b></p>
+      <a class="btn btn--primary btn--tac" href="atualizacoes/">[ ⚡&#xFE0E; <span data-i18n="upd.all">See all updates</span> ]</a>
+    </div>
+  </div>
+</section>
+
 <!-- ================= FAQ ================= -->
 <section class="section surface-0" id="faq" aria-labelledby="faq-title">
   <div class="wrap">
@@ -1321,6 +1369,7 @@ material.colorNode = <span class="k">mix</span>(
           <li><a href="https://github.com/MEZZETTI4096/expctral" target="_blank" rel="noopener">GitHub · MEZZETTI4096/expctral</a></li>
           <li><a href="https://mezzetti4096.github.io/reafforesthree/" target="_blank" rel="noopener">Expctral Station</a></li>
           <li><a href="https://mezzetti4096.github.io/" target="_blank" rel="noopener">Mezzetti⁴⁰⁹⁶ Studio</a></li>
+          <li><a href="atualizacoes/" data-i18n="nav.upd">Updates</a></li>
           <li id="extraLinks" hidden></li>
         </ul>
       </div>
@@ -1413,7 +1462,7 @@ pt: {
   'skip':`Pular para o conteúdo`,
   'nav.surf':`Superfícies`,'nav.arch':`Arquitetura`,'nav.gov':`Governança OSC`,'nav.road':`Roadmap`,
   'hero.title':`Crie 3D no navegador. O código é seu.`,
-  'hero.sub':`O ecossistema open-core para criar 3D no navegador, feito para artistas 3D, desenvolvedores e estúdios. Aceleração WebGPU nativa, compilador visual TSL e saída em TypeScript autônomo sob licença Apache 2.0.`,
+  'hero.sub':`A plataforma open-core de criação 3D com aceleração WebGPU nativa, transpilador TSL e compilação em TypeScript autônomo sob licença Apache 2.0.`,
   'cta.support':`Quero ser apoiador`,'cta.try':`Testar protótipo do Prism Studio`,
   'trust.fps':`medido ao vivo no seu navegador`,'trust.frame':`tempo médio de quadro`,'trust.backend':`renderizador ativo`,
   'trust.license':`licença do runtime e do compilador`,'trust.osc':`hospedagem fiscal · planejada · 501(c)(6)`,'trust.sponsors':`canal de patrocínio · planejado`,
@@ -1503,7 +1552,7 @@ zh: {
   'skip':`跳到正文`,
   'nav.surf':`四大界面`,'nav.arch':`架构`,'nav.gov':`OSC 治理`,'nav.road':`路线图`,
   'hero.title':`在浏览器中创作 3D。代码归你所有。`,
-  'hero.sub':`面向 3D 艺术家、开发者和工作室的开放核心浏览器 3D 创作生态。原生 WebGPU 加速、可视化 TSL 编译器，并以 Apache 2.0 许可输出独立的 TypeScript。`,
+  'hero.sub':`开放核心 3D 创作平台：原生 WebGPU 加速、TSL 转译器，以及基于 Apache 2.0 许可的独立 TypeScript 编译。`,
   'cta.support':`成为支持者`,'cta.try':`试用 Prism Studio 原型`,
   'trust.fps':`在你的浏览器中实时测量`,'trust.frame':`平均帧时间`,'trust.backend':`当前渲染器`,
   'trust.license':`运行时与编译器许可`,'trust.osc':`财务托管 · 计划中 · 501(c)(6)`,'trust.sponsors':`赞助渠道 · 计划中`,
@@ -1645,6 +1694,18 @@ Object.assign(I18N.zh, {
   'ada.status':`预览 · 基于规则的诊断在你的浏览器中运行。本地模型（基于 WebGPU 的 ONNX Runtime Web + Transformers.js）将在第 2 阶段上线。`,
   'ada.diag':`诊断节点图`,'ada.fix':`自动修复`
 });
+Object.assign(I18N.pt, {
+  'nav.upd':`Atualizações`, 'upd.title':`Onde cada face está hoje.`,
+  'upd.sub':`Cada face da Expctral com a versão que existe agora e a próxima do roadmap. Última atualização:`,
+  'upd.fallback':`O status completo da Sinapse Engine, do Prism Studio, do Spectral Registry, da Landing Hub, da Dra. Ada, do multiplayer, da ejeção de código e da governança está na página de atualizações.`,
+  'upd.all':`Ver todas as atualizações`
+});
+Object.assign(I18N.zh, {
+  'nav.upd':`更新`, 'upd.title':`每个模块的现状。`,
+  'upd.sub':`Expctral 各模块的当前版本与路线图中的下一版本。最近更新：`,
+  'upd.fallback':`Sinapse Engine、Prism Studio、Spectral Registry、Landing Hub、Dra. Ada、多人协作、代码导出与治理的完整状态见更新页面。`,
+  'upd.all':`查看全部更新`
+});
 Object.assign(I18N.pt, { 'smap.hint':`Passe o mouse numa linha para achar o nó. Clique para ir até ele.` });
 Object.assign(I18N.zh, { 'smap.hint':`将鼠标移到某一行即可找到对应节点，点击可跳转。` });
 Object.assign(UI.en, {
@@ -1681,7 +1742,7 @@ const ADA = {
   en:{
     hello:'Hi, I am Dra. Ada. I read the Prism Studio graph live and explain the pipeline. Try <b>Diagnose graph</b> or <b>Auto-fix</b>.',
     askDiag:'Diagnose graph', askFix:'Auto-fix',
-    pipe:d => `<b>Pipeline.</b> Time ${d.frozen ? 'is bypassed, so the vortex is frozen;' : 'drives'} Speed ×${d.speed} → Particle Field computes <b>${d.count}</b> particles in ${d.wg} workgroups of 64 → Spectrum Color mixes ${d.a} → ${d.b} (mix ${d.mix}) → Render Pass on <b>${d.backend}</b>${d.fps ? ` at ${d.fps} FPS` : ''}.`,
+    pipe:d => `<b>Pipeline.</b> Time ${d.frozen ? 'is bypassed, so the vortex is frozen;' : 'drives'} Speed ×${d.speed} → Vortex [VFX] computes <b>${d.count}</b> particles in ${d.wg} workgroups of 64 → Spectrum Color mixes ${d.a} → ${d.b} (mix ${d.mix}) → VFX Output on <b>${d.backend}</b>${d.fps ? ` at ${d.fps} FPS` : ''}.`,
     mods:l => `<b>Modifiers:</b> ${l}.`,
     noMods:'<b>Modifiers:</b> none yet. Hover the canvas and press <kbd>Tab</kbd> or <kbd>Space</kbd> to add Turbulence, Twist, Pulse or Scale.',
     warn:'Attention', ok:'No issues found: the graph is valid TSL and ready for <b>[ ⚡&#xFE0E; EJECT TYPESCRIPT ]</b>.',
@@ -1692,7 +1753,7 @@ const ADA = {
   pt:{
     hello:'Oi, eu sou a Dra. Ada. Leio o grafo do Prism Studio ao vivo e explico o pipeline. Experimente <b>Diagnosticar grafo</b> ou <b>Corrigir automaticamente</b>.',
     askDiag:'Diagnosticar grafo', askFix:'Corrigir automaticamente',
-    pipe:d => `<b>Pipeline.</b> Time ${d.frozen ? 'está em bypass, então o vórtice está congelado;' : 'alimenta'} Speed ×${d.speed} → Particle Field calcula <b>${d.count}</b> partículas em ${d.wg} workgroups de 64 → Spectrum Color mistura ${d.a} → ${d.b} (mix ${d.mix}) → Render Pass em <b>${d.backend}</b>${d.fps ? ` a ${d.fps} FPS` : ''}.`,
+    pipe:d => `<b>Pipeline.</b> Time ${d.frozen ? 'está em bypass, então o vórtice está congelado;' : 'alimenta'} Speed ×${d.speed} → Vortex [VFX] calcula <b>${d.count}</b> partículas em ${d.wg} workgroups de 64 → Spectrum Color mistura ${d.a} → ${d.b} (mix ${d.mix}) → VFX Output em <b>${d.backend}</b>${d.fps ? ` a ${d.fps} FPS` : ''}.`,
     mods:l => `<b>Modificadores:</b> ${l}.`,
     noMods:'<b>Modificadores:</b> nenhum ainda. Passe o mouse no canvas e aperte <kbd>Tab</kbd> ou <kbd>Espaço</kbd> para adicionar Turbulence, Twist, Pulse ou Scale.',
     warn:'Atenção', ok:'Nenhum problema: o grafo é TSL válida e está pronto para <b>[ ⚡&#xFE0E; EJECT TYPESCRIPT ]</b>.',
@@ -1703,7 +1764,7 @@ const ADA = {
   zh:{
     hello:'你好，我是 Dra. Ada。我会实时读取 Prism Studio 节点图并讲解渲染管线。试试<b>诊断节点图</b>或<b>自动修复</b>。',
     askDiag:'诊断节点图', askFix:'自动修复',
-    pipe:d => `<b>管线。</b>Time ${d.frozen ? '已旁路，漩涡处于冻结状态；' : '驱动'} Speed ×${d.speed} → Particle Field 以 ${d.wg} 个 64 线程工作组计算 <b>${d.count}</b> 个粒子 → Spectrum Color 混合 ${d.a} → ${d.b}（mix ${d.mix}）→ Render Pass 运行于 <b>${d.backend}</b>${d.fps ? `，${d.fps} FPS` : ''}。`,
+    pipe:d => `<b>管线。</b>Time ${d.frozen ? '已旁路，漩涡处于冻结状态；' : '驱动'} Speed ×${d.speed} → Vortex [VFX] 以 ${d.wg} 个 64 线程工作组计算 <b>${d.count}</b> 个粒子 → Spectrum Color 混合 ${d.a} → ${d.b}（mix ${d.mix}）→ VFX Output 运行于 <b>${d.backend}</b>${d.fps ? `，${d.fps} FPS` : ''}。`,
     mods:l => `<b>修饰节点：</b>${l}。`,
     noMods:'<b>修饰节点：</b>暂无。将鼠标移到画布上并按 <kbd>Tab</kbd> 或 <kbd>空格</kbd>，即可添加 Turbulence、Twist、Pulse 或 Scale。',
     warn:'注意', ok:'未发现问题：节点图是有效的 TSL，可以直接 <b>[ ⚡&#xFE0E; EJECT TYPESCRIPT ]</b>。',
@@ -1849,10 +1910,10 @@ function reportTelemetry(backend, fps, ms){
 const PALETTE = { emerald:'#10B981', copper:'#FF9F1C', violet:'#A855F7', cyan:'#06B6D4' };
 const countFromDensity = d => 1024 + Math.round(d * 240) * 64;   // 1 024 … 16 384, múltiplos de 64
 const MOD_TYPES = {
-  turb:  { name:'Turbulence', tag:'NOISE',  key:'amount', out:'uTurbulence', min:0,  max:1,   def:.5 },
-  twist: { name:'Twist',      tag:'SPIRAL', key:'amount', out:'uTwist',      min:0,  max:1,   def:.45 },
-  pulse: { name:'Pulse',      tag:'TIME',   key:'depth',  out:'uPulse',      min:0,  max:1,   def:.7 },
-  size:  { name:'Scale',      tag:'SIZE',   key:'scale',  out:'uScale',      min:.4, max:2.5, def:1.6 }
+  turb:  { name:'Turbulence', tag:'VFX',  key:'amount', out:'uTurbulence', min:0,  max:1,   def:.5 },
+  twist: { name:'Twist',      tag:'VFX', key:'amount', out:'uTwist',      min:0,  max:1,   def:.45 },
+  pulse: { name:'Pulse',      tag:'UTI',   key:'depth',  out:'uPulse',      min:0,  max:1,   def:.7 },
+  size:  { name:'Scale',      tag:'VFX',   key:'scale',  out:'uScale',      min:.4, max:2.5, def:1.6 }
 };
 // Node Wrangler: vista isolada de cada nó (0 = render completo)
 const VIEW_IDS = { time:1, speed:2, density:3, color:4, turb:5, twist:6, pulse:7, size:8 };
@@ -2076,7 +2137,7 @@ const Prism = (() => {
     'pkg.3':'A dense violet nebula with copper highlights and a slow drift.',
     'pkg.4':'A cyan telemetry ring with violet depth, tuned for dashboards.'
   };
-  const NAMES = { time:'Time', speed:'Speed', density:'Density', color:'Spectrum Color', field:'Particle Field', output:'Render Pass',
+  const NAMES = { time:'Time', speed:'Speed', density:'Density', color:'Spectrum Color', field:'Vortex', output:'VFX Output',
                   turb:'Turbulence', twist:'Twist', pulse:'Pulse', size:'Scale' };
   const desktop = window.matchMedia('(min-width:1000px)');
   const nodes = {}; graph.querySelectorAll('.node').forEach(n => nodes[n.dataset.node] = n);
@@ -2235,7 +2296,7 @@ const Prism = (() => {
     state.mods[type] = { value };
     const n = document.createElement('div');
     n.className = 'node node--mod'; n.dataset.node = type;
-    n.innerHTML = `<div class="node-head" tabindex="0"><span class="eyebrow">${T.tag}</span>${T.name}<button type="button" class="rm" aria-label="Remove ${T.name}">×</button></div>
+    n.innerHTML = `<div class="node-head" tabindex="0"><span class="eyebrow cat cat-${T.tag}">${T.tag}</span>${T.name}<button type="button" class="rm" aria-label="Remove ${T.name}">×</button></div>
       <div class="node-body">
         <label class="ctl"><span>${T.key} <output data-show="${type}">${value.toFixed(2)}</output></span><input type="range" min="${T.min}" max="${T.max}" step="0.01" value="${value}" data-mod="${type}"></label>
         <div class="port out"><span>${T.out}</span><i class="sock val" data-sock="${type}.out"></i></div>
@@ -2390,7 +2451,7 @@ const Prism = (() => {
 `  positions.element(instanceIndex).assign(vortex(instanceIndex));`,
 `})().compute(PARTICLE_COUNT, [64]);`,
 ``,
-`// Particle Field node -> Render Pass (TSL material)`,
+`// Vortex node [VFX] -> Render Pass (TSL material)`,
 `const k = clamp(uMix.add(hash(instanceIndex.add(1)).sub(0.5).mul(0.6))`,
 `  .add(sin(uClock.mul(3.0).add(radius(instanceIndex).mul(6.0))).mul(uPulse).mul(0.45)), 0, 1);`,
 `export const material = new THREE.SpriteNodeMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending });`,
@@ -2399,7 +2460,7 @@ const Prism = (() => {
 `material.opacityNode = float(1).sub(smoothstep(0, 0.5, length(uv().sub(0.5))));`,
 `material.scaleNode = hash(instanceIndex.add(5)).mul(0.014).add(0.008).mul(uScale);`,
 ``,
-`// Output node: call update(dt) once per frame (Time -> tick)`,
+`// VFX Output node [OUT]: call update(dt) once per frame (Time -> tick)`,
 `export function createVortex(renderer: THREE.WebGPURenderer) {`,
 `  const particles = new THREE.Sprite(material);`,
 `  particles.count = PARTICLE_COUNT;`,
@@ -2675,8 +2736,8 @@ const Prism = (() => {
       else if (/^\/\/ Time node/.test(l)) sec = 'time';
       else if (/^\/\/ Spectrum Color node/.test(l)) sec = 'color';
       else if (/^\/\/ Modifier nodes/.test(l)) sec = 'mods';
-      else if (/^const radius|^const vortex|^\/\/ Compute Pass|^\/\/ Particle Field node/.test(l)) sec = 'field';
-      else if (/^\/\/ Output node/.test(l)) sec = 'output';
+      else if (/^const radius|^const vortex|^\/\/ Compute Pass|^\/\/ Vortex node/.test(l)) sec = 'field';
+      else if (/^\/\/ VFX Output node/.test(l)) sec = 'output';
       else if (/^\/\/ Camera path/.test(l)) sec = 'path';
       else if (/^import|^\/\/ SPDX|^const TAU/.test(l)) sec = null;
       if (/uTurbulence/.test(l)) return 'turb';
@@ -2945,6 +3006,45 @@ const Prism = (() => {
   panel.addEventListener('keydown', e => { if (e.key === 'Escape'){ setOpen(false); toggle.focus(); } });
   document.getElementById('adaDiag').addEventListener('click', () => { say(esc(ADA[lang].askDiag), true); say(Prism.diagnose()); });
   document.getElementById('adaFix').addEventListener('click', () => { say(esc(ADA[lang].askFix), true); const n = Prism.autofix(); say(`<p>${ADA[lang].fixed(n)}</p>` + Prism.diagnose()); });
+})();
+
+/* ================= ATUALIZAÇÕES (lê atualizacoes/data.json) ================= */
+(() => {
+  const grid = document.getElementById('updGrid'); if (!grid) return;
+  let D = null;
+  const Lx = o => (o && (o[lang] || o.en)) || '';
+  const W = { en:{ now:'NOW', next:'NEXT', phase:'PHASE', open:'OPEN FACE ↗' }, pt:{ now:'AGORA', next:'PRÓXIMA', phase:'FASE', open:'ABRIR FACE ↗' }, zh:{ now:'当前', next:'下一版', phase:'阶段', open:'查看模块 ↗' } };
+  const NAME = { orbit:{ en:'Multiplayer / Orbit', pt:'Multiplayer / Órbita', zh:'多人协作 / 轨道' }, eject:{ en:'Code Ejection', pt:'Ejeção de Código', zh:'代码导出' }, governance:{ en:'Governance', pt:'Governança', zh:'治理' } };
+  const name = f => NAME[f.id] ? Lx(NAME[f.id]) : f.name;
+  const chip = s => `<span class="st" data-s="${s}" style="--sc:${D.statuses[s].color}">${esc(Lx(D.statuses[s]))}</span>`;
+  const loc = () => lang === 'pt' ? 'pt-BR' : lang === 'zh' ? 'zh-CN' : 'en-US';
+  const fmt = iso => new Intl.DateTimeFormat(loc(), { day:'2-digit', month:'long', year:'numeric', timeZone:'UTC' }).format(new Date(iso + 'T12:00:00Z'));
+  function render(){
+    if (!D) return;
+    const w = W[lang] || W.en;
+    document.getElementById('updDate').textContent = fmt(D.updated);
+    const note = document.getElementById('updNote'); note.hidden = !D.note; if (D.note) note.textContent = Lx(D.note);
+    grid.innerHTML = D.faces.map(f => `
+      <a class="upd glass reticle hoverable" href="atualizacoes/#face-${f.id}" style="--c:${f.color}">
+        <p class="eyebrow"><b>${esc(f.tag)}</b></p>
+        <h3 class="h">${esc(name(f))} ${chip(f.status)}</h3>
+        <p class="ver">${w.now} <b>${esc(Lx(f.now.version))}</b><br>→ ${w.next} <b>${esc(Lx(f.next.version))}</b> <span>· ${w.phase} ${f.next.phase}</span></p>
+        <ul>${f.now.items.slice(0, 2).map(i => `<li>${esc(Lx(i.t))}</li>`).join('')}</ul>
+        <span class="go">${w.open}</span>
+      </a>`).join('');
+    const last = D.changelog[0];
+    document.getElementById('updLatestDate').textContent = fmt(last.date) + ' · ' + last.version;
+    document.getElementById('updLatestTitle').textContent = Lx(last.title);
+    // chips de status nos cards das 4 superfícies
+    document.querySelectorAll('.cell[data-face]').forEach(cell => {
+      const f = D.faces.find(x => x.id === cell.dataset.face); const eb = cell.querySelector('.eyebrow'); if (!f || !eb) return;
+      let c = eb.querySelector('.st'); if (c) c.remove();
+      eb.insertAdjacentHTML('beforeend', chip(f.status));
+    });
+  }
+  fetch('atualizacoes/data.json', { cache:'no-cache' }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(d => { D = d; render(); }).catch(err => console.warn('[Updates] data.json', err));
+  langListeners.push(render);
 })();
 
 /* ================= IDIOMA INICIAL ================= */

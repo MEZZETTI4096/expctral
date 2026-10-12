@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Expctral updates: station status, now and next | WebGPU + TSL</title>
+<meta name="description" content="Where every face of Expctral stands today and what comes next: Sinapse Engine, Prism Studio, Spectral Registry, Landing Hub, Dra. Ada, multiplayer, code ejection and governance. Real changelog and the 52-node Prism Studio taxonomy.">
+<meta name="theme-color" content="#060709">
+<meta name="color-scheme" content="dark">
+<meta name="author" content="Gabriel Mezzetti (Mezzetti4096 Studio)">
+<link rel="canonical" href="https://mezzetti4096.github.io/expctral/atualizacoes/">
+<link rel="alternate" hreflang="en" href="https://mezzetti4096.github.io/expctral/atualizacoes/?lang=en">
+<link rel="alternate" hreflang="pt-BR" href="https://mezzetti4096.github.io/expctral/atualizacoes/?lang=pt">
+<link rel="alternate" hreflang="zh-Hans" href="https://mezzetti4096.github.io/expctral/atualizacoes/?lang=zh">
+<link rel="alternate" hreflang="x-default" href="https://mezzetti4096.github.io/expctral/atualizacoes/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Expctral">
+<meta property="og:title" content="Expctral updates: station status, now and next">
+<meta property="og:description" content="The status of every face of Expctral today, the next versions and a real changelog.">
+<meta property="og:url" content="https://mezzetti4096.github.io/expctral/atualizacoes/">
+<meta property="og:image" content="https://mezzetti4096.github.io/expctral/atualizacoes/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23060709'/%3E%3Cpath d='M16 7v18M7 16h18' stroke='%2310B981' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='3.5' fill='%23A855F7'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@200;300;400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600&display=swap">
+<link rel="preload" href="data.json" as="fetch" crossorigin>
+
+<script type="importmap">
+{ "imports": {
+  "three/webgpu": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.webgpu.min.js",
+  "three/tsl": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.tsl.min.js"
+} }
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://mezzetti4096.github.io/expctral/atualizacoes/#page",
+      "name": "Expctral updates: station status",
+      "url": "https://mezzetti4096.github.io/expctral/atualizacoes/",
+      "dateModified": "2026-10-12",
+      "inLanguage": ["en", "pt-BR", "zh-Hans"],
+      "isPartOf": { "@id": "https://mezzetti4096.github.io/expctral/#org" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Expctral", "item": "https://mezzetti4096.github.io/expctral/" },
+          { "@type": "ListItem", "position": 2, "name": "Updates", "item": "https://mezzetti4096.github.io/expctral/atualizacoes/" }
+        ]
+      }
+    },
+    {
+      "@type": ["SoftwareApplication", "CreativeWork"],
+      "name": "Expctral Station",
+      "softwareVersion": "Landing V4 (2026-10-12)",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Web browser (WebGPU, WebGL2 fallback)",
+      "license": "https://spdx.org/licenses/Apache-2.0.html",
+      "author": { "@type": "Person", "name": "Gabriel Mezzetti", "url": "https://mezzetti4096.github.io/" },
+      "codeRepository": "https://github.com/MEZZETTI4096/expctral"
+    },
+    {
+      "@type": "ItemList",
+      "name": "Faces of Expctral",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Sinapse Engine", "url": "https://mezzetti4096.github.io/expctral/atualizacoes/#face-sinapse" },
+        { "@type": "ListItem", "position": 2, "name": "Prism Studio", "url": "https://mezzetti4096.github.io/expctral/atualizacoes/#face-prism" },
+        { "@type": "ListItem", "position": 3, "name": "Spectral Registry", "url": "https://mezzetti4096.github.io/expctral/atualizacoes/#face-registry" },
+        { "@type": "ListItem", "position": 4, "name": "Landing Hub", "url": "https://mezzetti4096.github.io/expctral/atualizacoes/#face-landing" },
+        { "@type": "ListItem", "position": 5, "name": "Dra. Ada", "url": "https://mezzetti4096.github.io/expctral/atualizacoes/#face-ada" },
+        { "@type": "ListItem", "position": 6, "name": "Multiplayer / Orbit", "url": "https://mezzetti4096.github.io/expctral/atualizacoes/#face-orbit" },
+        { "@type": "ListItem", "position": 7, "name": "Code Ejection", "url": "https://mezzetti4096.github.io/expctral/atualizacoes/#face-eject" },
+        { "@type": "ListItem", "position": 8, "name": "Governance & Monetization", "url": "https://mezzetti4096.github.io/expctral/atualizacoes/#face-governance" }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+:root{
+  --obsidian:#0A0C10; --obsidian-deep:#060709;
+  --emerald:#10B981; --copper:#FF9F1C; --violet:#A855F7; --cyan:#06B6D4;
+  --text:#E9ECF2; --muted:#A3ABBA; --faint:#7E879A;
+  --line:rgba(255,255,255,.08); --line-strong:rgba(255,255,255,.14);
+  --glass:rgba(255,255,255,.04);
+  --radius:28px; --pill:999px;
+  --f-display:"Exo 2",system-ui,sans-serif; --f-ui:"Satoshi",system-ui,sans-serif; --f-text:"Switzer",system-ui,sans-serif;
+  --mono:"DM Mono",ui-monospace,"Cascadia Code",Menlo,Consolas,monospace;
+  --step-0:clamp(1rem,.96rem + .2vw,1.08rem); --step-1:clamp(1.15rem,1.06rem + .45vw,1.4rem);
+  --step-2:clamp(1.4rem,1.22rem + .9vw,1.95rem); --step-3:clamp(1.8rem,1.38rem + 2.1vw,2.9rem); --step-4:clamp(2.4rem,1.5rem + 4.4vw,5rem);
+  --s-s:1rem; --s-m:1.5rem; --s-l:2.25rem; --s-xl:3.5rem; --s-2xl:5rem;
+  --section:clamp(4rem,2.8rem + 5vw,7.5rem); --gutter:clamp(16px,4vw,40px);
+  --ease-out:cubic-bezier(.22,1,.36,1);
+  --reticle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9'%3E%3Cpath d='M4.5 0v9M0 4.5h9' stroke='%23E9ECF2' stroke-opacity='.4'/%3E%3C/svg%3E");
+  --pattern:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg stroke='%23E2E8F0' stroke-opacity='.07' stroke-width='1.2'%3E%3Cpath d='M38 14 20 40h14l-3 22 19-30H36l2-18z'/%3E%3Cpath transform='rotate(45 144 48)' d='M144 48a2 2 0 0 1 4 0a4 4 0 0 1 -8 0a6 6 0 0 1 12 0a8 8 0 0 1 -16 0a10 10 0 0 1 20 0'/%3E%3Cpath transform='rotate(180 48 144)' d='M48 128 32 150h32z M32 158h32'/%3E%3C/g%3E%3Cg stroke='%2310B981' stroke-opacity='.18' stroke-width='1.2'%3E%3Cpath transform='rotate(180 144 144) translate(124 120) scale(.8)' d='M18 2 0 28h14l-3 22 19-30H16l2-18z'/%3E%3Cpath transform='rotate(45 96 96)' d='M88 92v6a8 8 0 0 0 8 8v8 M104 92v6a8 8 0 0 1 -8 8'/%3E%3C/g%3E%3C/svg%3E");
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:150px}
+body{margin:0;min-height:100dvh;background:var(--obsidian-deep);color:var(--text);font-family:var(--f-text);font-size:var(--step-0);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+:lang(zh-Hans) body{font-family:var(--f-text),"Noto Sans SC",sans-serif}
+:lang(zh-Hans) .h{font-family:var(--f-display),"Noto Sans SC",sans-serif;font-weight:400}
+a{color:inherit} p{margin:0 0 1em;text-wrap:pretty} h1,h2,h3{margin:0;text-wrap:balance}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--emerald);outline-offset:3px;border-radius:8px}
+::selection{background:rgba(168,85,247,.35)}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--emerald);color:var(--obsidian-deep);padding:10px 16px;border-radius:var(--pill);font-family:var(--f-ui);font-weight:700;text-decoration:none}
+.skip:focus{top:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:min(100% - 2*var(--gutter),1200px);margin-inline:auto}
+.section{padding-block:var(--section);position:relative;overflow-x:clip}
+.section > .wrap{position:relative;z-index:1}
+.lab-grid{background-image:linear-gradient(rgba(148,163,184,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.035) 1px,transparent 1px);background-size:64px 64px}
+.patterned::before{content:"";position:absolute;inset:0;background:var(--pattern) 0 0/192px 192px;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000,transparent 72%);mask-image:radial-gradient(ellipse at 50% 40%,#000,transparent 72%)}
+.h{font-family:var(--f-display);font-weight:300;letter-spacing:-.01em;line-height:1.08}
+.h1{font-size:var(--step-4);font-weight:200;line-height:1.02}
+.h2{font-size:var(--step-3)} .h3{font-size:var(--step-1);font-weight:400;line-height:1.25}
+.lead{font-size:var(--step-1);color:var(--muted);line-height:1.5;max-width:62ch;font-weight:300}
+.muted{color:var(--muted)}
+.eyebrow{font-family:var(--f-display);font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin:0 0 .9rem}
+.eyebrow b{color:var(--emerald);font-weight:500}
+.mono{font-family:var(--mono)}
+.glow{position:absolute;pointer-events:none;border-radius:50%;z-index:0}
+.glow--e{background:radial-gradient(closest-side,rgba(16,185,129,.24),transparent)}
+.glow--v{background:radial-gradient(closest-side,rgba(168,85,247,.28),transparent)}
+.glow--c{background:radial-gradient(closest-side,rgba(255,159,28,.16),transparent)}
+.glass{position:relative;background:var(--glass);border:1px solid var(--line);border-radius:var(--radius);-webkit-backdrop-filter:blur(24px) saturate(1.15);backdrop-filter:blur(24px) saturate(1.15)}
+.reticle::after{content:"";position:absolute;inset:12px;pointer-events:none;background:var(--reticle) top left/9px 9px no-repeat,var(--reticle) top right/9px 9px no-repeat,var(--reticle) bottom left/9px 9px no-repeat,var(--reticle) bottom right/9px 9px no-repeat}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;min-height:48px;padding:.75em 1.4em;border-radius:var(--radius);font-family:var(--f-ui);font-weight:700;font-size:1rem;text-decoration:none;border:1px solid transparent;cursor:pointer;line-height:1.1;transition:transform .12s var(--ease-out),background-color .2s,box-shadow .25s,border-color .2s}
+.btn:active{transform:scale(.97)}
+.btn--primary{background:var(--emerald);color:var(--obsidian-deep);box-shadow:0 10px 40px -12px rgba(16,185,129,.6)}
+.btn--glass{background:var(--glass);border-color:var(--line-strong);color:var(--text)}
+.btn--sm{min-height:40px;padding:.5em 1.05em;font-size:.88rem}
+.btn--tac{font-family:var(--f-display);font-weight:500;letter-spacing:.08em;font-size:.8rem;text-transform:uppercase}
+@media (hover:hover) and (pointer:fine){.btn--primary:hover{background:#2ccf98}.btn--glass:hover{border-color:rgba(168,85,247,.7)}}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--c,var(--emerald));box-shadow:0 0 10px var(--c,var(--emerald));animation:pulse 1.8s ease-in-out infinite;flex:0 0 auto}
+@keyframes pulse{50%{opacity:.4;transform:scale(.8)}}
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
+.js .reveal.is-in{opacity:1;transform:none}
+
+/* chip de status (vocabulário fixo) */
+.st{display:inline-flex;align-items:center;gap:.4rem;flex:0 0 auto;font-family:var(--f-display);font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.22rem .6rem;border-radius:var(--pill);border:1px solid color-mix(in srgb,var(--sc) 55%,transparent);color:var(--sc);background:color-mix(in srgb,var(--sc) 10%,transparent);white-space:nowrap}
+.st::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sc)}
+.st[data-s="pending"]{border-style:dashed}
+
+/* ---------- TOPO ---------- */
+.top{position:sticky;top:0;z-index:50;background:rgba(6,7,9,.82);border-bottom:1px solid var(--line);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.top .wrap{display:flex;align-items:center;gap:1rem;min-height:66px}
+.brand{display:inline-flex;align-items:center;gap:.6rem;text-decoration:none}
+.brand svg{width:24px;height:24px;filter:drop-shadow(0 0 8px rgba(16,185,129,.7)) drop-shadow(0 0 16px rgba(168,85,247,.45))}
+.brand span{font-family:var(--f-display);letter-spacing:.32em;font-size:.92rem}
+.brand small{font-family:var(--f-display);font-size:.6rem;letter-spacing:.16em;color:var(--faint);border-left:1px solid var(--line-strong);padding-left:.7rem}
+@media (max-width:420px){.brand small{display:none}}
+.telemetry{display:none;align-items:center;gap:.5rem;font-family:var(--f-ui);font-weight:500;font-size:.72rem;letter-spacing:.08em;border:1px solid var(--line-strong);border-radius:var(--pill);padding:.38rem .75rem;white-space:nowrap}
+.telemetry[data-state="webgl2"] .pulse,.telemetry[data-state="canvas2d"] .pulse{--c:var(--copper)}
+.telemetry[data-state="pending"] .pulse{--c:var(--faint)}
+.nav{display:none;gap:1.3rem;margin-left:auto;font-family:var(--f-ui);font-size:.92rem;white-space:nowrap}
+.nav a{text-decoration:none;color:var(--muted)} .nav a:hover{color:var(--text)}
+.langs{display:inline-flex;margin-left:auto;border:1px solid var(--line-strong);border-radius:var(--pill);padding:3px}
+.langs button{border:0;background:transparent;font-family:var(--f-ui);font-size:.8rem;font-weight:500;min-width:40px;min-height:34px;padding:0 .6rem;border-radius:var(--pill);color:var(--muted);cursor:pointer;white-space:nowrap}
+.langs button[aria-pressed="true"]{background:rgba(168,85,247,.22);color:var(--text)}
+.top .btn{display:none}
+@media (min-width:720px){.telemetry{display:inline-flex}.top .btn{display:inline-flex}}
+@media (min-width:1150px){.nav{display:flex}.langs{margin-left:0}}
+
+/* ---------- HERO ---------- */
+.hero{padding-block:clamp(2.5rem,2rem + 3vw,5rem) var(--s-xl);position:relative;overflow:hidden}
+.hero-grid{display:grid;gap:var(--s-l);align-items:center}
+.hero h1{margin:.4rem 0 var(--s-m)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:var(--s-m)}
+.meta-chip{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.8rem;color:var(--muted);border:1px solid var(--line-strong);border-radius:var(--pill);padding:.4rem .85rem}
+.meta-chip b{color:var(--text);font-weight:500}
+.meta-chip--here{border-color:rgba(16,185,129,.6);color:#7ff0c6}
+.counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.6rem;margin-top:var(--s-l)}
+.count{padding:.9rem 1rem}
+.count b{display:block;font-family:var(--f-display);font-weight:300;font-size:var(--step-2);line-height:1}
+.count .st{margin-top:.5rem}
+.orb{height:300px;overflow:hidden}
+.orb canvas{position:absolute;inset:0;width:100%;height:100%}
+.orb-core{position:absolute;inset:15%;background:radial-gradient(closest-side,rgba(168,85,247,.16),rgba(16,185,129,.05) 60%,transparent);pointer-events:none}
+.orb .label{position:absolute;left:20px;bottom:14px;z-index:2;font-family:var(--f-display);font-size:.64rem;letter-spacing:.16em;color:var(--faint)}
+.orb .label b{color:var(--emerald);font-weight:500}
+.orb .meta{position:absolute;right:20px;bottom:14px;z-index:2;font-family:var(--mono);font-size:.7rem;color:var(--faint)}
+@media (min-width:960px){.hero-grid{grid-template-columns:1.1fr .9fr}.orb{height:440px}}
+
+/* ---------- SELETOR DE FACES ---------- */
+.faces-bar{position:sticky;top:66px;z-index:40;background:rgba(6,7,9,.9);border-block:1px solid var(--line);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.faces-tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 0;scrollbar-width:none}
+.faces-tabs::-webkit-scrollbar{display:none}
+.ftab{flex:0 0 auto;display:flex;align-items:center;gap:.5rem;min-height:44px;padding:0 .95rem;border-radius:16px;border:1px solid var(--line);background:transparent;cursor:pointer;font-family:var(--f-ui);font-size:.88rem;color:var(--muted);transition:border-color .2s,background-color .2s,color .2s}
+.ftab i{width:8px;height:8px;border-radius:50%;background:var(--fc);box-shadow:0 0 8px var(--fc)}
+.ftab[aria-selected="true"]{color:var(--text);border-color:color-mix(in srgb,var(--fc) 70%,transparent);background:color-mix(in srgb,var(--fc) 12%,transparent)}
+
+/* ---------- PAINEL DA FACE ---------- */
+.face-head{display:grid;gap:var(--s-s);margin-bottom:var(--s-l)}
+.face-head .tag{font-family:var(--f-display);font-size:.72rem;letter-spacing:.18em;color:var(--fc)}
+.face-title{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem}
+.face-head .lead{margin:0}
+@media (min-width:960px){.face-head{grid-template-columns:1fr 1fr;align-items:end}}
+.cmp{position:relative;display:grid;grid-template-columns:minmax(0,var(--split,50%)) 16px minmax(0,1fr);align-items:stretch}
+.side{padding:var(--s-l) var(--s-m);min-width:0;overflow:hidden}
+.side--next{border-style:dashed;border-color:rgba(168,85,247,.45);background:linear-gradient(160deg,rgba(168,85,247,.08),rgba(255,255,255,.02) 60%)}
+.side .v{font-family:var(--f-display);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);display:flex;flex-wrap:wrap;gap:.4rem .8rem;align-items:center;margin-bottom:.4rem}
+.side .v b{color:var(--text);font-weight:500}
+.side--now .v b{color:var(--fc)}
+.side--next .v b{color:#c99bfb}
+.side h3{font-size:var(--step-1);margin-bottom:.6rem}
+.side > p{color:var(--muted);font-size:.95rem}
+.caps{list-style:none;margin:var(--s-m) 0 0;padding:0}
+.caps li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.4rem .8rem;align-items:start;padding:.8rem 0;border-top:1px solid var(--line)}
+.caps li > span:first-child{font-size:.94rem}
+.caps li a{grid-column:1/-1;font-family:var(--mono);font-size:.74rem;color:var(--emerald);text-decoration:none;justify-self:start}
+.caps li a:hover{text-decoration:underline}
+.srcs{margin-top:var(--s-m);padding-top:var(--s-s);border-top:1px dashed var(--line-strong)}
+.srcs ul{list-style:none;margin:.4rem 0 0;padding:0;display:grid;gap:.35rem}
+.srcs li{font-family:var(--mono);font-size:.74rem;color:var(--faint);padding-left:1rem;position:relative}
+.srcs li::before{content:"↳";position:absolute;left:0;color:var(--fc)}
+.note{margin-top:var(--s-m);padding:.9rem 1.1rem;border-left:2px solid var(--emerald);background:rgba(16,185,129,.06);border-radius:0 16px 16px 0;color:var(--muted);font-size:.95rem;max-width:62ch}
+.divider{position:relative;cursor:col-resize;touch-action:none;display:grid;place-items:center}
+.divider::before{content:"";position:absolute;top:24px;bottom:24px;width:1px;background:linear-gradient(transparent,var(--violet),transparent)}
+.divider span{position:sticky;top:50%;width:16px;height:44px;border-radius:10px;border:1px solid var(--line-strong);background:#0d1016;display:grid;place-items:center;color:var(--muted);font-size:.7rem}
+.divider:focus-visible span{outline:2px solid var(--emerald);outline-offset:2px}
+.cmp-tabs{display:none}
+.face-links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:var(--s-m)}
+@media (max-width:899px){
+  .cmp{grid-template-columns:minmax(0,1fr)}
+  .divider{display:none}
+  .cmp-tabs{display:flex;gap:6px;margin-bottom:10px}
+  .cmp-tabs button{flex:1;min-height:44px;border-radius:16px;border:1px solid var(--line);background:transparent;cursor:pointer;font-family:var(--f-display);font-size:.72rem;letter-spacing:.14em;color:var(--muted)}
+  .cmp-tabs button[aria-selected="true"]{color:var(--text);border-color:rgba(168,85,247,.6);background:rgba(168,85,247,.12)}
+  .cmp[data-view="now"] .side--next,.cmp[data-view="next"] .side--now{display:none}
+}
+
+/* ---------- TAXONOMIA ---------- */
+.tax-tools{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:var(--s-m)}
+.tax-tools input{flex:1 1 240px;min-height:46px;border-radius:16px;border:1px solid var(--line-strong);background:var(--glass);padding:0 1rem;font-family:var(--f-ui);font-size:16px}
+.cat{display:inline-flex;align-items:center;gap:.4rem;min-height:40px;padding:0 .8rem;border-radius:14px;border:1px solid var(--line-strong);background:transparent;cursor:pointer;font-family:var(--f-display);font-size:.66rem;letter-spacing:.12em;color:var(--muted)}
+.cat i{width:8px;height:8px;border-radius:3px;background:var(--cc)}
+.cat small{font-family:var(--mono);font-size:.7rem;color:var(--faint)}
+.cat[aria-pressed="true"]{color:var(--text);border-color:color-mix(in srgb,var(--cc) 70%,transparent);background:color-mix(in srgb,var(--cc) 12%,transparent)}
+.tax-count{font-family:var(--mono);font-size:.8rem;color:var(--faint);margin:0 0 var(--s-s)}
+.nodes{display:grid;gap:var(--s-s)}
+@media (min-width:700px){.nodes{grid-template-columns:1fr 1fr}}
+@media (min-width:1100px){.nodes{grid-template-columns:1fr 1fr 1fr}}
+.nd{padding:var(--s-m);display:flex;flex-direction:column;gap:.6rem;border-top:2px solid var(--cc)}
+.nd[hidden]{display:none}
+.nd-head{display:flex;justify-content:space-between;gap:.6rem;align-items:flex-start}
+.nd h3{font-family:var(--f-ui);font-weight:700;font-size:1rem;line-height:1.3}
+.nd h3 em{font-style:normal;font-family:var(--mono);font-weight:500;font-size:.78rem;color:var(--cc);margin-left:.3rem}
+.nd p{margin:0;color:var(--muted);font-size:.9rem}
+.io{display:grid;gap:.4rem}
+.io-row{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}
+.io-row b{font-family:var(--f-display);font-size:.6rem;letter-spacing:.14em;color:var(--faint);width:2.2rem}
+.pin{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--mono);font-size:.72rem;padding:.12rem .5rem;border-radius:8px;border:1px solid color-mix(in srgb,var(--pc) 45%,transparent);color:var(--text);background:color-mix(in srgb,var(--pc) 10%,transparent)}
+.pin::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--pc)}
+.props{font-family:var(--mono);font-size:.72rem;line-height:1.55;color:var(--faint);border-top:1px solid var(--line);padding-top:.6rem;margin-top:auto}
+.props b{color:var(--muted);font-weight:500}
+.tax-empty{color:var(--muted)}
+.tax-empty[hidden]{display:none}
+
+/* ---------- ROADMAP ---------- */
+.phases{list-style:none;margin:0;padding:0;display:grid;gap:var(--s-s)}
+.ph{padding:var(--s-m);display:flex;flex-direction:column;gap:.6rem}
+.ph.is-here{border-color:rgba(16,185,129,.65);box-shadow:0 0 0 4px rgba(16,185,129,.1),0 30px 80px -40px rgba(16,185,129,.6)}
+.ph .n{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.4rem .5rem;align-items:center;font-family:var(--f-display);font-size:.7rem;letter-spacing:.16em;color:var(--faint)}
+.here{display:inline-flex;align-items:center;gap:.4rem;color:#7ff0c6;font-size:.62rem;white-space:nowrap}
+.ph h3{font-size:1.1rem}
+.ph ul{list-style:none;margin:0;padding:0;display:grid;gap:.45rem}
+.ph li{display:grid;gap:.3rem;justify-items:start;font-size:.9rem;color:var(--muted)}
+.ph .fchips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto;padding-top:.6rem;border-top:1px solid var(--line)}
+.fchip{display:inline-flex;align-items:center;gap:.35rem;min-height:32px;padding:0 .6rem;border-radius:10px;border:1px solid var(--line-strong);background:transparent;cursor:pointer;font-family:var(--f-ui);font-size:.78rem;color:var(--muted)}
+.fchip i{width:6px;height:6px;border-radius:50%;background:var(--fc)}
+.fchip:hover{color:var(--text)}
+@media (min-width:760px){.phases{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1150px){.phases{grid-template-columns:repeat(5,1fr)}}
+
+/* ---------- CHANGELOG ---------- */
+.log-filter{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:var(--s-m)}
+.log-filter .fchip[aria-pressed="true"]{color:var(--text);border-color:rgba(168,85,247,.7);background:rgba(168,85,247,.12)}
+.log{list-style:none;margin:0;padding:0;border-left:1px solid var(--line-strong);margin-left:6px}
+.log li{position:relative;padding:0 0 var(--s-l) 1.8rem}
+.log li[hidden]{display:none}
+.log li::before{content:"";position:absolute;left:-7px;top:.35rem;width:13px;height:13px;border-radius:50%;background:var(--obsidian);border:2px solid var(--violet)}
+.log li:first-child::before{border-color:var(--emerald);box-shadow:0 0 12px var(--emerald)}
+.log time{font-family:var(--mono);font-size:.8rem;color:var(--faint)}
+.log .ver{font-family:var(--f-display);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#c99bfb;margin-left:.6rem}
+.log h3{font-size:var(--step-1);margin:.3rem 0 .5rem}
+.log ul{margin:0 0 .6rem;padding-left:1.1rem;color:var(--muted);font-size:.95rem}
+.log .row{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+.log .commit{font-family:var(--mono);font-size:.74rem;color:var(--emerald);text-decoration:none;border:1px solid rgba(16,185,129,.4);border-radius:8px;padding:.1rem .5rem}
+.log .commit:hover{background:rgba(16,185,129,.1)}
+.log .commit--local{color:var(--faint);border-color:var(--line-strong)}
+.log .commit--local:hover{background:none}
+
+/* ---------- CTA / RODAPÉ ---------- */
+.final{padding:clamp(2.5rem,2rem + 4vw,5rem) var(--s-m);text-align:center;overflow:hidden}
+.final .h2{max-width:20ch;margin:0 auto var(--s-m)}
+.final .lead{margin:0 auto var(--s-l)}
+.ctas{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
+.foot{border-top:1px solid var(--line);padding-block:var(--s-xl);color:var(--faint);font-size:.88rem}
+.foot .wrap{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;justify-content:space-between}
+.foot a{color:var(--muted)}
+.loading{color:var(--faint);font-family:var(--mono);font-size:.85rem}
+
+@media (max-width:480px){.caps li{grid-template-columns:minmax(0,1fr)}.caps li .st{justify-self:start}.st{max-width:100%;white-space:normal}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Expctral home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M2 12h20" stroke="#10B981" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="3" fill="#A855F7"/></svg>
+      <span>EXPCTRAL</span><small>UPDATES</small>
+    </a>
+    <span class="telemetry" id="telemetry" data-state="pending" title="Measured live in this browser"><i class="pulse"></i><span id="telText">BOOTING RUNTIME</span></span>
+    <nav class="nav" aria-label="Updates">
+      <a href="#faces" data-i18n="nav.faces">Faces</a>
+      <a href="#taxonomy" data-i18n="nav.tax">Node taxonomy</a>
+      <a href="#roadmap" data-i18n="nav.road">Roadmap</a>
+      <a href="#changelog" data-i18n="nav.log">Changelog</a>
+    </nav>
+    <div class="langs" role="group" aria-label="Language / Idioma / 语言">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+      <button type="button" data-lang="zh" aria-pressed="false" lang="zh-Hans">中文</button>
+    </div>
+    <a class="btn btn--glass btn--sm btn--tac" href="../" data-i18n="nav.back">← Station</a>
+  </div>
+</header>
+
+<main id="main">
+<!-- ================= HERO ================= -->
+<section class="hero lab-grid patterned" aria-labelledby="hero-title">
+  <div class="glow glow--v" style="width:820px;height:820px;right:-260px;top:-260px"></div>
+  <div class="glow glow--e" style="width:520px;height:520px;left:-220px;top:300px"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">UPDATES // <b>STATION STATUS</b></p>
+      <h1 class="h h1" id="hero-title" data-i18n="hero.title">Where Expctral stands today, and what comes next.</h1>
+      <p class="lead" data-i18n="hero.sub">Every face of the ecosystem, side by side: the version that exists now, with evidence, and the next version on the roadmap. No invented numbers.</p>
+      <p class="note" id="note" hidden></p>
+      <div class="hero-meta">
+        <span class="meta-chip"><span data-i18n="hero.updated">Last update</span> <b id="updated">—</b></span>
+        <span class="meta-chip meta-chip--here"><i class="pulse"></i><span data-i18n="hero.here">You are here</span> <b id="herePhase">—</b></span>
+      </div>
+      <div class="counts" id="counts" aria-label="Faces by status"></div>
+    </div>
+    <div class="orb glass reticle">
+      <div class="orb-core"></div>
+      <canvas id="orbCanvas" role="img" aria-label="Live particle vortex rendered by the Sinapse Engine"></canvas>
+      <span class="label">LIVE // <b>SINAPSE ENGINE</b></span>
+      <span class="meta" id="orbMeta">three/webgpu r186</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FACES ================= -->
+<div class="faces-bar" id="faces">
+  <div class="wrap faces-tabs" role="tablist" aria-label="Faces of Expctral" id="faceTabs"></div>
+</div>
+<section class="section" aria-live="polite" style="padding-top:var(--s-xl)">
+  <div class="glow glow--c" style="width:620px;height:620px;right:-220px;top:10%"></div>
+  <div class="wrap">
+    <div id="facePanel" role="tabpanel" tabindex="-1"><p class="loading" data-i18n="loading">Loading station data…</p></div>
+  </div>
+</section>
+
+<!-- ================= TAXONOMIA ================= -->
+<section class="section lab-grid" id="taxonomy" aria-labelledby="tax-title" style="background-color:var(--obsidian)">
+  <div class="glow glow--v" style="width:700px;height:700px;left:-260px;top:5%"></div>
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom:var(--s-l)">
+      <p class="eyebrow">STUDIO // <b>NODEFORGE TAXONOMY</b></p>
+      <h2 class="h h2" id="tax-title" data-i18n="tax.title">Prism Studio: the full node taxonomy.</h2>
+      <p class="lead" style="margin-top:var(--s-s)" data-i18n="tax.sub">52 nodes in 8 color-coded categories, each with its TSL function, input and output sockets and the properties of the Inspector STN—004. All of them are implemented in the Station; the ones marked live also run in the prototype on the landing.</p>
+      <p class="muted mono" style="font-size:.8rem" id="taxSource"></p>
+    </div>
+    <div class="tax-tools">
+      <input type="search" id="taxSearch" aria-label="Search nodes" data-i18n-ph="tax.ph" placeholder="Search a node, a function or a socket…">
+    </div>
+    <div class="tax-tools" id="taxCats" role="group" aria-label="Categories"></div>
+    <p class="tax-count" id="taxCount"></p>
+    <div class="nodes" id="nodes"></div>
+    <p class="tax-empty" id="taxEmpty" hidden data-i18n="tax.empty">No node matches this search.</p>
+  </div>
+</section>
+
+<!-- ================= ROADMAP ================= -->
+<section class="section" id="roadmap" aria-labelledby="road-title">
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom:var(--s-l)">
+      <p class="eyebrow">ROADMAP // <b>PHASES 0–4</b></p>
+      <h2 class="h h2" id="road-title" data-i18n="road.title">From foundation to global launch.</h2>
+      <p class="lead" style="margin-top:var(--s-s)" data-i18n="road.sub">Sequential phases with exit gates: a phase only closes with zero type errors and every test green. Progress is a checklist, never an invented percentage.</p>
+    </div>
+    <ol class="phases" id="phases"></ol>
+  </div>
+</section>
+
+<!-- ================= CHANGELOG ================= -->
+<section class="section lab-grid" id="changelog" aria-labelledby="log-title" style="background-color:var(--obsidian)">
+  <div class="wrap">
+    <div class="reveal" style="margin-bottom:var(--s-l)">
+      <p class="eyebrow">CHANGELOG // <b>VERIFIABLE</b></p>
+      <h2 class="h h2" id="log-title" data-i18n="log.title">What changed, and when.</h2>
+      <p class="lead" style="margin-top:var(--s-s)" data-i18n="log.sub">Every entry comes from the repository history or from an official document, with a link to the commit when there is one.</p>
+    </div>
+    <div class="log-filter" id="logFilter" role="group" aria-label="Filter by face"></div>
+    <ol class="log" id="log"></ol>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="section" aria-labelledby="final-title">
+  <div class="wrap">
+    <div class="final glass reticle patterned">
+      <div class="glow glow--v" style="width:640px;height:640px;left:50%;top:50%;transform:translate(-80%,-50%)"></div>
+      <div class="glow glow--e" style="width:560px;height:560px;left:50%;top:50%;transform:translate(-10%,-40%)"></div>
+      <div style="position:relative;z-index:1">
+        <p class="eyebrow">ORBIT WORKSPACE // <b>#4096-VORTEX</b></p>
+        <h2 class="h h2" id="final-title" data-i18n="final.title">Follow every update as it ships.</h2>
+        <p class="lead" data-i18n="final.p">The code stays open under Apache 2.0. Support the next phase or watch the repository to see each commit land.</p>
+        <div class="ctas">
+          <a class="btn btn--primary" href="../#apoio" data-i18n="final.support">Become a Supporter</a>
+          <a class="btn btn--glass" href="https://github.com/MEZZETTI4096/expctral" target="_blank" rel="noopener" data-i18n="final.repo">Watch on GitHub</a>
+          <a class="btn btn--glass btn--tac" href="../#prism">[ ⚡&#xFE0E; ACCESS PRISM STUDIO ]</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Expctral · Gabriel Mezzetti · Mezzetti⁴⁰⁹⁶ Studio · Apache 2.0</span>
+    <span><a href="../">Expctral Station</a> · <a href="https://github.com/MEZZETTI4096/expctral" target="_blank" rel="noopener">GitHub</a></span>
+  </div>
+</footer>
+
+<script>
+(() => {
+'use strict';
+document.documentElement.classList.replace('no-js', 'js');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, set(k, v){ try { localStorage.setItem(k, v); } catch(e){} } };
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+/* ================= I18N (inglês vem do HTML) ================= */
+const I18N = {
+pt: {
+  'skip':`Pular para o conteúdo`, 'nav.faces':`Faces`, 'nav.tax':`Taxonomia de nós`, 'nav.road':`Roadmap`, 'nav.log':`Changelog`, 'nav.back':`← Estação`,
+  'hero.title':`Onde a Expctral está hoje, e o que vem a seguir.`,
+  'hero.sub':`Cada face do ecossistema, lado a lado: a versão que existe agora, com evidência, e a próxima versão do roadmap. Nenhum número inventado.`,
+  'hero.updated':`Última atualização`, 'hero.here':`Você está aqui`, 'loading':`Carregando dados da estação…`,
+  'tax.title':`Prism Studio: a taxonomia completa de nós.`,
+  'tax.sub':`52 nós em 8 categorias codificadas por cor, cada um com sua função TSL, sockets de entrada e saída e as propriedades do Inspector STN—004. Todos estão implementados no Station; os marcados como ao vivo também rodam no protótipo da landing.`,
+  'tax.ph':`Buscar um nó, uma função ou um socket…`, 'tax.empty':`Nenhum nó corresponde a esta busca.`,
+  'road.title':`Da fundação ao lançamento global.`,
+  'road.sub':`Fases sequenciais com gates de saída: uma fase só fecha com zero erros de tipo e todos os testes verdes. O progresso é um checklist, nunca uma porcentagem inventada.`,
+  'log.title':`O que mudou, e quando.`,
+  'log.sub':`Cada entrada vem do histórico do repositório ou de um documento oficial, com link para o commit quando houver.`,
+  'final.title':`Acompanhe cada atualização assim que ela sai.`,
+  'final.p':`O código continua aberto sob Apache 2.0. Apoie a próxima fase ou acompanhe o repositório para ver cada commit chegar.`,
+  'final.support':`Quero ser apoiador`, 'final.repo':`Acompanhar no GitHub`
+},
+zh: {
+  'skip':`跳到正文`, 'nav.faces':`模块`, 'nav.tax':`节点分类`, 'nav.road':`路线图`, 'nav.log':`更新日志`, 'nav.back':`← 返回站点`,
+  'hero.title':`Expctral 的现状，以及接下来的计划。`,
+  'hero.sub':`生态中的每个模块并排展示：现有版本（附证据）与路线图中的下一版本。不含任何虚构数字。`,
+  'hero.updated':`最近更新`, 'hero.here':`当前位置`, 'loading':`正在加载站点数据…`,
+  'tax.title':`Prism Studio：完整的节点分类。`,
+  'tax.sub':`8 个颜色编码类别中的 52 个节点，每个都列出 TSL 功能、输入输出接口及 Inspector STN—004 属性。全部已在 Station 中实现；标记为已上线的节点也在落地页原型中运行。`,
+  'tax.ph':`搜索节点、功能或接口…`, 'tax.empty':`没有符合搜索条件的节点。`,
+  'road.title':`从奠基到全球发布。`,
+  'road.sub':`按顺序推进并设有退出关卡：只有类型检查零错误、测试全部通过，阶段才算完成。进度以清单呈现，绝不使用虚构的百分比。`,
+  'log.title':`改了什么，何时改的。`,
+  'log.sub':`每条记录都来自仓库历史或官方文档，如有提交则附带链接。`,
+  'final.title':`第一时间关注每一次更新。`,
+  'final.p':`代码依旧以 Apache 2.0 开放。支持下一阶段，或关注仓库，见证每一次提交。`,
+  'final.support':`成为支持者`, 'final.repo':`在 GitHub 上关注`
+}};
+const UI = {
+  en:{ now:'NOW', next:'NEXT', phase:'PHASE', weeks:'weeks', evidence:'evidence', all:'All', nodes:n => `${n} nodes`, showing:(a, b) => `${a} of ${b} nodes`,
+       inLabel:'IN', outLabel:'OUT', props:'Inspector STN—004', liveProto:'LIVE IN PROTOTYPE', specified:'IN THE STATION', sources:'EVIDENCE', local:'local', commit:'commit', doc:'document',
+       facesChanging:'Faces in this phase', here:'YOU ARE HERE', drag:'Drag to compare now and next', faces:'faces', loadFail:'Could not load the station data. Try reloading the page.' },
+  pt:{ now:'AGORA', next:'PRÓXIMA', phase:'FASE', weeks:'semanas', evidence:'evidência', all:'Todas', nodes:n => `${n} nós`, showing:(a, b) => `${a} de ${b} nós`,
+       inLabel:'ENT', outLabel:'SAI', props:'Inspector STN—004', liveProto:'AO VIVO NO PROTÓTIPO', specified:'NO STATION', sources:'EVIDÊNCIAS', local:'local', commit:'commit', doc:'documento',
+       facesChanging:'Faces nesta fase', here:'VOCÊ ESTÁ AQUI', drag:'Arraste para comparar agora e próxima', faces:'faces', loadFail:'Não foi possível carregar os dados da estação. Recarregue a página.' },
+  zh:{ now:'当前', next:'下一版', phase:'阶段', weeks:'周', evidence:'证据', all:'全部', nodes:n => `${n} 个节点`, showing:(a, b) => `显示 ${a} / ${b} 个节点`,
+       inLabel:'输入', outLabel:'输出', props:'Inspector STN—004', liveProto:'原型中已上线', specified:'已在 Station 实现', sources:'证据', local:'本地', commit:'提交', doc:'文档',
+       facesChanging:'本阶段涉及的模块', here:'当前位置', drag:'拖动以比较当前与下一版', faces:'个模块', loadFail:'无法加载站点数据，请刷新页面。' }
+};
+const META = {
+  en:{ title:document.title, desc:document.querySelector('meta[name=description]').content, html:'en', loc:'en-US' },
+  pt:{ title:'Atualizações da Expctral: status da estação, agora e próxima | WebGPU + TSL', desc:'Como cada face da Expctral está hoje e o que vem a seguir: Sinapse Engine, Prism Studio, Spectral Registry, Landing Hub, Dra. Ada, multiplayer, ejeção de código e governança. Changelog real e a taxonomia de 52 nós do Prism Studio.', html:'pt-BR', loc:'pt-BR' },
+  zh:{ title:'Expctral 更新：站点状态、当前与下一版 | WebGPU + TSL', desc:'Expctral 各模块的现状与后续计划：Sinapse Engine、Prism Studio、Spectral Registry、Landing Hub、Dra. Ada、多人协作、代码导出与治理。真实更新日志与 Prism Studio 的 52 节点分类。', html:'zh-Hans', loc:'zh-CN' }
+};
+let lang = 'en';
+const enText = {}, enPh = {}, langListeners = [];
+document.querySelectorAll('[data-i18n]').forEach(el => { enText[el.dataset.i18n] = el.innerHTML; });
+document.querySelectorAll('[data-i18n-ph]').forEach(el => { enPh[el.dataset.i18nPh] = el.getAttribute('placeholder'); });
+let zhFont = false;
+function setLang(next, save){
+  if (!META[next]) next = 'en';
+  lang = next;
+  const dict = next === 'en' ? enText : I18N[next];
+  document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.dataset.i18n, v = dict[k] != null ? dict[k] : enText[k]; if (v != null && el.innerHTML !== v) el.innerHTML = v; });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { const k = el.dataset.i18nPh; el.setAttribute('placeholder', next === 'en' ? enPh[k] : (I18N[next][k] || enPh[k])); });
+  document.documentElement.lang = META[next].html; document.title = META[next].title;
+  document.querySelector('meta[name=description]').content = META[next].desc;
+  document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === next)));
+  if (next === 'zh' && !zhFont){ zhFont = true; const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap'; document.head.appendChild(l); }
+  if (save){ store.set('expctral-lang', next); try { const u = new URL(location.href); u.searchParams.set('lang', next); history.replaceState(null, '', u); } catch(e){} }
+  langListeners.forEach(fn => fn());
+}
+document.querySelectorAll('[data-lang]').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang, true)));
+const L = o => (o && (o[lang] || o.en)) || '';
+
+/* ================= REVEAL / ANO ================= */
+document.getElementById('year').textContent = new Date().getFullYear();
+function observeReveal(root){
+  const els = (root || document).querySelectorAll('.reveal:not(.is-in)');
+  if (!('IntersectionObserver' in window) || reduceMotion.matches){ els.forEach(el => el.classList.add('is-in')); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin:'0px 0px -8% 0px' });
+  els.forEach(el => io.observe(el));
+}
+observeReveal();
+
+/* ================= SINAPSE ENGINE (mesmo runtime da landing) ================= */
+const BACKEND_LABEL = { webgpu:'WEBGPU ACTIVE', webgl2:'WEBGL2 FALLBACK', canvas2d:'CANVAS 2D FALLBACK', pending:'BOOTING RUNTIME' };
+const BACKEND_SHORT = { webgpu:'WebGPU', webgl2:'WebGL2', canvas2d:'Canvas 2D', pending:'—' };
+const PALETTE = { emerald:'#10B981', copper:'#FF9F1C', violet:'#A855F7', cyan:'#06B6D4' };
+const countFromDensity = d => 1024 + Math.round(d * 240) * 64;
+let threeP = null;
+const loadThree = () => threeP || (threeP = Promise.all([import('three/webgpu'), import('three/tsl')]));
+const whenIdle = cb => {
+  let done = false; const run = () => { if (!done){ done = true; cb(); } };
+  const go = () => { if ('requestIdleCallback' in window) requestIdleCallback(run, { timeout:1500 }); setTimeout(run, 1200); };
+  document.readyState === 'complete' ? go() : addEventListener('load', go, { once:true });
+};
+async function createGpuVortex(canvas){
+  const [THREE, T] = await loadThree();
+  const { Fn, uniform, instancedArray, instanceIndex, hash, float, vec3, mix, clamp, sin, cos, uv, length, smoothstep } = T;
+  const renderer = new THREE.WebGPURenderer({ canvas, antialias:true, alpha:true });
+  await renderer.init();
+  const isGPU = renderer.backend && renderer.backend.isWebGPUBackend === true;
+  renderer.setClearColor(0x000000, 0);
+  const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(38, 1, 0.01, 50);
+  const MAX = 16384, TAU = 6.2831853;
+  const uPhase = uniform(0), uMix = uniform(.35), uA = uniform(new THREE.Color(PALETTE.emerald)), uB = uniform(new THREE.Color(PALETTE.violet));
+  const radius = i => hash(i).mul(0.92).add(0.08);
+  const vortex = Fn(([i]) => {
+    const r = radius(i);
+    const a = hash(i.add(7)).mul(TAU).add(uPhase.mul(0.35).div(r.add(0.12)));
+    const y = hash(i.add(3)).sub(0.5).mul(0.12).mul(float(1).sub(r));
+    return vec3(cos(a).mul(r), y, sin(a).mul(r));
+  });
+  const material = new THREE.SpriteNodeMaterial({ transparent:true, depthWrite:false, blending:THREE.AdditiveBlending });
+  let computeNode = null;
+  if (isGPU){
+    const positions = instancedArray(MAX, 'vec3');
+    computeNode = Fn(() => { positions.element(instanceIndex).assign(vortex(instanceIndex)); })().compute(MAX);
+    material.positionNode = positions.toAttribute();
+  } else material.positionNode = vortex(instanceIndex);
+  material.colorNode = mix(uA, uB, clamp(uMix.add(hash(instanceIndex.add(1)).sub(0.5).mul(0.6)), 0, 1));
+  material.opacityNode = float(1).sub(smoothstep(0, 0.5, length(uv().sub(0.5))));
+  material.scaleNode = hash(instanceIndex.add(5)).mul(0.014).add(0.008);
+  const particles = new THREE.Sprite(material); particles.count = 4096; particles.frustumCulled = false; scene.add(particles);
+  let tiltX = 0, tiltY = 0;
+  return {
+    backend: isGPU ? 'webgpu' : 'webgl2',
+    resize(w, h){ renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2)); renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); },
+    tilt(x, y){ tiltX = x; tiltY = y; },
+    render(p, dt){
+      uPhase.value += dt * p.speed * 2.4; uMix.value = p.mix; uA.value.set(PALETTE[p.colorA]); uB.value.set(PALETTE[p.colorB]);
+      particles.count = countFromDensity(p.density);
+      camera.position.set(tiltX * .35, 1.2 + tiltY * .25, camera.aspect < 1.1 ? 2.9 : 2.3); camera.lookAt(0, 0, 0);
+      if (computeNode) renderer.compute(computeNode);
+      renderer.render(scene, camera);
+    },
+    dispose(){ renderer.dispose(); material.dispose(); }
+  };
+}
+function create2dVortex(canvas){
+  const ctx = canvas.getContext('2d'); if (!ctx) return null;
+  const MAX = 4096, P = new Float32Array(MAX * 4);
+  for (let i = 0; i < MAX; i++){ P[i*4] = .08 + Math.random() * .92; P[i*4+1] = Math.random() * Math.PI * 2; P[i*4+2] = Math.random(); P[i*4+3] = Math.random(); }
+  let w = 0, h = 0, phase = 0, key = '', sprites = [];
+  const rgb = hx => [1,3,5].map(i => parseInt(hx.slice(i, i+2), 16));
+  const sprite = c => { const s = document.createElement('canvas'); s.width = s.height = 32; const g = s.getContext('2d'), gr = g.createRadialGradient(16,16,0,16,16,16);
+    gr.addColorStop(0, `rgba(${c},1)`); gr.addColorStop(.22, `rgba(${c},.55)`); gr.addColorStop(1, `rgba(${c},0)`); g.fillStyle = gr; g.fillRect(0,0,32,32); return s; };
+  return {
+    backend:'canvas2d',
+    resize(cw, ch){ const d = Math.min(window.devicePixelRatio || 1, 2); w = cw; h = ch; canvas.width = Math.round(cw*d); canvas.height = Math.round(ch*d); ctx.setTransform(d,0,0,d,0,0); },
+    tilt(){},
+    render(p, dt){
+      phase += dt * p.speed * 2.4;
+      const k = p.colorA + p.colorB;
+      if (k !== key){ key = k; const A = rgb(PALETTE[p.colorA]), B = rgb(PALETTE[p.colorB]); sprites = Array.from({ length:12 }, (_, j) => sprite([0,1,2].map(i => Math.round(A[i] + (B[i]-A[i]) * j / 11)))); }
+      ctx.globalCompositeOperation = 'source-over'; ctx.clearRect(0, 0, w, h); ctx.globalCompositeOperation = 'lighter';
+      const cx = w/2, cy = h/2, R = Math.min(w, h*1.6) * .44, n = Math.min(countFromDensity(p.density), w < 480 ? 1400 : 2400), base = Math.max(6, R/22);
+      for (let i = 0; i < n; i++){
+        const r = P[i*4], a = P[i*4+1] + phase * (.35/(r+.12)), h1 = P[i*4+2], h2 = P[i*4+3];
+        const s = base * (.5 + (1-r) * .9) * (.6 + h1 * .6);
+        ctx.drawImage(sprites[Math.round(Math.max(0, Math.min(1, p.mix + (h2-.5)*.6)) * 11)], cx + Math.cos(a)*r*R - s/2, cy + Math.sin(a)*r*R*.5 + (h1-.5)*R*.08*(1-r) - s/2, s, s);
+      }
+    },
+    dispose(){}
+  };
+}
+function mountVortex(canvas, getParams, onState){
+  let engine = null, booting = false, raf = 0, visible = false, last = 0, frames = 0, acc = 0, dtSum = 0;
+  const size = () => { const r = canvas.getBoundingClientRect(); if (engine && r.width) engine.resize(r.width, r.height); };
+  const tick = now => {
+    const dt = last ? Math.min((now - last) / 1000, .1) : .016; last = now;
+    engine.render(getParams(), dt); frames++; acc += dt; dtSum += dt;
+    if (acc >= .5){ onState(engine.backend, Math.round(frames / acc), dtSum / frames * 1000); frames = 0; acc = 0; dtSum = 0; }
+    raf = requestAnimationFrame(tick);
+  };
+  const start = () => { if (engine && !raf && visible && !document.hidden && !reduceMotion.matches){ last = 0; raf = requestAnimationFrame(tick); } };
+  const stop = () => { cancelAnimationFrame(raf); raf = 0; };
+  const once = () => { if (engine && !raf) engine.render(getParams(), 0); };
+  const boot = () => {
+    if (booting) return; booting = true;
+    whenIdle(async () => {
+      let gpu = null;
+      try {
+        await loadThree();
+        gpu = createGpuVortex(canvas);
+        engine = await Promise.race([gpu, new Promise((_, rej) => setTimeout(() => rej(new Error('GPU init timeout')), 10000))]);
+      } catch (err){
+        console.warn('[Sinapse] GPU renderer unavailable, using Canvas 2D:', err);
+        if (gpu) gpu.then(e => e.dispose(), () => {});
+        const fresh = canvas.cloneNode(false); canvas.replaceWith(fresh); canvas = fresh; engine = create2dVortex(fresh);
+      }
+      if (!engine) return;
+      size(); onState(engine.backend, 0, 0); once(); start();
+    });
+  };
+  const host = canvas.parentElement;
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible){ boot(); start(); } else stop(); }, { rootMargin:'300px' }).observe(host);
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+  new ResizeObserver(() => { size(); once(); }).observe(host);
+  onState('pending', 0, 0);
+  return { refresh: once, tilt:(x, y) => { if (engine){ engine.tilt(x, y); once(); } } };
+}
+const telEl = document.getElementById('telemetry'), telText = document.getElementById('telText'), orbMeta = document.getElementById('orbMeta');
+const orbParams = { speed:.45, density:.5, colorA:'emerald', colorB:'violet', mix:.35 };
+const orb = mountVortex(document.getElementById('orbCanvas'), () => orbParams, (backend, fps, ms) => {
+  telEl.dataset.state = backend;
+  telText.textContent = fps ? `${BACKEND_LABEL[backend]} // ${fps} FPS · ${ms.toFixed(1)} MS` : BACKEND_LABEL[backend];
+  orbMeta.textContent = fps ? `three/webgpu r186 · ${BACKEND_SHORT[backend]} · ${fps} FPS` : `three/webgpu r186 · ${BACKEND_SHORT[backend]}`;
+});
+document.querySelector('.orb').addEventListener('pointermove', e => {
+  const r = e.currentTarget.getBoundingClientRect();
+  orb.tilt((e.clientX - r.left) / r.width * 2 - 1, (e.clientY - r.top) / r.height * 2 - 1);
+});
+
+/* ================= DADOS DA ESTAÇÃO ================= */
+let DATA = null, activeFace = null, cmpView = 'now', split = 50, catFilter = 'all', logFilter = 'all';
+const chip = s => `<span class="st" data-s="${s}" style="--sc:${DATA.statuses[s].color}">${esc(L(DATA.statuses[s]))}</span>`;
+const fmtDate = iso => new Intl.DateTimeFormat(META[lang].loc, { day:'2-digit', month:'long', year:'numeric', timeZone:'UTC' }).format(new Date(iso + 'T12:00:00Z'));
+const faceById = id => DATA.faces.find(f => f.id === id);
+
+function renderHero(){
+  document.getElementById('updated').textContent = fmtDate(DATA.updated);
+  const note = document.getElementById('note'); note.hidden = !DATA.note; if (DATA.note) note.textContent = L(DATA.note);
+  const ph = DATA.phases.find(p => p.n === DATA.currentPhase);
+  document.getElementById('herePhase').textContent = `${UI[lang].phase} ${DATA.currentPhase} · ${L(ph.title)}`;
+  const by = {}; DATA.faces.forEach(f => { by[f.status] = (by[f.status] || 0) + 1; });
+  document.getElementById('counts').innerHTML = Object.keys(DATA.statuses).filter(s => by[s]).map(s =>
+    `<div class="count glass"><b class="num">${by[s]}</b>${chip(s)}</div>`).join('');
+}
+
+/* ---------- seletor de faces ---------- */
+const tabsEl = document.getElementById('faceTabs'), panel = document.getElementById('facePanel');
+function renderTabs(){
+  tabsEl.innerHTML = DATA.faces.map(f =>
+    `<button type="button" class="ftab" role="tab" id="tab-${f.id}" aria-controls="facePanel" aria-selected="${f.id === activeFace}" tabindex="${f.id === activeFace ? 0 : -1}" style="--fc:${f.color}" data-face="${f.id}"><i></i>${esc(f.id === 'orbit' ? L({ en:'Multiplayer / Orbit', pt:'Multiplayer / Órbita', zh:'多人协作 / 轨道' }) : f.id === 'eject' ? L({ en:'Code Ejection', pt:'Ejeção de Código', zh:'代码导出' }) : f.id === 'governance' ? L({ en:'Governance', pt:'Governança', zh:'治理' }) : f.name)}</button>`).join('');
+}
+tabsEl.addEventListener('click', e => { const b = e.target.closest('[data-face]'); if (b) selectFace(b.dataset.face, true); });
+tabsEl.addEventListener('keydown', e => {
+  const ids = DATA.faces.map(f => f.id), i = ids.indexOf(activeFace);
+  const d = { ArrowRight:1, ArrowLeft:-1, Home:-i, End:ids.length - 1 - i }[e.key];
+  if (d === undefined) return; e.preventDefault();
+  const id = ids[(i + d + ids.length) % ids.length]; selectFace(id, true); document.getElementById('tab-' + id).focus();
+});
+
+/* ---------- painel: comparador AGORA ↔ PRÓXIMA ---------- */
+const capList = items => `<ul class="caps">${items.map(it =>
+  `<li><span>${esc(L(it.t))}</span>${chip(it.s)}${it.ev ? `<a href="${esc(it.ev)}">↗ ${esc(UI[lang].evidence)}</a>` : ''}</li>`).join('')}</ul>`;
+function renderPanel(){
+  const f = faceById(activeFace); if (!f) return;
+  const name = tabsEl.querySelector(`[data-face="${f.id}"]`).textContent;
+  panel.setAttribute('aria-labelledby', 'tab-' + f.id);
+  panel.style.setProperty('--fc', f.color);
+  panel.innerHTML = `
+    <div class="face-head" id="face-${f.id}">
+      <div>
+        <p class="tag">${esc(f.tag)}</p>
+        <div class="face-title"><h2 class="h h2">${esc(name)}</h2>${chip(f.status)}</div>
+      </div>
+      <p class="lead">${esc(L(f.now.summary))}</p>
+    </div>
+    <div class="cmp-tabs" role="tablist" aria-label="${esc(UI[lang].drag)}">
+      <button type="button" role="tab" data-view="now" aria-selected="${cmpView === 'now'}">${UI[lang].now}</button>
+      <button type="button" role="tab" data-view="next" aria-selected="${cmpView === 'next'}">${UI[lang].next}</button>
+    </div>
+    <div class="cmp" data-view="${cmpView}" style="--split:${split}%">
+      <article class="side side--now glass reticle">
+        <p class="v"><b>${UI[lang].now}</b></p>
+        <h3 class="h">${esc(L(f.now.version))}</h3>
+        ${capList(f.now.items)}
+        ${f.sources && f.sources.length ? `<div class="srcs"><p class="v">${UI[lang].sources}</p><ul>${f.sources.map(x => `<li>${esc(L(x))}</li>`).join('')}</ul></div>` : ''}
+      </article>
+      <div class="divider" role="slider" tabindex="0" aria-label="${esc(UI[lang].drag)}" aria-valuemin="25" aria-valuemax="75" aria-valuenow="${split}" aria-orientation="horizontal"><span aria-hidden="true">⇿</span></div>
+      <article class="side side--next glass reticle">
+        <p class="v"><b>${UI[lang].next}</b> · ${UI[lang].phase} ${f.next.phase}</p>
+        <h3 class="h">${esc(L(f.next.version))}</h3>
+        <p>${esc(L(f.next.summary))}</p>
+        ${capList(f.next.items)}
+      </article>
+    </div>
+    <div class="face-links">${f.links.map(l => `<a class="btn btn--glass btn--sm" href="${esc(l.href)}">${esc(L(l.label))} ↗</a>`).join('')}</div>`;
+  wireCompare();
+}
+function wireCompare(){
+  const cmp = panel.querySelector('.cmp'), div = panel.querySelector('.divider');
+  panel.querySelectorAll('.cmp-tabs [data-view]').forEach(b => b.addEventListener('click', () => {
+    cmpView = b.dataset.view; cmp.dataset.view = cmpView;
+    panel.querySelectorAll('.cmp-tabs [data-view]').forEach(x => x.setAttribute('aria-selected', String(x === b)));
+  }));
+  const setSplit = v => { split = Math.round(Math.max(25, Math.min(75, v))); cmp.style.setProperty('--split', split + '%'); div.setAttribute('aria-valuenow', split); };
+  let drag = false;
+  div.addEventListener('pointerdown', e => { drag = true; try { div.setPointerCapture(e.pointerId); } catch(err){} });
+  div.addEventListener('pointermove', e => { if (!drag) return; const r = cmp.getBoundingClientRect(); setSplit((e.clientX - r.left) / r.width * 100); });
+  ['pointerup','pointercancel'].forEach(ev => div.addEventListener(ev, () => { drag = false; }));
+  div.addEventListener('keydown', e => {
+    const d = { ArrowLeft:-5, ArrowRight:5, Home:-100, End:100 }[e.key]; if (d === undefined) return;
+    e.preventDefault(); setSplit(split + d);
+  });
+}
+function selectFace(id, push){
+  if (!faceById(id)) id = DATA.faces[0].id;
+  activeFace = id;
+  tabsEl.querySelectorAll('[data-face]').forEach(b => { const on = b.dataset.face === id; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; });
+  renderPanel();
+  const t = document.getElementById('tab-' + id); if (t && t.scrollIntoView) t.scrollIntoView({ block:'nearest', inline:'center' });
+  if (push){ try { history.replaceState(null, '', `${location.pathname}${location.search}#face-${id}`); } catch(e){} }
+}
+
+/* ---------- taxonomia ---------- */
+const PIN = { Float:'#FF9F1C', Vector2:'#38BDF8', Vector3:'#06B6D4', Vector4:'#A855F7', Color:'#A855F7' };
+const pins = s => s === '—' ? '<span class="pin" style="--pc:#7E879A">—</span>' :
+  s.split(/,\s*(?![^()]*\))/).map(part => { const m = part.match(/\(([^)]+)\)/); const t = m ? m[1].split(/\s*\/\s*/)[0] : ''; return `<span class="pin" style="--pc:${PIN[t] || '#A3ABBA'}">${esc(part.trim())}</span>`; }).join('');
+function fuzzy(q, text){
+  q = q.toLowerCase(); text = text.toLowerCase(); if (!q) return 1;
+  if (text.includes(q)) return 100;
+  let ti = 0, score = 0; for (const ch of q){ const f = text.indexOf(ch, ti); if (f < 0) return 0; score += f === ti ? 3 : 1; ti = f + 1; }
+  return score;
+}
+function renderTaxonomy(){
+  const T = DATA.taxonomy, total = T.categories.reduce((a, c) => a + c.nodes.length, 0);
+  document.getElementById('taxSource').textContent = L(T.source);
+  document.getElementById('taxCats').innerHTML =
+    `<button type="button" class="cat" data-cat="all" aria-pressed="${catFilter === 'all'}" style="--cc:#E9ECF2"><i></i>${UI[lang].all} <small>${total}</small></button>` +
+    T.categories.map(c => `<button type="button" class="cat" data-cat="${c.id}" aria-pressed="${catFilter === c.id}" style="--cc:${c.color}" title="${esc(L(c.about))}"><i></i>${c.id}${L(c.name) !== c.id ? ' · ' + esc(L(c.name)) : ''} <small>${c.nodes.length}</small></button>`).join('');
+  document.getElementById('nodes').innerHTML = T.categories.flatMap(c => c.nodes.map(n =>
+    `<article class="nd glass" style="--cc:${c.color}" data-cat="${c.id}" data-q="${esc(`${n.name} ${c.id} ${L(c.name)} ${L(n.desc)} ${n.in} ${n.out} ${L(n.props)}`)}">
+      <div class="nd-head"><h3>${esc(n.name)}<em>[${c.id}]</em></h3><span style="display:flex;flex-direction:column;gap:.3rem;align-items:flex-end"><span class="st" data-s="built" style="--sc:#34D399">${UI[lang].specified}</span>${n.live ? `<span class="st" data-s="live" style="--sc:#10B981">${UI[lang].liveProto}</span>` : ''}</span></div>
+      <p>${esc(L(n.desc))}</p>
+      <div class="io"><div class="io-row"><b>${UI[lang].inLabel}</b>${pins(n.in)}</div><div class="io-row"><b>${UI[lang].outLabel}</b>${pins(n.out)}</div></div>
+      <p class="props"><b>${UI[lang].props}</b> · ${esc(L(n.props))}</p>
+    </article>`)).join('');
+  filterTaxonomy();
+}
+function filterTaxonomy(){
+  const q = document.getElementById('taxSearch').value.trim(); let shown = 0, total = 0;
+  document.querySelectorAll('#nodes .nd').forEach(el => {
+    total++;
+    // trecho exato em qualquer campo, ou busca aproximada só no nome do nó
+    const name = el.querySelector('h3').firstChild.textContent;
+    const ok = (catFilter === 'all' || el.dataset.cat === catFilter) && (!q || el.dataset.q.toLowerCase().includes(q.toLowerCase()) || fuzzy(q, name) > 0);
+    el.hidden = !ok; if (ok) shown++;
+  });
+  document.getElementById('taxCount').textContent = UI[lang].showing(shown, total);
+  document.getElementById('taxEmpty').hidden = shown > 0;
+}
+document.getElementById('taxSearch').addEventListener('input', filterTaxonomy);
+document.getElementById('taxCats').addEventListener('click', e => {
+  const b = e.target.closest('[data-cat]'); if (!b) return;
+  catFilter = b.dataset.cat; document.querySelectorAll('#taxCats [data-cat]').forEach(x => x.setAttribute('aria-pressed', String(x === b))); filterTaxonomy();
+});
+
+/* ---------- roadmap ---------- */
+const faceChip = id => { const f = faceById(id); return `<button type="button" class="fchip" data-goto="${id}" style="--fc:${f.color}"><i></i>${esc(tabsEl.querySelector(`[data-face="${id}"]`).textContent)}</button>`; };
+function renderPhases(){
+  document.getElementById('phases').innerHTML = DATA.phases.map(p => {
+    const here = p.n === DATA.currentPhase;
+    return `<li class="ph glass reticle${here ? ' is-here' : ''}">
+      <div class="n"><span>${UI[lang].phase} ${p.n} // ${p.weeks} ${UI[lang].weeks}</span>${here ? `<span class="here"><i class="pulse"></i>${UI[lang].here}</span>` : ''}</div>
+      <h3 class="h">${esc(L(p.title))}</h3>
+      <ul>${p.items.map(it => `<li>${esc(L(it.t))} ${chip(it.s)}</li>`).join('')}</ul>
+      <div class="fchips" aria-label="${esc(UI[lang].facesChanging)}">${p.faces.map(faceChip).join('')}</div>
+    </li>`;
+  }).join('');
+}
+
+/* ---------- changelog ---------- */
+function renderLog(){
+  const used = [...new Set(DATA.changelog.flatMap(e => e.faces))];
+  document.getElementById('logFilter').innerHTML =
+    `<button type="button" class="fchip" data-lf="all" aria-pressed="${logFilter === 'all'}" style="--fc:#E9ECF2"><i></i>${UI[lang].all}</button>` +
+    DATA.faces.filter(f => used.includes(f.id)).map(f => `<button type="button" class="fchip" data-lf="${f.id}" aria-pressed="${logFilter === f.id}" style="--fc:${f.color}"><i></i>${esc(tabsEl.querySelector(`[data-face="${f.id}"]`).textContent)}</button>`).join('');
+  document.getElementById('log').innerHTML = DATA.changelog.map(e =>
+    `<li data-faces="${e.faces.join(' ')}" ${logFilter !== 'all' && !e.faces.includes(logFilter) ? 'hidden' : ''}>
+      <time datetime="${e.date}">${esc(fmtDate(e.date))}</time><span class="ver">${esc(e.version)}</span>
+      <h3 class="h">${esc(L(e.title))}</h3>
+      <ul>${e.items.map(i => `<li>${esc(L(i))}</li>`).join('')}</ul>
+      <div class="row">${e.commit ? (e.local ? `<span class="commit commit--local">${UI[lang].commit} ${e.commit} · ${UI[lang].local}</span>` : `<a class="commit" href="${DATA.repo}/commit/${e.commit}" target="_blank" rel="noopener">${UI[lang].commit} ${e.commit} ↗</a>`) : (e.local ? `<span class="commit commit--local">${UI[lang].local}</span>` : '')}${e.faces.map(faceChip).join('')}</div>
+    </li>`).join('');
+}
+document.getElementById('logFilter').addEventListener('click', e => {
+  const b = e.target.closest('[data-lf]'); if (!b) return;
+  logFilter = b.dataset.lf;
+  document.querySelectorAll('#logFilter [data-lf]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  document.querySelectorAll('#log > li').forEach(li => { li.hidden = logFilter !== 'all' && !li.dataset.faces.split(' ').includes(logFilter); });
+});
+// chips de face (roadmap e changelog) levam ao painel da face
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-goto]'); if (!b) return;
+  selectFace(b.dataset.goto, true);
+  document.getElementById('faces').scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+});
+
+function renderAll(){ if (!DATA) return; renderHero(); renderTabs(); renderPanel(); renderTaxonomy(); renderPhases(); renderLog(); }
+langListeners.push(renderAll);
+function faceFromHash(){ const m = location.hash.match(/^#face-([a-z]+)/); return m ? m[1] : null; }
+addEventListener('hashchange', () => { const id = faceFromHash(); if (id && DATA){ selectFace(id); document.getElementById('faces').scrollIntoView(); } });
+
+/* ================= IDIOMA + CARGA ================= */
+const q = new URLSearchParams(location.search).get('lang');
+const navLang = (navigator.language || 'en').toLowerCase();
+setLang(META[q] ? q : (store.get('expctral-lang') || (navLang.startsWith('pt') ? 'pt' : navLang.startsWith('zh') ? 'zh' : 'en')), false);
+fetch('data.json', { cache:'no-cache' }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(d => {
+  DATA = d; activeFace = faceFromHash() || 'prism';
+  if (!faceById(activeFace)) activeFace = DATA.faces[0].id;
+  renderAll();
+  if (faceFromHash()) document.getElementById('faces').scrollIntoView();
+  observeReveal();
+}).catch(err => { console.warn('[Updates] data.json', err); panel.innerHTML = `<p class="loading">${UI[lang].loadFail}</p>`; });
+})();
+</script>
+</body>
+</html>
