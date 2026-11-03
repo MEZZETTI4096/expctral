@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-12",
+ "updated": "2026-11-03",
  "currentPhase": 0,
  "repo": "https://github.com/MEZZETTI4096/expctral",
  "statuses": {
@@ -205,7 +205,7 @@
    "name": "Prism Studio",
    "tag": "STUDIO // PRISM",
    "color": "#A855F7",
-   "status": "built",
+   "status": "live",
    "now": {
     "version": {
      "en": "Reafforesthree Station (NodeForge) · 52 nodes",
@@ -218,6 +218,15 @@
      "zh": "着色器与纹理编辑器已实现技术规格中的完整分类：8 个类别共 52 个节点，编译为基于 three/webgpu 的 TSL 材质，并带代码面板与导出功能。"
     },
     "items": [
+     {
+      "t": {
+       "en": "Published at mezzetti4096.github.io/expctral-prism-studio: material and VFX node editor in three.js TSL, real-time PBR rasterization",
+       "pt": "Publicado em mezzetti4096.github.io/expctral-prism-studio: editor de materiais e VFX por nós em three.js TSL, rasterização PBR em tempo real",
+       "zh": "已发布于 mezzetti4096.github.io/expctral-prism-studio：基于 three.js TSL 的材质与 VFX 节点编辑器，实时 PBR 光栅化"
+      },
+      "s": "live",
+      "ev": "https://mezzetti4096.github.io/expctral-prism-studio/"
+     },
      {
       "t": {
        "en": "52 nodes in 8 categories, from a single NodeRegistry (React Flow + Zustand)",
@@ -320,6 +329,14 @@
    "links": [
     {
      "label": {
+      "en": "Open Prism Studio",
+      "pt": "Abrir o Prism Studio",
+      "zh": "打开 Prism Studio"
+     },
+     "href": "https://mezzetti4096.github.io/expctral-prism-studio/"
+    },
+    {
+     "label": {
       "en": "Open the prototype",
       "pt": "Abrir o protótipo",
       "zh": "打开原型"
@@ -358,7 +375,7 @@
    "name": "Spectral Registry",
    "tag": "REGISTRY // ORBIT CLUSTER",
    "color": "#FF9F1C",
-   "status": "built",
+   "status": "live",
    "now": {
     "version": {
      "en": "Reafforesthree Archives v0.1 (MVP)",
@@ -371,6 +388,33 @@
      "zh": "程序化着色器的资源库、市场与社交网络：服务器、网页应用与共享的包格式约定。支付为 100% 模拟。"
     },
     "items": [
+     {
+      "t": {
+       "en": "Online at expctral-registry.onrender.com since 03/11/2026, with real accounts (password and a one-time recovery code, no e-mail)",
+       "pt": "No ar em expctral-registry.onrender.com desde 03/11/2026, com contas reais (senha e código de recuperação exibido uma vez, sem e-mail)",
+       "zh": "自 2026/11/03 起在 expctral-registry.onrender.com 上线，支持真实账户（密码与仅显示一次的恢复码，无需电子邮件）"
+      },
+      "s": "live",
+      "ev": "https://expctral-registry.onrender.com"
+     },
+     {
+      "t": {
+       "en": "Wallet with fictitious credit; Terms and Privacy published as drafts pending legal review",
+       "pt": "Carteira com crédito fictício; Termos e Privacidade publicados como rascunho até a revisão jurídica",
+       "zh": "钱包使用虚拟额度；使用条款与隐私政策以草稿形式发布，等待法律审核"
+      },
+      "s": "live",
+      "ev": "https://expctral-registry.onrender.com"
+     },
+     {
+      "t": {
+       "en": "Free server: it sleeps from 2 a.m. to 6 a.m. (Brasília) and the first visit then takes about a minute",
+       "pt": "Servidor gratuito: dorme das 2h às 6h (Brasília) e, nesse horário, a primeira visita leva cerca de um minuto",
+       "zh": "免费服务器：巴西利亚时间凌晨 2 点至 6 点休眠，此时首次访问约需一分钟"
+      },
+      "s": "live",
+      "ev": "https://expctral-registry.onrender.com"
+     },
      {
       "t": {
        "en": "Monorepo: Fastify + SQLite/Drizzle server and Vite + React web app",
@@ -488,9 +532,17 @@
    "links": [
     {
      "label": {
-      "en": "Try the Registry",
-      "pt": "Testar o Registry",
-      "zh": "试用 Registry"
+      "en": "Open the Registry",
+      "pt": "Abrir o Registry",
+      "zh": "打开 Registry"
+     },
+     "href": "https://expctral-registry.onrender.com"
+    },
+    {
+     "label": {
+      "en": "Try the simulation",
+      "pt": "Testar a simulação",
+      "zh": "试用模拟"
      },
      "href": "../#registry"
     }
@@ -565,6 +617,15 @@
       },
       "s": "live",
       "ev": "./"
+     },
+     {
+      "t": {
+       "en": "Web quality: the 3D runs in a worker (OffscreenCanvas), Content Security Policy, keyboard and screen-reader fixes in EN / PT / 中文",
+       "pt": "Qualidade web: o 3D roda num worker (OffscreenCanvas), política de segurança de conteúdo (CSP), teclado e leitor de tela em EN / PT / 中文",
+       "zh": "网页质量：3D 在 worker（OffscreenCanvas）中运行，内容安全策略（CSP），以及中英葡三语的键盘与读屏改进"
+      },
+      "s": "live",
+      "ev": "../"
      }
     ]
    },
@@ -1255,6 +1316,75 @@
   }
  ],
  "changelog": [
+  {
+   "date": "2026-11-03",
+   "version": "Landing · Q5",
+   "faces": [
+    "landing",
+    "registry",
+    "prism"
+   ],
+   "commit": null,
+   "local": false,
+   "title": {
+    "en": "Faster, safer and more accessible landing",
+    "pt": "Landing mais rápida, segura e acessível",
+    "zh": "更快、更安全、更易访问的落地页"
+   },
+   "items": [
+    {
+     "en": "The Sinapse Engine hero renders in a worker (OffscreenCanvas): WebGPU, WebGL2 and Canvas 2D kept",
+     "pt": "O hero da Sinapse Engine renderiza num worker (OffscreenCanvas): WebGPU, WebGL2 e Canvas 2D mantidos",
+     "zh": "Sinapse Engine 首屏在 worker（OffscreenCanvas）中渲染：保留 WebGPU、WebGL2 与 Canvas 2D"
+    },
+    {
+     "en": "Content Security Policy via <meta>; fonts declared in the page, variable Satoshi and Switzer",
+     "pt": "Política de segurança de conteúdo (CSP) por <meta>; fontes declaradas na página, Satoshi e Switzer variáveis",
+     "zh": "通过 <meta> 设置内容安全策略（CSP）；字体在页面内声明，使用可变 Satoshi 与 Switzer"
+    },
+    {
+     "en": "Keyboard and screen reader: Quick-Add as a searchable list, Home/End on tabs, focus returns after dialogs, labels in EN / PT / 中文",
+     "pt": "Teclado e leitor de tela: Quick-Add como lista pesquisável, Home/End nas abas, foco volta depois dos diálogos, rótulos em EN / PT / 中文",
+     "zh": "键盘与读屏：快速添加改为可搜索列表，标签页支持 Home/End，关闭对话框后焦点返回，三语标签"
+    },
+    {
+     "en": "Links to the live Registry and to Prism Studio",
+     "pt": "Links para o Registry no ar e para o Prism Studio",
+     "zh": "链接到已上线的 Registry 与 Prism Studio"
+    }
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "version": "Registry · online",
+   "faces": [
+    "registry"
+   ],
+   "commit": null,
+   "local": false,
+   "title": {
+    "en": "Spectral Registry online with real accounts",
+    "pt": "Spectral Registry no ar com contas reais",
+    "zh": "Spectral Registry 上线并支持真实账户"
+   },
+   "items": [
+    {
+     "en": "Address: expctral-registry.onrender.com (Render, free plan), database replicated to Backblaze B2 and restore tested",
+     "pt": "Endereço: expctral-registry.onrender.com (Render, plano gratuito), banco replicado no Backblaze B2 e restauração testada",
+     "zh": "地址：expctral-registry.onrender.com（Render 免费方案），数据库复制到 Backblaze B2，恢复已测试"
+    },
+    {
+     "en": "Sign-up without e-mail: a recovery code is shown once",
+     "pt": "Cadastro sem e-mail: um código de recuperação aparece uma única vez",
+     "zh": "无需电子邮件注册：恢复码仅显示一次"
+    },
+    {
+     "en": "The GitHub Pages demo stays online; real payments are still off",
+     "pt": "A demo do GitHub Pages continua no ar; pagamento real continua desligado",
+     "zh": "GitHub Pages 演示继续保留；真实支付仍未开启"
+    }
+   ]
+  },
   {
    "date": "2026-10-12",
    "version": "Landing V4",
@@ -2446,8 +2576,8 @@
   ]
  },
  "note": {
-  "en": "Expctral is the evolution of Reafforesthree. Its three apps (Engine, Station and Archives) already exist and are tested, but run locally and are not public yet. Phase 0 stays open until donations through the fiscal host are active.",
-  "pt": "A Expctral é a evolução do Reafforesthree. Os três apps (Engine, Station e Archives) já existem e têm testes, mas rodam localmente e ainda não são públicos. A Fase 0 continua aberta até as doações pela hospedagem fiscal estarem ativas.",
-  "zh": "Expctral 是 Reafforesthree 的演进。其三个应用（Engine、Station 与 Archives）已经实现并有测试，但目前在本地运行，尚未公开。在通过财务托管开放捐助之前，第 0 阶段保持开启。"
+  "en": "Expctral is the evolution of Reafforesthree. Since 03/11/2026 the Spectral Registry is online with real accounts, and Prism Studio is published on GitHub Pages; the Engine still runs locally. Phase 0 stays open until donations through the fiscal host are active.",
+  "pt": "A Expctral é a evolução do Reafforesthree. Desde 03/11/2026 o Spectral Registry está no ar com contas reais, e o Prism Studio está publicado no GitHub Pages; a Engine ainda roda localmente. A Fase 0 continua aberta até as doações pela hospedagem fiscal estarem ativas.",
+  "zh": "Expctral 是 Reafforesthree 的演进。自 2026/11/03 起，Spectral Registry 已上线并支持真实账户，Prism Studio 已发布在 GitHub Pages 上；Engine 仍在本地运行。在通过财务托管开放捐助之前，第 0 阶段保持开启。"
  }
 }

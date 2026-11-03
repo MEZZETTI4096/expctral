@@ -28,7 +28,16 @@ Landing page da **Expctral**, ecossistema open-core de criação 3D no navegador
 - Vocabulário de status: `live` (no ar), `built` (implementado, roda localmente), `prototype`, `spec`, `dev`, `planned`, `pending`, `paused`.
 - Meta-prompt Awwwards da página: `../meta-prompt-atualizacoes-awwwards.md`.
 
+## Qualidade web (03/11/2026)
+- **3D fora da linha principal:** o vórtice da Sinapse Engine (hero, prévia do Prism e `/atualizacoes/`) roda em `sinapse-worker.js` com OffscreenCanvas. A montagem do shader e cada quadro não travam mais a página. Sem worker com canvas, roda na própria página, como antes. A ordem continua WebGPU → WebGL2 → Canvas 2D.
+- **`sinapse.js`:** o motor de GPU compartilhado pelas duas páginas e pelo worker.
+- **Fontes:** os `@font-face` ficam dentro do `<style>` (Exo 2 e DM Mono do Google, Satoshi e Switzer variáveis do Fontshare). Não há CSS de fonte bloqueando a primeira pintura.
+- **`content-visibility: auto`** nas seções abaixo da dobra. A seção `#prism` fica de fora porque o menu de presets usa `position:fixed` no celular.
+- **CSP** por `<meta http-equiv>` nas duas páginas, porque o GitHub Pages não envia cabeçalhos. O único script inline é o import map, numa linha só. Se mudar a versão da three, atualize a URL também em `sinapse-worker.js` e recalcule o hash:
+  `node -e "const s=require('fs').readFileSync('index.html','utf8');console.log('sha256-'+require('crypto').createHash('sha256').update(s.match(/<script type=\"importmap\">(.*?)<\/script>/)[1]).digest('base64'))"`
+- **Scripts:** o código saiu do HTML para `app.js` e `atualizacoes/app.js`, para a CSP não depender de hash de script grande.
+
 ## Configuração
-Arquivo único (`index.html`), sem build. No início do script, o objeto `LINKS` guarda os links que ainda não existem
+Sem build. No início de `app.js`, o objeto `LINKS` guarda os links que ainda não existem
 (apoio/checkout, B2B, WhatsApp, Discord, X). Enquanto estiverem vazios, os botões de apoio mostram "Abertura em breve"
 e o WhatsApp não aparece. Preencha e publique para ativar. `FUNDING.raisedBRL` (logo abaixo) liga as barras de progresso das metas.
