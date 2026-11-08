@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-03",
+ "updated": "2026-11-07",
  "currentPhase": 0,
  "repo": "https://github.com/MEZZETTI4096/expctral",
  "statuses": {
@@ -58,58 +58,83 @@
    "name": "Sinapse Engine",
    "tag": "ENGINE // SINAPSE",
    "color": "#10B981",
-   "status": "built",
+   "status": "live",
    "now": {
     "version": {
-     "en": "Reafforesthree Engine v0.1 · 69 nodes",
-     "pt": "Reafforesthree Engine v0.1 · 69 nós",
-     "zh": "Reafforesthree Engine v0.1 · 69 个节点"
+     "en": "Expctral Optic Modulator 0.1 · 106 nodes",
+     "pt": "Expctral Optic Modulator 0.1 · 106 nós",
+     "zh": "Expctral Optic Modulator 0.1 · 106 个节点"
     },
     "summary": {
-     "en": "A complete web game engine: editor + runtime on Three.js (WebGPU with WebGL fallback), Rapier physics and TypeScript. Its node system, Sinapse, compiles graphs into readable TypeScript with no runtime interpreter.",
-     "pt": "Uma game engine web completa: editor + runtime em Three.js (WebGPU com fallback WebGL), física Rapier e TypeScript. O sistema de nós, Sinapse, compila grafos em TypeScript legível, sem interpretador em tempo de execução.",
-     "zh": "完整的网页游戏引擎：基于 Three.js（WebGPU，可回退 WebGL）、Rapier 物理与 TypeScript 的编辑器 + 运行时。其节点系统 Sinapse 将节点图编译为可读的 TypeScript，运行时无需解释器。"
+     "en": "A web game engine and editor, live on GitHub Pages: Three.js (WebGPU with WebGL2 fallback, switching without reload), Rapier physics and TypeScript. Its node system, Sinapse, compiles graphs into readable TypeScript and TSL, with no runtime interpreter.",
+     "pt": "Uma game engine e editor web, no ar no GitHub Pages: Three.js (WebGPU com fallback WebGL2, trocando sem recarregar), física Rapier e TypeScript. O sistema de nós, Sinapse, compila grafos em TypeScript e TSL legíveis, sem interpretador em tempo de execução.",
+     "zh": "一个网页游戏引擎与编辑器，已在 GitHub Pages 上线：Three.js（WebGPU，可无需刷新回退到 WebGL2）、Rapier 物理与 TypeScript。其节点系统 Sinapse 将节点图编译为可读的 TypeScript 与 TSL，运行时无需解释器。"
     },
     "items": [
      {
       "t": {
-       "en": "Sinapse: 69 nodes in 13 families (flow, player, camera, combat, AI, world, VFX, HUD, audio, physics, objects, vectors, data)",
-       "pt": "Sinapse: 69 nós em 13 famílias (fluxo, jogador, câmera, combate, IA, mundo, VFX, HUD, áudio, física, objetos, vetores, dados)",
-       "zh": "Sinapse：13 个家族共 69 个节点（流程、玩家、相机、战斗、AI、世界、VFX、HUD、音频、物理、对象、向量、数据）"
+       "en": "Live since 16/10/2026: the full editor in the browser, nothing to install",
+       "pt": "No ar desde 16/10/2026: o editor completo no navegador, sem instalar",
+       "zh": "自 2026/10/16 起上线：完整编辑器在浏览器中运行，无需安装"
       },
-      "s": "built"
+      "s": "live",
+      "ev": "https://mezzetti4096.github.io/expctral-optic-modulator/"
      },
      {
       "t": {
-       "en": "Path Editor \"Trajeto\", hitstop and camera shake (gate F3, Bullet-Hell template)",
-       "pt": "Path Editor \"Trajeto\", hitstop e camera shake (gate F3, template Bullet-Hell)",
-       "zh": "路径编辑器 “Trajeto”、命中停顿与镜头震动（F3 关卡，弹幕模板）"
+       "en": "Sinapse: 106 nodes in 13 families, molecules (sub-graphs opened with a double click) and custom events",
+       "pt": "Sinapse: 106 nós em 13 famílias, moléculas (subgrafos abertos com duplo clique) e eventos customizados",
+       "zh": "Sinapse：13 个家族共 106 个节点，支持分子（双击打开的子图）与自定义事件"
       },
-      "s": "built"
+      "s": "live"
      },
      {
       "t": {
-       "en": "5 playable templates (Platform, Arena, Bullet-Hell, Horde, ARPG), 10 mechanic packs and 5 one-click styles",
-       "pt": "5 templates jogáveis (Plataforma, Arena, Bullet-Hell, Horda, ARPG), 10 pacotes de mecânicas e 5 estilos de 1 clique",
-       "zh": "5 个可玩模板（平台、竞技场、弹幕、群敌、ARPG），10 个机制包与 5 种一键风格"
+       "en": "TSL materials in the same graph, ejected as a standalone shader.ts",
+       "pt": "Materiais TSL no mesmo grafo, ejetados como um shader.ts autônomo",
+       "zh": "同一节点图中的 TSL 材质，可导出为独立的 shader.ts"
       },
-      "s": "built"
+      "s": "live"
      },
      {
       "t": {
-       "en": "Playable build export (.zip that runs on any static host) and local Archives",
-       "pt": "Exportação de build jogável (.zip que roda em qualquer hospedagem estática) e Archives local",
-       "zh": "可玩构建导出（可在任意静态托管运行的 .zip）与本地 Archives"
+       "en": "Dual pipeline: GPU particles and instancing with mathematical modulation in the compute pass (transform feedback on WebGL2)",
+       "pt": "Pipeline duplo: partículas e instâncias com modulação matemática no compute pass (transform feedback no WebGL2)",
+       "zh": "双管线：在 Compute Pass 中运行的 GPU 粒子与带数学调制的实例化（WebGL2 上使用 Transform Feedback）"
       },
-      "s": "built"
+      "s": "live"
      },
      {
       "t": {
-       "en": "105 tests, CI (typecheck, test, build) and a PT-BR manual covering every node",
-       "pt": "105 testes, CI (typecheck, testes, build) e manual em PT-BR cobrindo todos os nós",
-       "zh": "105 项测试、CI（类型检查、测试、构建），以及覆盖全部节点的葡语手册"
+       "en": "GPU profiling: real GPU time per frame (timestamp-query) and a 15 ms gate on CPU and GPU",
+       "pt": "Profiling de GPU: tempo real de GPU por quadro (timestamp-query) e gate de 15 ms em CPU e GPU",
+       "zh": "GPU 性能分析：每帧真实 GPU 耗时（timestamp-query），CPU 与 GPU 均设 15 ms 门槛"
       },
-      "s": "built"
+      "s": "live"
+     },
+     {
+      "t": {
+       "en": "Keyboard, gamepad, on-screen touch controls and remapping",
+       "pt": "Teclado, gamepad, controles de toque na tela e remapeamento",
+       "zh": "键盘、手柄、屏幕触控与按键重映射"
+      },
+      "s": "live"
+     },
+     {
+      "t": {
+       "en": "Duplicate a project with provenance (⑂ REFRACT PROJECT), carried inside the project",
+       "pt": "Duplicar projeto com procedência (⑂ REFRACT PROJECT), que viaja dentro do projeto",
+       "zh": "带溯源的项目复制（⑂ REFRACT PROJECT），溯源信息随项目一起保存"
+      },
+      "s": "live"
+     },
+     {
+      "t": {
+       "en": "228 tests in 49 files, plus a PT-BR manual covering every node",
+       "pt": "228 testes em 49 arquivos e manual em PT-BR cobrindo todos os nós",
+       "zh": "49 个文件中的 228 项测试，以及覆盖全部节点的葡语手册"
+      },
+      "s": "live"
      },
      {
       "t": {
@@ -124,60 +149,84 @@
    },
    "next": {
     "version": {
-     "en": "F7 polish + F8 · Sinapse Compiler on WebGPU/TSL",
-     "pt": "Acabamento F7 + F8 · Sinapse Compiler em WebGPU/TSL",
-     "zh": "F7 打磨 + F8 · 基于 WebGPU/TSL 的 Sinapse 编译器"
+     "en": "Cycle 2 · bridge to the faces and a complete 3D game editor",
+     "pt": "Ciclo 2 · ponte com as faces e editor de jogos 3D completo",
+     "zh": "第 2 周期 · 连接各个面向，打造完整的 3D 游戏编辑器"
     },
     "phase": 1,
     "summary": {
-     "en": "Public release of the engine, the TSL shader pipeline of the Expctral plan and the next Path Editor rounds.",
-     "pt": "Lançamento público da engine, o pipeline de shaders TSL do plano Expctral e as próximas rodadas do Path Editor.",
-     "zh": "引擎公开发布、Expctral 规划中的 TSL 着色器管线，以及路径编辑器的后续迭代。"
+     "en": "Connect the editor to Prism Studio and the Registry, and add what a full 3D game needs: animation, navigation, terrain, post-processing.",
+     "pt": "Ligar o editor ao Prism Studio e ao Registry, e somar o que um jogo 3D completo pede: animação, navegação, terreno, pós-processamento.",
+     "zh": "将编辑器与 Prism Studio 和 Registry 连接，并补齐完整 3D 游戏所需的功能：动画、寻路、地形与后期处理。"
     },
     "items": [
      {
       "t": {
-       "en": "Public deploy of the engine (today it runs locally)",
-       "pt": "Deploy público da engine (hoje roda localmente)",
-       "zh": "引擎公开部署（目前在本地运行）"
+       "en": "Third-party project scripts in an isolated origin",
+       "pt": "Scripts de projetos de terceiros em origem isolada",
+       "zh": "第三方项目脚本在隔离的源中运行"
       },
       "s": "planned"
      },
      {
       "t": {
-       "en": "F7 visual pass: align/distribute, colored frames, launch video",
-       "pt": "Passe visual F7: alinhar/distribuir, frames coloridos, vídeo de lançamento",
-       "zh": "F7 视觉打磨：对齐/分布、彩色分组框、发布视频"
+       "en": "Animator: model clips, blending and a state machine",
+       "pt": "Animator: clipes de modelo, mistura e máquina de estados",
+       "zh": "Animator：模型动画片段、混合与状态机"
       },
       "s": "planned"
      },
      {
       "t": {
-       "en": "Dual WebGPU pipelines (Compute + Render) and @babel/parser AST sanitization on the BFF",
-       "pt": "Pipelines duplos WebGPU (Compute + Render) e sanitização AST com @babel/parser no BFF",
-       "zh": "WebGPU 双管线（Compute + Render）与 BFF 上的 @babel/parser AST 清理"
+       "en": "Post-processing, sky and 3D audio",
+       "pt": "Pós-processamento, céu e áudio 3D",
+       "zh": "后期处理、天空与 3D 音频"
       },
       "s": "planned"
      },
      {
       "t": {
-       "en": "Path rounds: melee arcs, path platforms and patrols, modifiers, markers, three.quarks",
-       "pt": "Rodadas de trajeto: melee em arco, plataformas e patrulhas em path, modificadores, marcadores, three.quarks",
-       "zh": "路径迭代：弧形近战、路径平台与巡逻、修饰器、标记、three.quarks"
+       "en": "AI: navmesh + A*; physics with joints and vehicles; terrain",
+       "pt": "IA: navmesh + A*; física com juntas e veículos; terreno",
+       "zh": "AI：导航网格 + A*；带关节与载具的物理；地形"
       },
       "s": "planned"
      },
      {
       "t": {
-       "en": "AI: navmesh + A*, behavior tree, multi-phase boss",
-       "pt": "IA: navmesh + A*, behavior tree, boss multi-fase",
-       "zh": "AI：导航网格 + A*、行为树、多阶段 Boss"
+       "en": "Prism Studio materials as editor assets",
+       "pt": "Materiais do Prism Studio como assets do editor",
+       "zh": "Prism Studio 材质作为编辑器资源"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "Publish games to the Registry, with Refract opening the editor",
+       "pt": "Publicar jogos no Registry, com Refract abrindo o editor",
+       "zh": "将游戏发布到 Registry，Refract 直接打开编辑器"
+      },
+      "s": "planned"
+     },
+     {
+      "t": {
+       "en": "HUD and menu editor, timeline and installable games (PWA)",
+       "pt": "Editor de HUD e menus, timeline e jogos instaláveis (PWA)",
+       "zh": "HUD 与菜单编辑器、时间轴以及可安装游戏（PWA）"
       },
       "s": "planned"
      }
     ]
    },
    "links": [
+    {
+     "label": {
+      "en": "Open Optic Modulator",
+      "pt": "Abrir o Optic Modulator",
+      "zh": "打开 Optic Modulator"
+     },
+     "href": "https://mezzetti4096.github.io/expctral-optic-modulator/"
+    },
     {
      "label": {
       "en": "See it live",
@@ -189,14 +238,19 @@
    ],
    "sources": [
     {
-     "en": "Engine git history: 9 commits, 21–23/07/2026",
-     "pt": "Histórico git da Engine: 9 commits, 21–23/07/2026",
-     "zh": "Engine git 历史：9 次提交，2026/07/21–23"
+     "en": "facts.json generated from the editor code (npm run facts), commit 833e28c, 2026-11-07",
+     "pt": "facts.json gerado do código do editor (npm run facts), commit 833e28c, 2026-11-07",
+     "zh": "由编辑器代码生成的 facts.json（npm run facts），提交 833e28c，2026-11-07"
     },
     {
-     "en": "PLANO-CONTINUACAO.md: F0–F7 foundations done, 105 tests",
-     "pt": "PLANO-CONTINUACAO.md: fundações F0–F7 concluídas, 105 testes",
-     "zh": "PLANO-CONTINUACAO.md：F0–F7 基础完成，105 项测试"
+     "en": "PLANO-OPTIC-MODULATOR.md: lots 1–18 of Cycle 1",
+     "pt": "PLANO-OPTIC-MODULATOR.md: lotes 1–18 do Ciclo 1",
+     "zh": "PLANO-OPTIC-MODULATOR.md：第 1 周期的第 1–18 批"
+    },
+    {
+     "en": "PLANO-OPTIC-MODULATOR-CICLO-2.md: the Cycle 2 plan",
+     "pt": "PLANO-OPTIC-MODULATOR-CICLO-2.md: o plano do Ciclo 2",
+     "zh": "PLANO-OPTIC-MODULATOR-CICLO-2.md：第 2 周期计划"
     }
    ]
   },
@@ -1316,6 +1370,43 @@
   }
  ],
  "changelog": [
+  {
+   "date": "2026-11-07",
+   "version": "Optic Modulator · Ciclo 1",
+   "faces": [
+    "sinapse",
+    "eject"
+   ],
+   "commit": "833e28c",
+   "local": true,
+   "title": {
+    "en": "The game editor is live and documented on the hub",
+    "pt": "O editor de jogos no ar, agora documentado no hub",
+    "zh": "游戏编辑器已上线，现已在中心页记录"
+   },
+   "items": [
+    {
+     "en": "Expctral Optic Modulator on GitHub Pages: 106 nodes, 228 tests",
+     "pt": "Expctral Optic Modulator no GitHub Pages: 106 nós, 228 testes",
+     "zh": "Expctral Optic Modulator 已发布在 GitHub Pages：106 个节点，228 项测试"
+    },
+    {
+     "en": "Molecules, custom events, GPU particles and instancing, GPU profiling",
+     "pt": "Moléculas, eventos customizados, partículas e instâncias na GPU, profiling de GPU",
+     "zh": "分子、自定义事件、GPU 粒子与实例化、GPU 性能分析"
+    },
+    {
+     "en": "⑂ REFRACT PROJECT with provenance inside the project",
+     "pt": "⑂ REFRACT PROJECT com procedência dentro do projeto",
+     "zh": "⑂ REFRACT PROJECT，溯源信息保存在项目内"
+    },
+    {
+     "en": "Numbers on this page now come from the code (facts.json)",
+     "pt": "Os números desta página agora vêm do código (facts.json)",
+     "zh": "本页数字现在直接来自代码（facts.json）"
+    }
+   ]
+  },
   {
    "date": "2026-11-03",
    "version": "Landing · Q5",
@@ -2576,8 +2667,8 @@
   ]
  },
  "note": {
-  "en": "Expctral is the evolution of Reafforesthree. Since 03/11/2026 the Spectral Registry is online with real accounts, and Prism Studio is published on GitHub Pages; the Engine still runs locally. Phase 0 stays open until donations through the fiscal host are active.",
-  "pt": "A Expctral é a evolução do Reafforesthree. Desde 03/11/2026 o Spectral Registry está no ar com contas reais, e o Prism Studio está publicado no GitHub Pages; a Engine ainda roda localmente. A Fase 0 continua aberta até as doações pela hospedagem fiscal estarem ativas.",
-  "zh": "Expctral 是 Reafforesthree 的演进。自 2026/11/03 起，Spectral Registry 已上线并支持真实账户，Prism Studio 已发布在 GitHub Pages 上；Engine 仍在本地运行。在通过财务托管开放捐助之前，第 0 阶段保持开启。"
+  "en": "Expctral is the evolution of Reafforesthree. Since 03/11/2026 the Spectral Registry is online with real accounts; Prism Studio and the Optic Modulator (game editor, since 16/10/2026) are published on GitHub Pages. Phase 0 stays open until donations through the fiscal host are active.",
+  "pt": "A Expctral é a evolução do Reafforesthree. Desde 03/11/2026 o Spectral Registry está no ar com contas reais; o Prism Studio e o Optic Modulator (editor de jogos, desde 16/10/2026) estão publicados no GitHub Pages. A Fase 0 continua aberta até as doações pela hospedagem fiscal estarem ativas.",
+  "zh": "Expctral 是 Reafforesthree 的演进。自 2026/11/03 起，Spectral Registry 已上线并支持真实账户；Prism Studio 与 Optic Modulator（游戏编辑器，自 2026/10/16 起）已发布在 GitHub Pages 上。在通过财务托管开放捐助之前，第 0 阶段保持开启。"
  }
 }
